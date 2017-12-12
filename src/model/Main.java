@@ -18,7 +18,7 @@ public class Main extends Application {
         int minWindowHeight = 450;
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/fxml/sample.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/fxml/mainScreen.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("bundles.locale/locale", Locale.getDefault()));
         Parent root = fxmlLoader.load();
         primaryStage.setFullScreen(true);

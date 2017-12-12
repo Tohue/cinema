@@ -1,4 +1,3 @@
 .back {
-    -fx-background-radius: 50%;
-	-fx-background-color: #000000;
+    -fx-background-image: ../../resources/images/mainPhoto.img;
 }
