@@ -5,11 +5,11 @@ import java.sql.*;
 /**
  * Подключение к базе данных по переданному URL, логину и паролю
  */
-public class dbConnector {
+class dbConnector {
 
-    private String URL;
-    private String username;
-    private String password;
+    private final String URL;
+    private final String username;
+    private final String password;
     private Driver jdbcDriver;
 
     private Driver mySqlDriver;

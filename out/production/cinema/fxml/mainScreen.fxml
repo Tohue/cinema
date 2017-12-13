@@ -47,7 +47,7 @@
             </AnchorPane>
             <AnchorPane layoutX="727.0" prefHeight="154.0" prefWidth="353.0" style="-fx-background-color: purple;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button layoutX="245.0" layoutY="115.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="95.0" text="%AdminBtnText" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                  <Button layoutX="245.0" layoutY="115.0" onAction="#openAdminScreen" mnemonicParsing="false" prefHeight="23.0" prefWidth="95.0" text="%AdminBtnText" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
                </children>
             </AnchorPane>
          </children>

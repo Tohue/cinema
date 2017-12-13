@@ -21,7 +21,7 @@ public class Main extends Application {
         fxmlLoader.setLocation(getClass().getResource("/fxml/mainScreen.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("bundles.locale/locale", Locale.getDefault()));
         Parent root = fxmlLoader.load();
-        primaryStage.setFullScreen(true);
+        primaryStage.setMaximized(true);
         primaryStage.setTitle("Hello world");
         primaryStage.setScene(new Scene(root, minWindowWidth, minWindowHeight));
         primaryStage.show();
