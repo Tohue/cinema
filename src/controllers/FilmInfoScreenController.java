@@ -1,4 +1,4 @@
 package controllers;
 
-public class FilmInfoScreenController {
+public  class FilmInfoScreenController {
 }
