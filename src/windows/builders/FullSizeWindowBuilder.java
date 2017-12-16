@@ -1,4 +1,4 @@
-package builders;
+package windows.builders;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

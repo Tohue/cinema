@@ -1,4 +1,4 @@
-package controllers;
+package windows.controllers;
 
 public class FilmListWindowController {
 }

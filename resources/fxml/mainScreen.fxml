@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: red;"
             xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.MainScreenController">
+            fx:controller="windows.controllers.MainScreenController">
     <Label alignment="CENTER" layoutY="57.0" prefHeight="78.0" prefWidth="1080.0"
            style="-fx-background-color: palegreen;" text="%CinemaName" AnchorPane.leftAnchor="0.0"
            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="57.0">

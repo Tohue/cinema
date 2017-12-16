@@ -1,7 +1,6 @@
-package controllers;
+package windows.controllers;
 
-import javafx.event.ActionEvent;
-import model.AdminWindow;
+import windows.windowStarters.AdminWindow;
 
 
 public class AdminWindowController {

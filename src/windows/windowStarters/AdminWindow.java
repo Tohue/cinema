@@ -1,4 +1,4 @@
-package model;
+package windows.windowStarters;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

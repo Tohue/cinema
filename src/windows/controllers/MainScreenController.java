@@ -1,8 +1,8 @@
-package controllers;
+package windows.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-import model.AdminWindow;
+import windows.windowStarters.AdminWindow;
 
 import java.io.IOException;
 
