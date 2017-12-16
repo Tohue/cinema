@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;"
+            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="windows.controllers.FilmInfoScreenController">
+   <AnchorPane prefHeight="402.0" prefWidth="239.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="98.0"
+               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="261.0" AnchorPane.topAnchor="0.0"/>
+   <AnchorPane layoutX="239.0" prefHeight="89.0" prefWidth="261.0" style="-fx-background-color: palegreen;"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+   <AnchorPane layoutX="239.0" layoutY="89.0" prefHeight="313.0" prefWidth="261.0" style="-fx-background-color: orange;"
+               AnchorPane.bottomAnchor="98.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="89.0"/>
+   <AnchorPane layoutY="400.0" prefHeight="103.0" prefWidth="501.0" style="-fx-background-color: purple;"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+</AnchorPane>
