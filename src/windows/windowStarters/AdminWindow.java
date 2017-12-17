@@ -35,6 +35,5 @@ public class AdminWindow {
         primaryStage.initOwner(owner);
         primaryStage.show();
 
-
     }
 }

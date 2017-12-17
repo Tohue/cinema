@@ -1,5 +1,7 @@
 package database;
 
+import config.DBConfig;
+
 import java.sql.*;
 
 /**
@@ -10,9 +12,7 @@ class dbConnector {
     private final String URL;
     private final String username;
     private final String password;
-    private Driver jdbcDriver;
 
-    private Driver mySqlDriver;
     private Connection connection = null;
     private Statement statement = null;
 
@@ -25,7 +25,7 @@ class dbConnector {
     public void connectToDB() {
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(DBConfig.getDRIVER());
             connection = DriverManager.getConnection(URL, username, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

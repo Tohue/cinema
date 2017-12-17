@@ -2,4 +2,5 @@
 <database_connection>
     <host>127.0.0.1</host>
     <port>3306</port>
+    <driver>com.mysql.jdbc.Driver</driver>
 </database_connection>

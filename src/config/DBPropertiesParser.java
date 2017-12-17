@@ -2,6 +2,9 @@ package config;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -34,9 +37,20 @@ public class DBPropertiesParser {
     /**
      * Парсинг из существующего файла
      */
-    public void parseBDProperties () {
-        System.out.print("парсим");
+    public void parseBDProperties () throws IOException, SAXException {
+
+        System.out.println("парсим");
+        Document document = builder.parse("./resources/configFiles/DBConfig.xml");
+        Element root = document.getDocumentElement();
+
+        DBConfig.setHOSTNAME(root.getElementsByTagName("host").item(0).getTextContent());
+        DBConfig.setPORT(root.getElementsByTagName("port").item(0).getTextContent());
+        DBConfig.setDRIVER(root.getElementsByTagName("driver").item(0).getTextContent());
+
+
     }
+
+
 
     /**
      * Сорздание нового файла с дефолтными настройками

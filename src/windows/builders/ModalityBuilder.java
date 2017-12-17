@@ -3,13 +3,14 @@ package windows.builders;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class FullSizeWindowBuilder{
+public class ModalityBuilder{
 
     static FXMLLoader fxmlLoader = new FXMLLoader();
     static String localePath = "bundles.locale/locale";
@@ -40,18 +41,19 @@ public class FullSizeWindowBuilder{
         FullSizeWindowBuilder.currentLocale = currentLocale;
     }
 
-    public static Stage getFullSizeScreen(String FXMLName) throws IOException {
+    public static Stage getModalityScreen(String FXMLName) throws IOException {
 
 
         String currFXML = defaultFXMLPath + FXMLName;
         Stage primaryStage = new Stage();
 
-        fxmlLoader.setLocation(FullSizeWindowBuilder.class.getResource(currFXML));
+        fxmlLoader.setLocation(ModalityBuilder.class.getResource(currFXML));
         fxmlLoader.setResources(ResourceBundle.getBundle(localePath, currentLocale));
         Parent root = fxmlLoader.load();
-        primaryStage.setMaximized(true);
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setScene(new Scene(root));
-        primaryStage.getScene().setRoot(root);
+
         return primaryStage;
     }
+
 }
