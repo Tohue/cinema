@@ -14,9 +14,11 @@ import windows.builders.ModalityBuilder;
 import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 public class MainScreen extends Application {
 
+    volatile int a = 20;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -33,7 +35,6 @@ public class MainScreen extends Application {
 
         primaryStage = FullSizeWindowBuilder.getFullSizeScreen("mainScreen.fxml");
         primaryStage.show();
-
 
     }
 

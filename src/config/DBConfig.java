@@ -2,9 +2,9 @@ package config;
 
 public class DBConfig {
 
-    private static  String HOSTNAME = "127.0.0.1";
-    private static  String PORT = "3306";
-    private static  String DRIVER = "com.mysql.jdbc.Driver";
+    private static String HOSTNAME = "127.0.0.1";
+    private static String PORT = "3306";
+    private static String DRIVER = "com.mysql.jdbc.Driver";
 
     public static String getHOSTNAME() {
         return HOSTNAME;
