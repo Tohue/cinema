@@ -6,12 +6,13 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import windows.windowStarters.AdminWindow;
 import windows.windowStarters.FilmListWindow;
 import java.io.IOException;
 
 
-public class MainScreenController {
+public class MainScreenController{
 
     @FXML
     GridPane postersPane;
@@ -22,6 +23,11 @@ public class MainScreenController {
     @FXML
     ImageView image1;
 
+    private static Stage primaryStage = null;
+
+    public static void setPrimaryStage(Stage primaryStage) {
+        MainScreenController.primaryStage = primaryStage;
+    }
 
     public void openAdminScreen(ActionEvent actionEvent) {
         try {
@@ -38,6 +44,11 @@ public class MainScreenController {
     }
 
     public void openFilmList(ActionEvent actionEvent) {
+
         new FilmListWindow().openFilmListScreen();
+        primaryStage.close();
     }
+
+
+
 }

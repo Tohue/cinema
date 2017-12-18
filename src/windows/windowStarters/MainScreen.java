@@ -4,6 +4,7 @@ import config.DBPropertiesParser;
 import database.DBConnector;
 import windows.builders.FullSizeWindowBuilder;
 import javafx.stage.Stage;
+import windows.controllers.MainScreenController;
 
 import java.io.File;
 import java.sql.Connection;
@@ -26,12 +27,10 @@ public class MainScreen {
         }
 
         primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("mainScreen.fxml");
+        MainScreenController.setPrimaryStage(primaryStage);
         primaryStage.show();
 
     }
 
 
-   // public static void main(String[] args) {
-  //      launch(args);
-  //  }
 }
