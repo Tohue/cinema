@@ -12,36 +12,53 @@ import java.util.ResourceBundle;
 
 public class ModalityBuilder{
 
-    static FXMLLoader fxmlLoader = new FXMLLoader();
-    static String localePath = "bundles.locale/locale";
-    static Locale currentLocale = Locale.getDefault();
-    static String defaultFXMLPath = "/fxml/";
+     FXMLLoader fxmlLoader;
+     String localePath;
+     Locale currentLocale;
+     String defaultFXMLPath;
 
-    public static FXMLLoader getFxmlLoader() {
+    public ModalityBuilder() {
+
+        fxmlLoader = new FXMLLoader();
+        localePath = "bundles.locale/locale";
+        currentLocale = Locale.getDefault();
+        defaultFXMLPath = "/fxml/";
+
+    }
+
+    public ModalityBuilder(FXMLLoader fxmlLoader, String localePath, Locale currentLocale, String defaultFXMLPath) {
+
+        this.fxmlLoader = fxmlLoader;
+        this.localePath = localePath;
+        this.currentLocale = currentLocale;
+        this.defaultFXMLPath = defaultFXMLPath;
+    }
+
+    public FXMLLoader getFxmlLoader() {
         return fxmlLoader;
     }
 
-    public static void setFxmlLoader(FXMLLoader fxmlLoader) {
-        FullSizeWindowBuilder.fxmlLoader = fxmlLoader;
+    public void setFxmlLoader(FXMLLoader fxmlLoader) {
+        fxmlLoader = fxmlLoader;
     }
 
-    public static String getLocalePath() {
+    public String getLocalePath() {
         return localePath;
     }
 
-    public static void setLocalePath(String localePath) {
-        FullSizeWindowBuilder.localePath = localePath;
+    public void setLocalePath(String localePath) {
+        localePath = localePath;
     }
 
-    public static Locale getCurrentLocale() {
+    public Locale getCurrentLocale() {
         return currentLocale;
     }
 
-    public static void setCurrentLocale(Locale currentLocale) {
-        FullSizeWindowBuilder.currentLocale = currentLocale;
+    public void setCurrentLocale(Locale currentLocale) {
+        currentLocale = currentLocale;
     }
 
-    public static Stage getModalityScreen(String FXMLName) throws IOException {
+    public Stage getModalityScreen(String FXMLName) throws IOException {
 
 
         String currFXML = defaultFXMLPath + FXMLName;

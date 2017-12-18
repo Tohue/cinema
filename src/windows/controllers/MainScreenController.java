@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import windows.windowStarters.AdminWindow;
+import windows.windowStarters.FilmListWindow;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,29 +38,14 @@ public class MainScreenController {
 
     public void initialize() {
 
-
-       int colCount = postersPane.getColumnCount();
-       int rowColumn = postersPane.getRowCount();
-
-       for (int i = 0; i < rowColumn; i++)
-           for (int j = 0; j < colCount; j++) {
-
-                AnchorPane imageAnchor = new AnchorPane();
-                imageAnchor.setPrefWidth(100);
-                imageAnchor.setPrefWidth(100);
-                ImageView view = new ImageView();
-
-                imageAnchor.getChildren().add(view);
-                posters.add(view);
-
-                view.setPreserveRatio(true);
-                view.fitHeightProperty().bind(imageAnchor.heightProperty());
-                view.fitWidthProperty().bind(postersPane.widthProperty());
-
-                image1.setImage(new Image("/images/mainPhoto.jpg"));
-                postersPane.add(imageAnchor, j, i);
-
-        }
+        
     }
 
+    public void openSchedule(ActionEvent actionEvent) {
+
+    }
+
+    public void openFilmList(ActionEvent actionEvent) {
+        new FilmListWindow().openFilmListScreen();
+    }
 }

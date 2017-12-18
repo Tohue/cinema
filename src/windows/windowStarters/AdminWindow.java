@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import windows.builders.ModalityBuilder;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -22,17 +23,8 @@ public class AdminWindow {
 
     public void openAdminScreen(Window owner) throws IOException {
 
-        int minWindowWidth = 400;
-        int minWindowHeight = 600;
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/fxml/AdminWindow.fxml"));
-        fxmlLoader.setResources(ResourceBundle.getBundle("bundles.locale/locale", Locale.getDefault()));
-        Parent root = fxmlLoader.load();
-        primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root, minWindowWidth, minWindowHeight));
-        primaryStage.initModality(Modality.WINDOW_MODAL);
-        primaryStage.initOwner(owner);
+        primaryStage = new ModalityBuilder().getModalityScreen("AdminWindow.fxml");
         primaryStage.show();
 
     }

@@ -4,10 +4,11 @@ import config.DBConfig;
 
 import java.sql.*;
 
+
 /**
  * Подключение к базе данных по переданному URL, логину и паролю
  */
-class dbConnector {
+public class DBConnector {
 
     private final String URL;
     private final String username;
@@ -16,23 +17,25 @@ class dbConnector {
     private Connection connection = null;
     private Statement statement = null;
 
-    public dbConnector(String URL, String login, String password) {
+    public DBConnector(String URL, String login, String password) {
         this.URL = URL;
         this.username = login;
         this.password = password;
     }
 
-    public void connectToDB() {
+    public Connection connectToDB() {
 
         try {
             Class.forName(DBConfig.getDRIVER());
             connection = DriverManager.getConnection(URL, username, password);
+            System.out.println("Connected");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        return connection;
     }
 
     public void closeConnection() {

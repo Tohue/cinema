@@ -1,20 +1,14 @@
 package windows.windowStarters;
 
+import config.DBConfig;
 import config.DBPropertiesParser;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
+import database.DBConnector;
 import windows.builders.FullSizeWindowBuilder;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import windows.builders.ModalityBuilder;
 
 import java.io.File;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Stack;
+import java.sql.Connection;
 
 public class MainScreen extends Application {
 
@@ -33,9 +27,11 @@ public class MainScreen extends Application {
             dbPropertiesParser.parseBDProperties();
         }
 
-        primaryStage = FullSizeWindowBuilder.getFullSizeScreen("mainScreen.fxml");
+        primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("mainScreen.fxml");
         primaryStage.show();
 
+        DBConnector dbConnector = new DBConnector(config.DBConfig.getDATABASEURL(), "a218696_sarik", "11111111");
+        Connection connection = dbConnector.connectToDB();
     }
 
 

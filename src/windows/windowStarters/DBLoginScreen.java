@@ -9,7 +9,7 @@ public class DBLoginScreen {
 
     public void openLoginScreen() throws IOException {
 
-        Stage primaryStage = ModalityBuilder.getModalityScreen("DBLogin.fxml");
+        Stage primaryStage = new ModalityBuilder().getModalityScreen("DBLogin.fxml");
         primaryStage.show();
 
     }

@@ -46,6 +46,7 @@ public class DBPropertiesParser {
         DBConfig.setHOSTNAME(root.getElementsByTagName("host").item(0).getTextContent());
         DBConfig.setPORT(root.getElementsByTagName("port").item(0).getTextContent());
         DBConfig.setDRIVER(root.getElementsByTagName("driver").item(0).getTextContent());
+        DBConfig.setDATABASEURL(root.getElementsByTagName("DatabaseURL").item(0).getTextContent());
 
 
     }
@@ -72,6 +73,10 @@ public class DBPropertiesParser {
         Element SQLdriver = document.createElement("driver");
         SQLdriver.appendChild(document.createTextNode("com.mysql.jdbc.Driver"));
         root.appendChild(SQLdriver);
+
+        Element databaseURL = document.createElement("DatabaseURL");
+        databaseURL.appendChild(document.createTextNode("jdbc:mysql://localhost:3306/a218696_cinema"));
+        root.appendChild(databaseURL);
 
         document.appendChild(root);
 
