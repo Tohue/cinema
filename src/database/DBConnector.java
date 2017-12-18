@@ -23,17 +23,20 @@ public class DBConnector {
         this.password = password;
     }
 
-    public Connection connectToDB() {
+    public DBConnector(String username, String password) {
 
-        try {
+        this.URL = DBConfig.getDATABASEURL();
+        this.username = username;
+        this.password = password;
+    }
+
+    public Connection getConnection() throws Exception {
+
+
             Class.forName(DBConfig.getDRIVER());
             connection = DriverManager.getConnection(URL, username, password);
             System.out.println("Connected");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
 
         return connection;
     }

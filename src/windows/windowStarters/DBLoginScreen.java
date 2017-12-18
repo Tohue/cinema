@@ -5,7 +5,7 @@ import windows.builders.ModalityBuilder;
 
 import java.io.IOException;
 
-public class DBLoginScreen {
+ class DBLoginScreen {
 
     public void openLoginScreen() throws IOException {
 

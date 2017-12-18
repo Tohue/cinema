@@ -11,10 +11,10 @@ import java.util.ResourceBundle;
 
 public class FullSizeWindowBuilder{
 
-    FXMLLoader fxmlLoader;
-    String localePath;
-    Locale currentLocale;
-    String defaultFXMLPath;
+    private  FXMLLoader fxmlLoader;
+    private  String localePath;
+    private  Locale currentLocale;
+    private  String defaultFXMLPath;
 
     public FullSizeWindowBuilder(FXMLLoader fxmlLoader, String localePath, Locale currentLocale, String defaultFXMLPath) {
         this.fxmlLoader = fxmlLoader;
@@ -36,7 +36,7 @@ public class FullSizeWindowBuilder{
     }
 
     public  void setFxmlLoader(FXMLLoader fxmlLoader) {
-        fxmlLoader = fxmlLoader;
+       this.fxmlLoader  = fxmlLoader;
     }
 
     public  String getLocalePath() {
@@ -44,7 +44,7 @@ public class FullSizeWindowBuilder{
     }
 
     public  void setLocalePath(String localePath) {
-        localePath = localePath;
+        this.localePath = localePath;
     }
 
     public  Locale getCurrentLocale() {
@@ -52,7 +52,7 @@ public class FullSizeWindowBuilder{
     }
 
     public  void setCurrentLocale(Locale currentLocale) {
-        currentLocale = currentLocale;
+        this.currentLocale = currentLocale;
     }
 
     public Stage getFullSizeScreen(String FXMLName) throws IOException {

@@ -12,10 +12,10 @@ import java.util.ResourceBundle;
 
 public class ModalityBuilder{
 
-     FXMLLoader fxmlLoader;
-     String localePath;
-     Locale currentLocale;
-     String defaultFXMLPath;
+     private  FXMLLoader fxmlLoader;
+     private  String localePath;
+     private  Locale currentLocale;
+     private  String defaultFXMLPath;
 
     public ModalityBuilder() {
 
@@ -39,7 +39,7 @@ public class ModalityBuilder{
     }
 
     public void setFxmlLoader(FXMLLoader fxmlLoader) {
-        fxmlLoader = fxmlLoader;
+        this.fxmlLoader = fxmlLoader;
     }
 
     public String getLocalePath() {
@@ -47,7 +47,7 @@ public class ModalityBuilder{
     }
 
     public void setLocalePath(String localePath) {
-        localePath = localePath;
+        this.localePath = localePath;
     }
 
     public Locale getCurrentLocale() {
@@ -55,7 +55,7 @@ public class ModalityBuilder{
     }
 
     public void setCurrentLocale(Locale currentLocale) {
-        currentLocale = currentLocale;
+        this.currentLocale = currentLocale;
     }
 
     public Stage getModalityScreen(String FXMLName) throws IOException {
@@ -69,7 +69,7 @@ public class ModalityBuilder{
         Parent root = fxmlLoader.load();
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setScene(new Scene(root));
-
+        primaryStage.getScene().setRoot(root);
         return primaryStage;
     }
 
