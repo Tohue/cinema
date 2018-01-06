@@ -23,6 +23,7 @@ public class FullSizeWindowBuilder{
         this.defaultFXMLPath = defaultFXMLPath;
     }
 
+
     public FullSizeWindowBuilder() {
 
         fxmlLoader = new FXMLLoader();
@@ -65,7 +66,9 @@ public class FullSizeWindowBuilder{
         fxmlLoader.setResources(ResourceBundle.getBundle(localePath, currentLocale));
         Parent root = fxmlLoader.load();
         primaryStage.setMaximized(true);
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/fonts/fonts.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.getScene().setRoot(root);
         return primaryStage;
     }
