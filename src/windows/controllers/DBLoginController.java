@@ -31,9 +31,9 @@ public class DBLoginController {
     public void connect(ActionEvent actionEvent) throws Exception {
 
 
-        DBConnector connector = new DBConnector(logField.getText(), passField.getText());
+        DBConnector.setValues(logField.getText(), passField.getText());
         try {
-            Connection connection = connector.getConnection();
+            Connection connection = DBConnector.doConnection();
             if (connection != null) {
                 primaryStage.close();
                 new MainScreen().openMainScreen();

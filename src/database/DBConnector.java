@@ -10,27 +10,20 @@ import java.sql.*;
  */
 public class DBConnector {
 
-    private final String URL;
-    private final String username;
-    private final String password;
+    private static  String URL = "";
+    private static  String username = "";
+    private static  String password = "";
 
-    private Connection connection = null;
-    private Statement statement = null;
+    private static Connection connection = null;
 
-    public DBConnector(String URL, String login, String password) {
-        this.URL = URL;
-        this.username = login;
-        this.password = password;
+    public static void setValues(String username, String password) {
+
+        DBConnector.URL = DBConfig.getDATABASEURL();
+        DBConnector.username = username;
+        DBConnector.password = password;
     }
 
-    public DBConnector(String username, String password) {
-
-        this.URL = DBConfig.getDATABASEURL();
-        this.username = username;
-        this.password = password;
-    }
-
-    public Connection getConnection() throws Exception {
+    public static Connection doConnection() throws Exception {
 
 
             Class.forName(DBConfig.getDRIVER());
@@ -41,7 +34,11 @@ public class DBConnector {
         return connection;
     }
 
-    public void closeConnection() {
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    public static void closeConnection() {
         if (connection != null) {
             try {
                 connection.close();

@@ -22,14 +22,14 @@
          </children></AnchorPane>
       <AnchorPane layoutX="339.0" layoutY="140.0" prefHeight="580.0" prefWidth="742.0" styleClass="main_bc_color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="338.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="filmTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn prefWidth="56.0" text="№" />
-                <TableColumn prefWidth="129.0" text="%film.name" />
-                  <TableColumn prefWidth="100.0" text="%film.country" />
-                  <TableColumn prefWidth="176.0" text="%film.description" />
-                  <TableColumn prefWidth="139.0" text="%film.length" />
-                  <TableColumn prefWidth="111.0" text="%film.buy" />
+                <TableColumn fx:id="numCol" prefWidth="56.0" text="№" />
+                <TableColumn fx:id="nameCol" prefWidth="129.0" text="%film.name" />
+                  <TableColumn fx:id="countryCol" prefWidth="100.0" text="%film.country" />
+                  <TableColumn fx:id="descCol" prefWidth="176.0" text="%film.description" />
+                  <TableColumn fx:id="lenCol" prefWidth="139.0" text="%film.length" />
+                  <TableColumn fx:id="buyCol" prefWidth="111.0" text="%film.buy" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
