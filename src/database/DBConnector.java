@@ -16,6 +16,10 @@ public class DBConnector {
 
     private static Connection connection = null;
 
+    public static boolean isConnected() {
+        return connection != null;
+    }
+
     public static void setValues(String username, String password) {
 
         DBConnector.URL = DBConfig.getDATABASEURL();
@@ -47,4 +51,16 @@ public class DBConnector {
             }
         }
     }
+
+    public static ResultSet sendRequest(String request) throws SQLException {
+        ResultSet rs = null;
+
+        if (connection != null) {
+            Statement st = connection.createStatement();
+            rs = st.executeQuery(request);
+        }
+
+        return rs;
+    }
+
 }

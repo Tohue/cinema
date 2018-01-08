@@ -4,6 +4,8 @@ import javafx.beans.property.*;
 import javafx.scene.image.Image;
 
 public class Film {
+
+    private IntegerProperty id;
     private StringProperty name;
     private StringProperty description;
     private StringProperty genre;
@@ -11,13 +13,26 @@ public class Film {
     private IntegerProperty length;
     private ObjectProperty<Image> poster;
 
-    public Film(String name, String description, String genre, String country, int length, Image poster) {
+    public Film(int id, String name, String description, String genre, String country, int length, Image poster) {
+        this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.genre = new SimpleStringProperty(genre);
         this.country = new SimpleStringProperty(country);
         this.length = new SimpleIntegerProperty(length);
         this.poster = new SimpleObjectProperty<>(poster);
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public String getName() {

@@ -69,5 +69,7 @@ public class FullSizeWindowBuilder{
         primaryStage.setScene(new Scene(root));
         primaryStage.getScene().setRoot(root);
         return primaryStage;
+
+
     }
 }
