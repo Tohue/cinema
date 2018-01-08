@@ -1,10 +1,12 @@
 package windows.windowStarters;
 
+import config.DBPropertiesParser;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import windows.builders.ModalityBuilder;
-import windows.controllers.AdminWindowController;
 import windows.controllers.DBLoginController;
+
+import java.io.File;
 
 public class loginScreen extends Application {
 
@@ -17,6 +19,16 @@ public class loginScreen extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        File DBConfig =  new File("./resources/configFiles/DBConfig.xml");
+        DBPropertiesParser dbPropertiesParser = new DBPropertiesParser();
+        if (!DBConfig.exists()) {
+            System.out.println("не парсим");
+            dbPropertiesParser.newDBProperties();
+        }
+        else {
+            System.out.println("будем парсить");
+            dbPropertiesParser.parseBDProperties();
+        }
 
         primaryStage = new ModalityBuilder().getModalityScreen("DBLogin.fxml");
         DBLoginController.setPrimaryStage(primaryStage);

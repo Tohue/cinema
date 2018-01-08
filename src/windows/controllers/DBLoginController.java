@@ -1,5 +1,6 @@
 package windows.controllers;
 
+import config.DBConfig;
 import database.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 import windows.windowStarters.MainScreen;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class DBLoginController {
 
@@ -44,6 +46,10 @@ public class DBLoginController {
             }
         } catch (Exception e) {
             errorLabel.setVisible(true);
+            System.out.println("URL:" + DBConfig.getDATABASEURL());
+            System.out.println("Driver:" + DBConfig.getDRIVER());
+            System.out.println("Login:" + logField.getText());
+            System.out.println("Password:" + passField.getText());
         }
 
     }
