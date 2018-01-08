@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import windows.windowStarters.BackWindow;
 import windows.windowStarters.MainScreen;
 
 import java.sql.Connection;
@@ -38,6 +39,7 @@ public class DBLoginController {
             Connection connection = DBConnector.doConnection();
             if (connection != null) {
                 primaryStage.close();
+                new BackWindow().openBack();
                 new MainScreen().openMainScreen();
             } else {
                 logField.clear();

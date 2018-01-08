@@ -7,14 +7,12 @@ import java.io.IOException;
 
 public class FilmListWindow {
 
-    public void openFilmListScreen() {
+    public void openFilmListScreen() throws IOException {
 
-        try {
+
             Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("FilmListWindow.fxml");
             primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
 
     }

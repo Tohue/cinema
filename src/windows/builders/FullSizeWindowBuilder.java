@@ -65,7 +65,7 @@ public class FullSizeWindowBuilder{
         fxmlLoader.setLocation(getClass().getResource(currFXML));
         fxmlLoader.setResources(ResourceBundle.getBundle(localePath, currentLocale));
         Parent root = fxmlLoader.load();
-        primaryStage.setMaximized(true);
+        primaryStage.setFullScreen(true);
         primaryStage.setScene(new Scene(root));
         primaryStage.getScene().setRoot(root);
         return primaryStage;

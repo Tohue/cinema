@@ -11,6 +11,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import windows.windowStarters.AdminWindow;
 import windows.windowStarters.FilmListWindow;
+import windows.windowStarters.ScheduleWindow;
+
 import java.io.IOException;
 
 
@@ -45,12 +47,21 @@ public class MainScreenController{
 
 
     public void openSchedule(ActionEvent actionEvent) {
-
+        try {
+            new ScheduleWindow().openSchedule();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        primaryStage.close();
     }
 
     public void openFilmList(ActionEvent actionEvent) {
 
-        new FilmListWindow().openFilmListScreen();
+        try {
+            new FilmListWindow().openFilmListScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         primaryStage.close();
     }
 
