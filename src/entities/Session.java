@@ -1,17 +1,30 @@
 package entities;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+
 import java.sql.Date;
+import java.sql.Time;
 
 
 public class Session {
     private StringProperty filmName;
     private ObjectProperty<Date> sessionDate;
-    private IntegerProperty sessionTime;
+    private ObjectProperty<Time> sessionTime;
     private IntegerProperty theaterNumber;
     private IntegerProperty idSession;
+
+    public Session(String filmName, int theaterNumber) {
+        this.filmName = new SimpleStringProperty(filmName);
+        this.theaterNumber = new SimpleIntegerProperty(theaterNumber);
+    }
+
+    public Session(String filmName, Date sessionDate, int sessionTime, int theaterNumber, int idSession) {
+        this.filmName = new SimpleStringProperty(filmName);
+        this.sessionDate = new SimpleObjectProperty<Date>(sessionDate);
+        this.sessionTime = new SimpleObjectProperty<Time>(new Time(sessionDate.getTime()));
+        this.theaterNumber = new SimpleIntegerProperty(theaterNumber);
+        this.idSession = new SimpleIntegerProperty(idSession);
+    }
 
     public String getFilmName() {
         return filmName.get();
@@ -37,15 +50,15 @@ public class Session {
         this.sessionDate.set(sessionDate);
     }
 
-    public int getSessionTime() {
+    public Time getSessionTime() {
         return sessionTime.get();
     }
 
-    public IntegerProperty sessionTimeProperty() {
+    public ObjectProperty<Time> sessionTimeProperty() {
         return sessionTime;
     }
 
-    public void setSessionTime(int sessionTime) {
+    public void setSessionTime(Time sessionTime) {
         this.sessionTime.set(sessionTime);
     }
 

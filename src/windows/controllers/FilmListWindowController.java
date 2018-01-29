@@ -1,21 +1,17 @@
 package windows.controllers;
 
-import database.DBConnector;
 import database.DataLoader;
-import database.Requests;
 import entities.Film;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import observableLists.FilmsObsList;
-
-import javax.xml.crypto.Data;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Контроллер экрана со списком фильмов
+ */
 
 public class FilmListWindowController {
 
@@ -40,6 +36,9 @@ public class FilmListWindowController {
 
         ObservableList<Film>  observableList = null;
 
+        /**
+         * Загрузка списка фильмов, если он пустой
+         */
         if (DataLoader.getFilmInfoList().isEmpty()) {
             try {
                 DataLoader.loadFilmInfo();
@@ -50,6 +49,9 @@ public class FilmListWindowController {
             }
         } else observableList = DataLoader.getFilmInfoList();
 
+        /**
+         * Инициализация колонок таблицы
+         */
         numCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Film, String>("name"));
         countryCol.setCellValueFactory(new PropertyValueFactory<Film, String>("country"));

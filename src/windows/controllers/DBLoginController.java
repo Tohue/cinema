@@ -39,6 +39,7 @@ public class DBLoginController {
             Connection connection = DBConnector.doConnection();
             if (connection != null) {
                 primaryStage.close();
+
                 new BackWindow().openBack();
                 new MainScreen().openMainScreen();
             } else {

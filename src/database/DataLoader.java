@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 
 public class DataLoader {
@@ -23,6 +24,14 @@ public class DataLoader {
         return filmInfoList;
     }
 
+    public static ObservableList<Session> getSessionList() {
+        return sessionList;
+    }
+
+    /**
+     * Загрузка списка фильмов
+     * @throws SQLException
+     */
     public static void loadFilmInfo() throws SQLException {
 
         if (DBConnector.isConnected()) {
@@ -36,5 +45,22 @@ public class DataLoader {
                     i++;
             }
         }
+    }
+
+    public static void loadSchedule() throws SQLException {
+
+        if (DBConnector.isConnected()) {
+
+            ResultSet sessions = null;
+            int i = 1;
+            sessions = DBConnector.sendRequest(Requests.GET_SCHEDULE);
+
+            while (sessions.next()) {
+
+                sessionList.add(new Session(sessions.getString(2), sessions.getDate(4), 0, sessions.getInt(3), sessions.getInt(1)));
+                i++;
+            }
+        }
+
     }
 }
