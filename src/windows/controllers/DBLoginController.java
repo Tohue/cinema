@@ -8,13 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import windows.windowStarters.BackWindow;
 import windows.windowStarters.MainScreen;
-
+import windows.windowStarters.ScreenStarter;
 import java.sql.Connection;
-import java.sql.SQLException;
 
-public class DBLoginController {
+
+public class DBLoginController extends ScreenController {
 
     @FXML
     TextField logField;
@@ -25,11 +24,8 @@ public class DBLoginController {
     @FXML
     Label errorLabel;
 
-    private static Stage primaryStage = null;
+ //   private static Stage primaryStage = null;
 
-    public static void setPrimaryStage(Stage primaryStage) {
-        DBLoginController.primaryStage = primaryStage;
-    }
 
     public void connect(ActionEvent actionEvent) throws Exception {
 
@@ -39,8 +35,7 @@ public class DBLoginController {
             Connection connection = DBConnector.doConnection();
             if (connection != null) {
                 primaryStage.close();
-
-                new BackWindow().openBack();
+                ScreenStarter.Start("BackLoadingScreen.fxml");
                 new MainScreen().openMainScreen();
             } else {
                 logField.clear();
@@ -48,6 +43,7 @@ public class DBLoginController {
                 errorLabel.setVisible(true);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             errorLabel.setVisible(true);
             System.out.println("URL:" + DBConfig.getDATABASEURL());
             System.out.println("Driver:" + DBConfig.getDRIVER());

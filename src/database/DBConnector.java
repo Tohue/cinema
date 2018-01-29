@@ -32,7 +32,9 @@ public class DBConnector {
 
             Class.forName(DBConfig.getDRIVER());
             connection = DriverManager.getConnection(URL, username, password);
-            System.out.println("Connected");
+            if (connection == null)
+                System.out.println("No connection");
+            else   System.out.println("Connected");
 
 
         return connection;

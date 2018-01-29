@@ -9,16 +9,19 @@ import java.io.File;
 
 public class MainScreen {
 
-    public void openMainScreen() throws Exception{
+    public void openMainScreen() {
 
         Stage primaryStage;
 
 
-
-        primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("mainScreen.fxml");
-        MainScreenController.setPrimaryStage(primaryStage);
-        primaryStage.show();
-
+        try {
+            primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("mainScreen.fxml");
+            MainScreenController.setPrimaryStage(primaryStage);
+            primaryStage.show();
+        }
+         catch (Exception e) {
+            e.printStackTrace();
+         }
     }
 
 

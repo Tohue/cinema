@@ -1,4 +1,4 @@
 package windows.controllers;
 
-public  class FilmInfoScreenController {
+public  class FilmInfoScreenController extends ScreenController {
 }

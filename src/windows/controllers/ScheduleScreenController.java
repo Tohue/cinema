@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.Date;
 import java.sql.SQLException;
 
-public class ScheduleScreenController {
+public class ScheduleScreenController extends ScreenController{
 
     @FXML
     TableView<Session> scheduleTable;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.DataChangeController">
+   <children>
+      <Label alignment="CENTER" layoutX="526.0" layoutY="66.0" prefHeight="17.0" prefWidth="554.0" text="Изменение данных" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
+         <font>
+            <Font name="SansSerif Bold" size="39.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

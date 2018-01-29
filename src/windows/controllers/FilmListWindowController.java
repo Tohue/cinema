@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * Контроллер экрана со списком фильмов
  */
 
-public class FilmListWindowController {
+public class FilmListWindowController extends ScreenController {
 
     @FXML
     TableView<Film> filmTable;
@@ -33,7 +33,7 @@ public class FilmListWindowController {
 
     public void initialize() {
 
-
+        filmTable.autosize();
         ObservableList<Film>  observableList = null;
 
         /**
