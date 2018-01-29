@@ -12,46 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/fxml/DataChangeScreen.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/entities/Entities.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/windows/builders/DataChangeScreenBuilder.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/windows/controllers/DataChangeController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/windows/controllers/ScreenController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/windows/windowStarters/ScreenStarter.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/cinema_jar/cinema.jar" afterPath="$PROJECT_DIR$/out/artifacts/cinema_jar/cinema.jar" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/bundles/locale/locale_en.properties" afterPath="$PROJECT_DIR$/out/production/cinema/bundles/locale/locale_en.properties" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/bundles/locale/locale_ru.properties" afterPath="$PROJECT_DIR$/out/production/cinema/bundles/locale/locale_ru.properties" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/database/Requests.class" afterPath="$PROJECT_DIR$/out/production/cinema/database/Requests.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/entities/Session.class" afterPath="$PROJECT_DIR$/out/production/cinema/entities/Session.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/fxml/DBLogin.fxml" afterPath="$PROJECT_DIR$/out/production/cinema/fxml/DBLogin.fxml" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/fxml/FilmListWindow.fxml" afterPath="$PROJECT_DIR$/out/production/cinema/fxml/FilmListWindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/fxml/mainScreen.fxml" afterPath="$PROJECT_DIR$/out/production/cinema/fxml/mainScreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/controllers/FilmListWindowController.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/controllers/FilmListWindowController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/controllers/MainScreenController.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/controllers/MainScreenController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/windowStarters/AdminWindow.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/windowStarters/AdminWindow.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/windowStarters/FilmListWindow.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/windowStarters/MainScreen.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/windowStarters/MainScreen.class" />
-      <change beforePath="$PROJECT_DIR$/resources/bundles/locale/locale_en.properties" afterPath="$PROJECT_DIR$/resources/bundles/locale/locale_en.properties" />
-      <change beforePath="$PROJECT_DIR$/resources/bundles/locale/locale_ru.properties" afterPath="$PROJECT_DIR$/resources/bundles/locale/locale_ru.properties" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/AdminWindow.fxml" afterPath="$PROJECT_DIR$/resources/fxml/AdminWindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/FilmInfoModalScreen.fxml" afterPath="$PROJECT_DIR$/resources/fxml/FilmInfoModalScreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/FilmListWindow.fxml" afterPath="$PROJECT_DIR$/resources/fxml/FilmListWindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/ScheduleScreen.fxml" afterPath="$PROJECT_DIR$/resources/fxml/ScheduleScreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/mainScreen.fxml" afterPath="$PROJECT_DIR$/resources/fxml/mainScreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/database/DBConnector.java" afterPath="$PROJECT_DIR$/src/database/DBConnector.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/AdminWindowController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/AdminWindowController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/BackGroundController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/BackGroundController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/DBLoginController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/DBLoginController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/FilmInfoScreenController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/FilmInfoScreenController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/FilmListWindowController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/FilmListWindowController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/MainScreenController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/MainScreenController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/ScheduleScreenController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/ScheduleScreenController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/windowStarters/AdminWindow.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/windows/windowStarters/BackWindow.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/windows/windowStarters/FilmListWindow.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/windows/windowStarters/MainScreen.java" afterPath="$PROJECT_DIR$/src/windows/windowStarters/MainScreen.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/windowStarters/ScheduleWindow.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/cinema/database/dbConnector.class" afterPath="$PROJECT_DIR$/out/production/cinema/database/dbConnector.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/controllers/DBLoginController.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/controllers/DBLoginController.class" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -629,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517245484714</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Пизда какой рефакторинг">
+      <created>1517262768602</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1517262768602</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -731,7 +701,8 @@
     <MESSAGE value="чекай" />
     <MESSAGE value="список фильмов" />
     <MESSAGE value="Расписание" />
-    <option name="LAST_COMMIT_MESSAGE" value="Расписание" />
+    <MESSAGE value="Пизда какой рефакторинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пизда какой рефакторинг" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
