@@ -5,12 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import windows.builders.FullSizeWindowBuilder;
 import windows.windowStarters.ScreenStarter;
 
 import java.io.IOException;
 
 
-public class MainScreenController extends ScreenController{
+public class MainScreenController {
 
 
 
@@ -45,21 +47,30 @@ public class MainScreenController extends ScreenController{
     @FXML
     Button poster12;
 
+    private static Stage primaryStage;
+
+    public static void setPrimaryStage(Stage primaryStage) {
+        MainScreenController.primaryStage = primaryStage;
+    }
 
     public void openAdminScreen(ActionEvent actionEvent) {
         try {
-            ScreenStarter.Start(new AdminWindowController(), "AdminWindow.fxml");
-
+            Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("AdminWindow.fxml");
+            AdminWindowController.setPrimaryStage(primaryStage);
+            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        primaryStage.close();
     }
 
 
 
     public void openSchedule(ActionEvent actionEvent) {
         try {
-            ScreenStarter.Start("ScheduleScreen.fxml");
+            Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("ScheduleScreen.fxml");
+            ScheduleScreenController.setPrimaryStage(primaryStage);
+            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,7 +80,9 @@ public class MainScreenController extends ScreenController{
     public void openFilmList(ActionEvent actionEvent) {
 
         try {
-            ScreenStarter.Start("FilmListWindow.fxml");
+            Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("FilmListWindow.fxml");
+            FilmListWindowController.setPrimaryStage(primaryStage);
+            primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

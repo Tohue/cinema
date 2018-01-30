@@ -5,8 +5,8 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.AdminWindowController">
    <Button layoutX="348.0" layoutY="474.0" mnemonicParsing="false" onAction="#closeThis" prefHeight="46.0" prefWidth="120.0" text="%admin.close" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0" />
-   <Button layoutX="208.0" layoutY="67.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="664.0" text="%tickets" AnchorPane.bottomAnchor="589.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="67.0" />
-   <Button layoutX="208.0" layoutY="145.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="664.0" text="%films" />
-   <Button layoutX="208.0" layoutY="236.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="664.0" text="%theaters" />
-   <Button layoutX="208.0" layoutY="318.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="664.0" text="%sessions" />
+   <Button layoutX="208.0" layoutY="67.0" mnemonicParsing="false" onAction="#openTicketChange" prefHeight="64.0" prefWidth="664.0" text="%tickets" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="67.0" />
+   <Button layoutX="208.0" layoutY="159.0" mnemonicParsing="false" onAction="#openFilmChange" prefHeight="64.0" prefWidth="664.0" text="%films" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="159.0" />
+   <Button layoutX="208.0" layoutY="251.0" mnemonicParsing="false" onAction="#openTheaterChange" prefHeight="64.0" prefWidth="664.0" text="%theaters" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="251.0" />
+   <Button layoutX="208.0" layoutY="339.0" mnemonicParsing="false" onAction="#openSessionChange" prefHeight="64.0" prefWidth="664.0" text="%sessions" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="339.0" />
 </AnchorPane>

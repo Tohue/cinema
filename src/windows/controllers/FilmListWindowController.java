@@ -3,17 +3,21 @@ package windows.controllers;
 import database.DataLoader;
 import entities.Film;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import windows.windowStarters.MainScreen;
+
 import java.sql.SQLException;
 
 /**
  * Контроллер экрана со списком фильмов
  */
 
-public class FilmListWindowController extends ScreenController {
+public class FilmListWindowController {
 
     @FXML
     TableView<Film> filmTable;
@@ -30,6 +34,11 @@ public class FilmListWindowController extends ScreenController {
     @FXML
     TableColumn<Film, Object> buyCol;
 
+    private static Stage primaryStage;
+
+    public static void setPrimaryStage(Stage primaryStage) {
+        FilmListWindowController.primaryStage = primaryStage;
+    }
 
     public void initialize() {
 
@@ -58,6 +67,14 @@ public class FilmListWindowController extends ScreenController {
         descCol.setCellValueFactory(new PropertyValueFactory<Film, String>("description"));
         lenCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
         filmTable.setItems(observableList);
+
+    }
+
+
+    public void closeWindow(ActionEvent actionEvent) {
+
+        new MainScreen().openMainScreen();
+        primaryStage.close();
 
     }
 }

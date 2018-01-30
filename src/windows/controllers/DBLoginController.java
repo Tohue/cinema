@@ -13,7 +13,7 @@ import windows.windowStarters.ScreenStarter;
 import java.sql.Connection;
 
 
-public class DBLoginController extends ScreenController {
+public class DBLoginController   {
 
     @FXML
     TextField logField;
@@ -24,8 +24,11 @@ public class DBLoginController extends ScreenController {
     @FXML
     Label errorLabel;
 
- //   private static Stage primaryStage = null;
+    private static Stage primaryStage = null;
 
+    public static void setPrimaryStage(Stage primaryStage) {
+        DBLoginController.primaryStage = primaryStage;
+    }
 
     public void connect(ActionEvent actionEvent) throws Exception {
 

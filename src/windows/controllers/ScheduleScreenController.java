@@ -5,15 +5,18 @@ import database.DataLoader;
 import entities.Film;
 import entities.Session;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import windows.windowStarters.MainScreen;
 
 import java.sql.Date;
 import java.sql.SQLException;
 
-public class ScheduleScreenController extends ScreenController{
+public class ScheduleScreenController  {
 
     @FXML
     TableView<Session> scheduleTable;
@@ -28,14 +31,20 @@ public class ScheduleScreenController extends ScreenController{
     @FXML
     TableColumn<Session, Object> buyCol;
 
+    private static Stage primaryStage;
+
+    public static void setPrimaryStage(Stage primaryStage) {
+        ScheduleScreenController.primaryStage = primaryStage;
+    }
+
     public void initialize() {
 
         ObservableList<Session> sessionList = null;
 
         /**
-         * Загрузка списка фильмов, если он пустой
+         * Загрузка расписания, если оно пустое
          */
-        if (DataLoader.getFilmInfoList().isEmpty()) {
+        if (DataLoader.getSessionList().isEmpty()) {
             try {
                 DataLoader.loadSchedule();
                 sessionList = DataLoader.getSessionList();
@@ -53,4 +62,9 @@ public class ScheduleScreenController extends ScreenController{
 
     }
 
+    public void closeWindow(ActionEvent actionEvent) {
+
+        new MainScreen().openMainScreen();
+        primaryStage.close();
+    }
 }

@@ -9,9 +9,15 @@ import java.io.File;
 
 public class MainScreen {
 
+    Stage primaryStage;
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     public void openMainScreen() {
 
-        Stage primaryStage;
+
 
 
         try {
