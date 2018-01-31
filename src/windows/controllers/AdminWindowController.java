@@ -35,6 +35,11 @@ public class AdminWindowController {
     }
 
     public void openTheaterChange() {
+        try {
+            TheaterChangeController.setPrimaryStage(ScreenStarter.Start("TheaterChangeWindow.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

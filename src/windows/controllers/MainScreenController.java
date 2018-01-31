@@ -1,20 +1,31 @@
 package windows.controllers;
 
+import database.DataLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import windows.builders.FullSizeWindowBuilder;
 import windows.windowStarters.ScreenStarter;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class MainScreenController {
 
+    ArrayList<Button> postersView = new ArrayList<>();
 
+    @FXML
+    GridPane postersPane;
 
     @FXML
     AnchorPane pane1;
@@ -53,6 +64,10 @@ public class MainScreenController {
         MainScreenController.primaryStage = primaryStage;
     }
 
+    /**
+     * кнопка открытия админки
+     * @param actionEvent
+     */
     public void openAdminScreen(ActionEvent actionEvent) {
         try {
             Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("AdminWindow.fxml");
@@ -65,7 +80,10 @@ public class MainScreenController {
     }
 
 
-
+    /**
+     * Кнопка открытия расписания
+     * @param actionEvent
+     */
     public void openSchedule(ActionEvent actionEvent) {
         try {
             Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("ScheduleScreen.fxml");
@@ -77,6 +95,10 @@ public class MainScreenController {
         primaryStage.close();
     }
 
+    /**
+     * Кнопка открытия списка фильмов
+     * @param actionEvent
+     */
     public void openFilmList(ActionEvent actionEvent) {
 
         try {
@@ -91,13 +113,32 @@ public class MainScreenController {
 
     public void initialize() {
 
+        ArrayList<Image> posters = null;
+        try {
+            DataLoader.loadPosters();
+            posters = DataLoader.getPostersList();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (posters.size() < 11) {
+
+        }
+
         String noRepeatCSS = "-fx-background-repeat: no-repeat;\n" +
                 "-fx-background-position: center center;\n" +
                 "-fx-background-attachment: fixed;\n" +
                 "-fx-background-size: cover;";
 
 
-        poster1.setStyle("-fx-background-image: url('/images/1.png');" + noRepeatCSS);
+//        Image image = new Image("/images/1.png");
+//        ImageView imageView = new ImageView();
+//        imageView.setImage(image);
+//        Button button = new Button("");
+//        button.setGraphic(imageView);
+//        pane1.getChildren().addAll(button);
+//        button.getGraphic().setStyle(noRepeatCSS);
+//        button.setStyle(noRepeatCSS);
         poster2.setStyle("-fx-background-image: url('/images/1.png');" + noRepeatCSS);
         poster3.setStyle("-fx-background-image: url('/images/1.png');" + noRepeatCSS);
         poster4.setStyle("-fx-background-image: url('/images/1.png');" + noRepeatCSS);
@@ -109,6 +150,13 @@ public class MainScreenController {
         poster10.setStyle("-fx-background-image: url('/images/1.png');" + noRepeatCSS);
         poster11.setStyle("-fx-background-image: url('/images/1.png');" + noRepeatCSS);
         poster12.setStyle("-fx-background-image: url('/images/1.png');" + noRepeatCSS);
+
+
+
+    }
+
+
+    private void viewPosters() {
 
     }
 
