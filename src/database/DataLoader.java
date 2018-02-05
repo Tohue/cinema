@@ -152,7 +152,7 @@ public class DataLoader {
             tickets = DBConnector.sendRequest(Requests.GET_TICKETS);
 
             while (tickets.next())
-                ticketList.add(new Ticket(tickets.getInt("BookID"), tickets.getInt("idSessions"), tickets.getInt("idTickets"), tickets.getString("TicketType")));
+                ticketList.add(new Ticket(tickets.getInt("BookID"), tickets.getInt("idSessions"), tickets.getInt("idTickets"), tickets.getString("TicketType"), tickets.getInt("RowNumber"), tickets.getInt("SeatNumber")));
 
         }
 

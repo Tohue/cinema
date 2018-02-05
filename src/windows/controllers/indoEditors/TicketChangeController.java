@@ -36,6 +36,10 @@ public class TicketChangeController extends AbstractController implements infoEd
     TableColumn<Ticket, String> tickTypeCol;
     @FXML
     TableColumn<Ticket, Integer> ordNumCol;
+    @FXML
+    TableColumn<Ticket, Integer> rowNumCol;
+    @FXML
+    TableColumn<Ticket, Integer> seatsNumCol;
 
     // Поля ввода
     @FXML
@@ -46,6 +50,10 @@ public class TicketChangeController extends AbstractController implements infoEd
     TextField addTickTypeField;
     @FXML
     TextField addNumOrdField;
+    @FXML
+    TextField addNumRowField;
+    @FXML
+    TextField addNumSeatsField;
 
     // Лэйблы с ошибками
     @FXML
@@ -75,7 +83,9 @@ public class TicketChangeController extends AbstractController implements infoEd
                 statement.setInt(1, ((Ticket) ticketInfoTable.getItems().get(i)).getIdSession());
                 statement.setString(2, ((Ticket) ticketInfoTable.getItems().get(i)).getTicketType());
                 statement.setInt(3, ((Ticket) ticketInfoTable.getItems().get(i)).getBookID());
-                statement.setInt(4, ticketNum);
+                statement.setInt(4, ((Ticket) ticketInfoTable.getItems().get(i)).getSeatsNumber());
+                statement.setInt(5, ((Ticket) ticketInfoTable.getItems().get(i)).getRowNumber());
+                statement.setInt(6, ticketNum);
                 statement.executeUpdate();
 
             } catch (SQLException e) {
@@ -105,6 +115,8 @@ public class TicketChangeController extends AbstractController implements infoEd
             statement.setInt(2, Integer.parseInt(addNumSessField.getText()));
             statement.setString(3, addTickTypeField.getText());
             statement.setInt(4, Integer.parseInt(addNumOrdField.getText()));
+            statement.setInt(5, Integer.parseInt(addNumSeatsField.getText()));
+            statement.setInt(6, Integer.parseInt(addNumRowField.getText()));
             statement.executeUpdate();
             hideSaveError();
             } catch (SQLException e) {
@@ -138,6 +150,8 @@ public class TicketChangeController extends AbstractController implements infoEd
         ordNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("bookID"));
         sessNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("idSession"));
         tickTypeCol.setCellValueFactory(new PropertyValueFactory<Ticket, String>("ticketType"));
+        rowNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("rowNumber"));
+        seatsNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("seatsNumber"));
         ticketInfoTable.setItems(observableList);
     }
 
@@ -167,16 +181,34 @@ public class TicketChangeController extends AbstractController implements infoEd
             @Override
             public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
                 changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setTicketType(event.getNewValue().toString());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdSession(event.getNewValue());
             }
         });
 
         ordNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        sessNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
+        ordNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
                 changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setTicketType(event.getNewValue().toString());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setBookID(event.getNewValue());
+            }
+        });
+
+        rowNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        rowNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
+                changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setRowNumber(event.getNewValue());
+            }
+        });
+
+        seatsNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        seatsNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
+                changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setSeatsNumber(event.getNewValue());
             }
         });
 

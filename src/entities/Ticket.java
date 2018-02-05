@@ -10,13 +10,41 @@ public class Ticket {
     private IntegerProperty idSession;
     private IntegerProperty idTicket;
     private StringProperty ticketType;
+    private IntegerProperty rowNumber;
+    private IntegerProperty seatsNumber;
 
 
-    public Ticket(int bookID, int idSession, int idTicket, String ticketType) {
+    public Ticket(int bookID, int idSession, int idTicket, String ticketType, int rowNumber, int seatsNumber) {
         this.bookID = new SimpleIntegerProperty(bookID);
         this.idSession = new SimpleIntegerProperty(idSession);
         this.idTicket = new SimpleIntegerProperty(idTicket);
         this.ticketType = new SimpleStringProperty(ticketType);
+        this.rowNumber = new SimpleIntegerProperty(rowNumber);
+        this.seatsNumber = new SimpleIntegerProperty(seatsNumber);
+    }
+
+    public int getRowNumber() {
+        return rowNumber.get();
+    }
+
+    public IntegerProperty rowNumberProperty() {
+        return rowNumber;
+    }
+
+    public void setRowNumber(int rowNumber) {
+        this.rowNumber.set(rowNumber);
+    }
+
+    public int getSeatsNumber() {
+        return seatsNumber.get();
+    }
+
+    public IntegerProperty seatsNumberProperty() {
+        return seatsNumber;
+    }
+
+    public void setSeatsNumber(int seatsNumber) {
+        this.seatsNumber.set(seatsNumber);
     }
 
     public int getBookID() {
