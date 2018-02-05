@@ -18,6 +18,7 @@ import windows.windowStarters.ScreenStarter;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 
 public class ScheduleScreenController extends AbstractController {
 
@@ -26,13 +27,14 @@ public class ScheduleScreenController extends AbstractController {
     @FXML
     TableColumn<Session, String> nameCol;
     @FXML
-    TableColumn<Session, Date> dateCol;
-    @FXML
-    TableColumn<Session, Integer> timeCol;
+    TableColumn<Session, Time> timeCol;
     @FXML
     TableColumn<Session, Integer> theaterCol;
     @FXML
-    TableColumn<Session, Object> buyCol;
+    TableColumn<Session, Integer> standartPriceCol;
+    @FXML
+    TableColumn<Session, Integer> vipPriceCol;
+
 
 
     public void initialize() {
@@ -52,10 +54,12 @@ public class ScheduleScreenController extends AbstractController {
             }
         } else sessionList = DataLoader.getSessionList();
 
-        timeCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("sessionTime"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<Session, Time>("sessionTime"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Session, String>("filmName"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Session, Date>("sessionDate"));
         theaterCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("theaterNumber"));
+        standartPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("standartCost"));
+        vipPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("vipCost"));
+
         scheduleTable.setItems(sessionList);
 
     }

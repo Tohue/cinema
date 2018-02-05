@@ -75,14 +75,11 @@ public class DataLoader {
         if (DBConnector.isConnected()) {
 
             ResultSet sessions = null;
-            int i = 1;
             sessions = DBConnector.sendRequest(Requests.GET_SCHEDULE);
 
-            while (sessions.next()) {
+            while (sessions.next())
+                sessionList.add(new Session(sessions.getString(2), sessions.getDate(4), sessions.getTime("SessionTime"), sessions.getInt(3), sessions.getInt(1), sessions.getInt("OrdCost"), sessions.getInt("VipCost")));
 
-                sessionList.add(new Session(sessions.getString(2), sessions.getDate(4), 0, sessions.getInt(3), sessions.getInt(1)));
-                i++;
-            }
         }
 
     }
@@ -158,4 +155,7 @@ public class DataLoader {
 
     }
 
+    /**
+     * Загрузка списка заказов
+     */
 }

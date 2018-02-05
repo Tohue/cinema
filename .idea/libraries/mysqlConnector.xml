@@ -2,7 +2,6 @@
   <library name="mysqlConnector">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/resources/DBFiles/mysqlConnector.jar!/" />
-      <root url="jar://$PROJECT_DIR$/resources/FXLibs/jfxtras.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

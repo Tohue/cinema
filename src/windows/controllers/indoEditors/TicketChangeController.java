@@ -3,6 +3,7 @@ package windows.controllers.indoEditors;
 import database.DBConnector;
 import database.DataLoader;
 import database.Requests;
+import entities.Session;
 import entities.Ticket;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -10,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
@@ -18,7 +18,7 @@ import windows.windowStarters.ScreenStarter;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -45,11 +45,11 @@ public class TicketChangeController extends AbstractController implements infoEd
     @FXML
     TextField  addNumTickField;
     @FXML
-    TextField addNumSessField;
+    ChoiceBox<String> addNumSessField;
     @FXML
-    TextField addTickTypeField;
+    ComboBox<String> addTickTypeField;
     @FXML
-    TextField addNumOrdField;
+    ChoiceBox<Integer> addNumOrdField;
     @FXML
     TextField addNumRowField;
     @FXML
@@ -112,9 +112,9 @@ public class TicketChangeController extends AbstractController implements infoEd
 
             PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.ADD_TICKET);
             statement.setInt(1, Integer.parseInt(addNumTickField.getText()));
-            statement.setInt(2, Integer.parseInt(addNumSessField.getText()));
-            statement.setString(3, addTickTypeField.getText());
-            statement.setInt(4, Integer.parseInt(addNumOrdField.getText()));
+            statement.setInt(2, getFilmsNumFromString(addNumSessField.getValue()));
+            statement.setString(3, addTickTypeField.getValue());
+            statement.setInt(4, addNumOrdField.getValue());
             statement.setInt(5, Integer.parseInt(addNumSeatsField.getText()));
             statement.setInt(6, Integer.parseInt(addNumRowField.getText()));
             statement.executeUpdate();
@@ -242,6 +242,37 @@ public class TicketChangeController extends AbstractController implements infoEd
     private void hideSaveError() {
         errorAddLabel1.setVisible(false);
         errorAddLabel2.setVisible(false);
+    }
+
+    private void updateLists() {
+
+        addTickTypeField.getItems().clear();
+        addNumOrdField.getItems().clear();
+        addNumSessField.getItems().clear();
+
+        addTickTypeField.getItems().add("ORD");
+        addTickTypeField.getItems().add("VIP");
+
+        ObservableList<Session> sessions = DataLoader.getSessionList();
+        int sessionsID;
+        String sessionName;
+        for (int i = 0; i < sessions.size(); i++) {
+
+            sessionsID = sessions.get(i).getIdSession();
+            sessionName = sessions.get(i).getFilmName();
+            addNumSessField.getItems().add(sessionsID + " (" + sessionName + " " + sessions.get(i).getSessionDate() + " " +  sessions.get(i).getSessionTime() + ")");
+
+        }
+
+
+
+    }
+
+    private int getFilmsNumFromString(String string) {
+
+        int index = string.indexOf(" ");
+        System.out.println(string.substring(0, index - 1));
+        return  Integer.parseInt(string.substring(0, index - 1));
     }
 
 }

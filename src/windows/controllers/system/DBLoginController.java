@@ -40,7 +40,8 @@ public class DBLoginController  extends AbstractController {
             if (connection != null) {
                 closeThisFuckinWindow();
                 ScreenStarter.Start("system/BackLoadingScreen.fxml");
-                new MainScreen().openMainScreen();
+                ScreenStarter.Start("contentScreens/mainScreen.fxml");
+              //  new MainScreen().openMainScreen();
             } else {
                 logField.clear();
                 passField.clear();

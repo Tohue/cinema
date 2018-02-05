@@ -8,7 +8,7 @@ public class Requests {
      * SELECT
      */
     public static final String GET_ALL_FILMS = "SELECT * FROM Films";
-    public static final String GET_FILM_NAMES = "SELECT Films.Name FROM Films";
+    public static final String GET_SESSIONS_BY_DATE = "SELECT * FROM Sessions WHERE SessionsTime = ?";
     public static final String GET_SCHEDULE = "SELECT * FROM Sessions";
     public static final String GET_POSTERS = "SELECT  Poster FROM Films";
     public static final String GET_THEATERS = "SELECT * FROM Theaters";

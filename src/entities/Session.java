@@ -5,25 +5,55 @@ import javafx.beans.property.*;
 import java.sql.Date;
 import java.sql.Time;
 
-
+/**
+ * Сеанс
+ */
 public class Session {
     private StringProperty filmName;
     private ObjectProperty<Date> sessionDate;
     private ObjectProperty<Time> sessionTime;
     private IntegerProperty theaterNumber;
     private IntegerProperty idSession;
+    private IntegerProperty standartCost;
+    private IntegerProperty vipCost;
 
     public Session(String filmName, int theaterNumber) {
         this.filmName = new SimpleStringProperty(filmName);
         this.theaterNumber = new SimpleIntegerProperty(theaterNumber);
     }
 
-    public Session(String filmName, Date sessionDate, int sessionTime, int theaterNumber, int idSession) {
+    public Session(String filmName, Date sessionDate, Time sessionTime, int theaterNumber, int idSession, int standartCost, int vipCost) {
         this.filmName = new SimpleStringProperty(filmName);
         this.sessionDate = new SimpleObjectProperty<Date>(sessionDate);
-        this.sessionTime = new SimpleObjectProperty<Time>(new Time(sessionDate.getTime()));
+        this.sessionTime = new SimpleObjectProperty<Time>(sessionTime);
         this.theaterNumber = new SimpleIntegerProperty(theaterNumber);
         this.idSession = new SimpleIntegerProperty(idSession);
+        this.standartCost = new SimpleIntegerProperty(standartCost);
+        this.vipCost = new SimpleIntegerProperty(vipCost);
+    }
+
+    public int getStandartCost() {
+        return standartCost.get();
+    }
+
+    public IntegerProperty standartCostProperty() {
+        return standartCost;
+    }
+
+    public void setStandartCost(int standartCost) {
+        this.standartCost.set(standartCost);
+    }
+
+    public int getVipCost() {
+        return vipCost.get();
+    }
+
+    public IntegerProperty vipCostProperty() {
+        return vipCost;
+    }
+
+    public void setVipCost(int vipCost) {
+        this.vipCost.set(vipCost);
     }
 
     public String getFilmName() {
