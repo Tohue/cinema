@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import windows.controllers.AbstractController;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -70,6 +71,7 @@ public class ModalityBuilder{
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setScene(new Scene(root));
         primaryStage.getScene().setRoot(root);
+        ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
         return primaryStage;
     }
 

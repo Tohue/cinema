@@ -4,7 +4,7 @@ import config.DBPropertiesParser;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import windows.builders.ModalityBuilder;
-import windows.controllers.DBLoginController;
+import windows.controllers.system.DBLoginController;
 
 import java.io.File;
 
@@ -30,7 +30,7 @@ public class loginScreen extends Application {
             dbPropertiesParser.parseBDProperties();
         }
 
-        primaryStage = new ModalityBuilder().getModalityScreen("DBLogin.fxml");
+        primaryStage = new ModalityBuilder().getModalityScreen("system/DBLogin.fxml");
         DBLoginController.setPrimaryStage(primaryStage);
         primaryStage.show();
 

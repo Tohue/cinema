@@ -1,10 +1,7 @@
 package windows.windowStarters;
 
-import config.DBPropertiesParser;
-import windows.builders.FullSizeWindowBuilder;
+
 import javafx.stage.Stage;
-import windows.controllers.MainScreenController;
-import java.io.File;
 
 
 public class MainScreen {
@@ -21,9 +18,7 @@ public class MainScreen {
 
 
         try {
-            primaryStage = new FullSizeWindowBuilder().getFullSizeScreen("mainScreen.fxml");
-            MainScreenController.setPrimaryStage(primaryStage);
-            primaryStage.show();
+           ScreenStarter.Start("ContentScreens/mainScreen.fxml");
         }
          catch (Exception e) {
             e.printStackTrace();

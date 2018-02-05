@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.menu.AdminWindowController">
+   <Button layoutX="348.0" layoutY="474.0" mnemonicParsing="false" onAction="#back" prefHeight="46.0" prefWidth="120.0" text="%admin.close" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="21.0" />
+   <Button layoutX="322.0" layoutY="165.0" mnemonicParsing="false" onAction="#openTicketChange" prefHeight="64.0" prefWidth="423.0" text="%tickets" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="165.0" />
+   <Button layoutX="322.0" layoutY="257.0" mnemonicParsing="false" onAction="#openFilmChange" prefHeight="64.0" prefWidth="423.0" text="%films" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="257.0" />
+   <Button layoutX="322.0" layoutY="348.0" mnemonicParsing="false" onAction="#openTheaterChange" prefHeight="64.0" prefWidth="423.0" text="%theaters" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="348.0" />
+   <Button layoutX="322.0" layoutY="433.0" mnemonicParsing="false" onAction="#openSessionChange" prefHeight="64.0" prefWidth="423.0" text="%sessions" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="433.0" />
+</AnchorPane>

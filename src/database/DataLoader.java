@@ -14,13 +14,13 @@ import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 
 public class DataLoader {
 
 
+    // Все данные из базы
     private static ObservableList<Film> filmInfoList = FXCollections.observableArrayList();
     private static ObservableList<Session> sessionList = FXCollections.observableArrayList();
     private static ObservableList<Theater> theaterList = FXCollections.observableArrayList();
@@ -28,6 +28,10 @@ public class DataLoader {
     private static HashMap<Integer, Integer> theatersHashMap = new HashMap<>();
     private static ArrayList<Image> postersList = new ArrayList<>();
 
+    // Геттеры списков
+    public static ObservableList<Ticket> getTicketList() {
+        return ticketList;
+    }
     public static ArrayList<Image> getPostersList() {
         return postersList;
     }
@@ -47,6 +51,7 @@ public class DataLoader {
      */
     public static void loadFilmInfo() throws SQLException {
 
+        filmInfoList.clear();
         if (DBConnector.isConnected()) {
 
             ResultSet films = null;
@@ -66,6 +71,7 @@ public class DataLoader {
      */
     public static void loadSchedule() throws SQLException {
 
+        sessionList.clear();
         if (DBConnector.isConnected()) {
 
             ResultSet sessions = null;
@@ -87,6 +93,7 @@ public class DataLoader {
      */
     public static void loadPosters() throws SQLException {
 
+        postersList.clear();
         if (DBConnector.isConnected()) {
             ResultSet posters = DBConnector.sendRequest(Requests.GET_POSTERS);
 
@@ -111,8 +118,14 @@ public class DataLoader {
 
     }
 
+    /**
+     * Загрузка списка залов
+     * @throws SQLException
+     */
     public static void loadTheaters() throws SQLException {
 
+        theatersHashMap.clear();
+        theaterList.clear();
         if (DBConnector.isConnected()) {
 
             ResultSet theaters = null;
@@ -123,6 +136,25 @@ public class DataLoader {
 
         }
 
+
+    }
+
+    /**
+     * Загрузка списка билетов
+     * @throws SQLException
+     */
+    public static void loadTickets() throws SQLException {
+
+        ticketList.clear();
+        if (DBConnector.isConnected()) {
+
+            ResultSet tickets = null;
+            tickets = DBConnector.sendRequest(Requests.GET_TICKETS);
+
+            while (tickets.next())
+                ticketList.add(new Ticket(tickets.getInt("BookID"), tickets.getInt("idSessions"), tickets.getInt("idTickets"), tickets.getString("TicketType")));
+
+        }
 
     }
 
