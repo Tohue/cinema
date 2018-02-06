@@ -1,9 +1,6 @@
 package database;
 
-import entities.Film;
-import entities.Session;
-import entities.Theater;
-import entities.Ticket;
+import entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -11,9 +8,12 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -23,8 +23,9 @@ public class DataLoader {
     // Все данные из базы
     private static ObservableList<Film> filmInfoList = FXCollections.observableArrayList();
     private static ObservableList<Session> sessionList = FXCollections.observableArrayList();
-    private static ObservableList<Theater> theaterList = FXCollections.observableArrayList();
     private static ObservableList<Ticket> ticketList = FXCollections.observableArrayList();
+    private static ObservableList<Order> orderList = FXCollections.observableArrayList();
+    private static ObservableList<Integer> orderNumsList = FXCollections.observableArrayList();
     private static HashMap<Integer, Integer> theatersHashMap = new HashMap<>();
     private static ArrayList<Image> postersList = new ArrayList<>();
 
@@ -43,6 +44,12 @@ public class DataLoader {
     }
     public static HashMap<Integer, Integer> getTheatersHashMap() {
         return theatersHashMap;
+    }
+    public static ObservableList<Order> getOrderList() {
+        return orderList;
+    }
+    public static ObservableList<Integer> getOrderNumsList() {
+        return orderNumsList;
     }
 
     /**
@@ -122,7 +129,6 @@ public class DataLoader {
     public static void loadTheaters() throws SQLException {
 
         theatersHashMap.clear();
-        theaterList.clear();
         if (DBConnector.isConnected()) {
 
             ResultSet theaters = null;
@@ -158,4 +164,38 @@ public class DataLoader {
     /**
      * Загрузка списка заказов
      */
+    public static void loadOrders() throws SQLException {
+
+        orderList.clear();
+        if (DBConnector.isConnected()) {
+
+            ResultSet orders = null;
+            orders = DBConnector.sendRequest(Requests.GET_ORDERS);
+
+            while (orders.next()) {
+                orderList.add(new Order(orders.getInt("idOrders"), orders.getDate("OrderDateTime"), orders.getInt("TotalCost")));
+                orderNumsList.add(orders.getInt("idOrders"));
+            }
+        }
+
+    }
+
+    public static ObservableList<Session> getSessionsByDate(Date  date) throws SQLException {
+
+        ObservableList<Session> sessions = FXCollections.observableArrayList();
+        PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.GET_SESSIONS_BY_DATE);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+        date = new Date(calendar.getTime().getTime());
+        statement.setString(1, (new java.sql.Date(date.getTime())).toString());
+        ResultSet resultSet = statement.executeQuery();
+        System.out.println(new java.sql.Date(date.getTime()));
+
+        while (resultSet.next())
+            sessions.add(new Session(resultSet.getString(2), resultSet.getDate(4), resultSet.getTime("SessionTime"), resultSet.getInt(3), resultSet.getInt(1), resultSet.getInt("OrdCost"), resultSet.getInt("VipCost")));
+
+        return sessions;
+
+    }
 }

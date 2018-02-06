@@ -212,6 +212,7 @@ public class TicketChangeController extends AbstractController implements infoEd
             }
         });
 
+        updateLists();
         updateInfo();
 
     }
@@ -253,18 +254,29 @@ public class TicketChangeController extends AbstractController implements infoEd
         addTickTypeField.getItems().add("ORD");
         addTickTypeField.getItems().add("VIP");
 
-        ObservableList<Session> sessions = DataLoader.getSessionList();
-        int sessionsID;
-        String sessionName;
-        for (int i = 0; i < sessions.size(); i++) {
+        try {
 
-            sessionsID = sessions.get(i).getIdSession();
-            sessionName = sessions.get(i).getFilmName();
-            addNumSessField.getItems().add(sessionsID + " (" + sessionName + " " + sessions.get(i).getSessionDate() + " " +  sessions.get(i).getSessionTime() + ")");
+            DataLoader.loadSchedule();
+            ObservableList<Session> sessions = DataLoader.getSessionList();
+            int sessionsID;
+            String sessionName;
+            for (int i = 0; i < sessions.size(); i++) {
 
+                sessionsID = sessions.get(i).getIdSession();
+                sessionName = sessions.get(i).getFilmName();
+                addNumSessField.getItems().add(sessionsID + " (" + sessionName + " " + sessions.get(i).getSessionDate() + " " +  sessions.get(i).getSessionTime() + ")");
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-
+        try {
+            DataLoader.loadOrders();
+            addNumOrdField.setItems(DataLoader.getOrderNumsList());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -272,7 +284,7 @@ public class TicketChangeController extends AbstractController implements infoEd
 
         int index = string.indexOf(" ");
         System.out.println(string.substring(0, index - 1));
-        return  Integer.parseInt(string.substring(0, index - 1));
+        return  Integer.parseInt(string.substring(0, index ));
     }
 
 }

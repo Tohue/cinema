@@ -8,11 +8,12 @@ public class Requests {
      * SELECT
      */
     public static final String GET_ALL_FILMS = "SELECT * FROM Films";
-    public static final String GET_SESSIONS_BY_DATE = "SELECT * FROM Sessions WHERE SessionsTime = ?";
+    public static final String GET_SESSIONS_BY_DATE = "SELECT * FROM Sessions WHERE SessionDate = ?";
     public static final String GET_SCHEDULE = "SELECT * FROM Sessions";
     public static final String GET_POSTERS = "SELECT  Poster FROM Films";
     public static final String GET_THEATERS = "SELECT * FROM Theaters";
     public static final String GET_TICKETS = "SELECT * FROM Tickets";
+    public static final String GET_ORDERS = "SELECT * FROM Orders";
 
     /**
      * INSERT

@@ -11,16 +11,15 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.ScheduleScreenController">
    <children>
-      <TableView fx:id="scheduleTable" layoutX="98.0" layoutY="176.0" prefHeight="544.0" prefWidth="884.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="176.0">
+      <TableView fx:id="scheduleTable" layoutX="108.0" layoutY="176.0" prefHeight="544.0" prefWidth="884.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="176.0">
         <columns>
-          <TableColumn fx:id="nameCol" editable="false" prefWidth="300.0" text="%film.name" />
-          <TableColumn fx:id="dateCol" editable="false" prefWidth="73.0" text="%film.date" />
-            <TableColumn fx:id="timeCol" editable="false" prefWidth="87.0" text="%film.time" />
-            <TableColumn fx:id="theaterCol" editable="false" prefWidth="153.0" text="%film.theater" />
-            <TableColumn prefWidth="75.0" text="Цена">
+          <TableColumn fx:id="nameCol" editable="false" prefWidth="350.0" text="%film.name" />
+            <TableColumn fx:id="timeCol" editable="false" prefWidth="163.0" text="%film.time" />
+            <TableColumn fx:id="theaterCol" editable="false" minWidth="0.0" prefWidth="161.0" text="%film.theater" />
+            <TableColumn minWidth="7.0" prefWidth="143.0" text="Цена">
                <columns>
-                  <TableColumn fx:id="standartPriceCol" prefWidth="75.0" text="Стандарт" />
-                  <TableColumn fx:id="vipPriceCol" prefWidth="75.0" text="VIP" />
+                  <TableColumn fx:id="standartPriceCol" prefWidth="100.0" text="Стандарт" />
+                  <TableColumn fx:id="vipPriceCol" prefWidth="107.0" text="VIP" />
                </columns>
             </TableColumn>
         </columns>
@@ -38,18 +37,18 @@
             <Button layoutX="32.0" layoutY="20.0" mnemonicParsing="false" onAction="#closeThisFuckinWindow" prefHeight="47.0" prefWidth="146.0" text="%back" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
-      <Label layoutX="98.0" layoutY="127.0" prefHeight="38.0" prefWidth="62.0" text="Дата:" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="127.0">
+      <Label layoutX="108.0" layoutY="127.0" prefHeight="38.0" prefWidth="66.0" text="Дата:" AnchorPane.leftAnchor="108.0" AnchorPane.topAnchor="127.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <DatePicker layoutX="160.0" layoutY="134.0" prefHeight="30.0" prefWidth="227.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="134.0" />
-      <Hyperlink layoutX="400.0" layoutY="132.0" opacity="0.5" prefHeight="22.0" prefWidth="109.0" style="-fx-background-color: lightgrey;" text="Сегодня" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="132.0">
+      <DatePicker fx:id="datePicker" editable="false" layoutX="167.0" layoutY="131.0" prefHeight="30.0" prefWidth="227.0" AnchorPane.leftAnchor="167.0" AnchorPane.topAnchor="131.0" />
+      <Hyperlink fx:id="todayLink" layoutX="416.0" layoutY="132.0" opacity="0.5" prefHeight="22.0" prefWidth="109.0" style="-fx-background-color: lightgrey;" text="Сегодня" AnchorPane.leftAnchor="416.0" AnchorPane.topAnchor="132.0">
          <font>
             <Font size="17.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="525.0" layoutY="132.0" opacity="0.5" prefHeight="22.0" prefWidth="109.0" style="-fx-background-color: lightgrey;" text="Завтра" AnchorPane.leftAnchor="525.0" AnchorPane.topAnchor="132.0">
+      <Hyperlink fx:id="tomorrowLink" layoutX="550.0" layoutY="132.0" opacity="0.5" prefHeight="22.0" prefWidth="109.0" style="-fx-background-color: lightgrey;" text="Завтра" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="132.0">
          <font>
             <Font size="17.0" />
          </font>

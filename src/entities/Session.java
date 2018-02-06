@@ -4,6 +4,8 @@ import javafx.beans.property.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * Сеанс
@@ -11,7 +13,7 @@ import java.sql.Time;
 public class Session {
     private StringProperty filmName;
     private ObjectProperty<Date> sessionDate;
-    private ObjectProperty<Time> sessionTime;
+    private StringProperty sessionTime;
     private IntegerProperty theaterNumber;
     private IntegerProperty idSession;
     private IntegerProperty standartCost;
@@ -24,8 +26,9 @@ public class Session {
 
     public Session(String filmName, Date sessionDate, Time sessionTime, int theaterNumber, int idSession, int standartCost, int vipCost) {
         this.filmName = new SimpleStringProperty(filmName);
+        DateFormat format = new SimpleDateFormat("kk : mm");
         this.sessionDate = new SimpleObjectProperty<Date>(sessionDate);
-        this.sessionTime = new SimpleObjectProperty<Time>(sessionTime);
+        this.sessionTime = new SimpleStringProperty(format.format(sessionTime));
         this.theaterNumber = new SimpleIntegerProperty(theaterNumber);
         this.idSession = new SimpleIntegerProperty(idSession);
         this.standartCost = new SimpleIntegerProperty(standartCost);
@@ -80,15 +83,15 @@ public class Session {
         this.sessionDate.set(sessionDate);
     }
 
-    public Time getSessionTime() {
+    public String getSessionTime() {
         return sessionTime.get();
     }
 
-    public ObjectProperty<Time> sessionTimeProperty() {
+    public StringProperty sessionTimeProperty() {
         return sessionTime;
     }
 
-    public void setSessionTime(Time sessionTime) {
+    public void setSessionTime(String sessionTime) {
         this.sessionTime.set(sessionTime);
     }
 

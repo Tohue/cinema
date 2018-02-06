@@ -6,9 +6,9 @@ import entities.Film;
 import entities.Session;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import windows.controllers.AbstractController;
@@ -16,9 +16,14 @@ import windows.windowStarters.MainScreen;
 import windows.windowStarters.ScreenStarter;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ScheduleScreenController extends AbstractController {
 
@@ -27,7 +32,7 @@ public class ScheduleScreenController extends AbstractController {
     @FXML
     TableColumn<Session, String> nameCol;
     @FXML
-    TableColumn<Session, Time> timeCol;
+    TableColumn<Session, String> timeCol;
     @FXML
     TableColumn<Session, Integer> theaterCol;
     @FXML
@@ -35,32 +40,43 @@ public class ScheduleScreenController extends AbstractController {
     @FXML
     TableColumn<Session, Integer> vipPriceCol;
 
+    @FXML
+    DatePicker datePicker;
+    @FXML
+    Hyperlink todayLink;
+    @FXML
+    Hyperlink tomorrowLink;
+
 
 
     public void initialize() {
 
-        ObservableList<Session> sessionList = null;
 
-        /**
-         * Загрузка расписания, если оно пустое
-         */
-        if (DataLoader.getSessionList().isEmpty()) {
-            try {
-                DataLoader.loadSchedule();
-                sessionList = DataLoader.getSessionList();
+        setFilmsByDate(LocalDate.now());
 
-            } catch (SQLException e) {
-                e.printStackTrace();
+        todayLink.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setFilmsByDate(LocalDate.now());
             }
-        } else sessionList = DataLoader.getSessionList();
+        });
 
-        timeCol.setCellValueFactory(new PropertyValueFactory<Session, Time>("sessionTime"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<Session, String>("filmName"));
-        theaterCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("theaterNumber"));
-        standartPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("standartCost"));
-        vipPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("vipCost"));
+        tomorrowLink.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setFilmsByDate(LocalDate.now().plusDays(1));
+            }
+        });
 
-        scheduleTable.setItems(sessionList);
+        datePicker.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                setFilmsByDate(datePicker.getValue());
+
+            }
+        });
+
 
     }
 
@@ -73,4 +89,32 @@ public class ScheduleScreenController extends AbstractController {
         }
         super.closeThisFuckinWindow();
     }
+
+    private void setFilmsByDate(LocalDate date) {
+
+        ObservableList<Session> sessionList = null;
+        try {
+
+
+            datePicker.setValue(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+
+            sessionList = DataLoader.getSessionsByDate(new Date(calendar.getTime().getTime()));
+            timeCol.setCellValueFactory(new PropertyValueFactory<Session, String>("sessionTime"));
+            nameCol.setCellValueFactory(new PropertyValueFactory<Session, String>("filmName"));
+            theaterCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("theaterNumber"));
+            standartPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("standartCost"));
+            vipPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("vipCost"));
+            System.out.println(sessionList.size());
+            scheduleTable.setItems(sessionList);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }
