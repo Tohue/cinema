@@ -40,8 +40,19 @@ public class AdminWindowController extends AbstractController {
 
     public void openSessionChange() {
 
+        try {
+            ScreenStarter.Start("infoEditors/SessionChangeScreen.fxml");
+            closeThisFuckinWindow();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
+    public void openOrderChange() {
+
+    }
 
     public void back() {
         try {
