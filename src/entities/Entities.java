@@ -5,6 +5,6 @@ public enum Entities {
     Film,
     Session,
     Theater,
-    Ticket;
+    Ticket
 
 }

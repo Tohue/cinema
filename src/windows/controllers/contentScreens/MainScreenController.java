@@ -3,21 +3,13 @@ package windows.controllers.contentScreens;
 import database.DataLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import windows.builders.FullSizeWindowBuilder;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
-
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,8 +17,8 @@ import java.util.ArrayList;
 
 public class MainScreenController extends AbstractController {
 
-    ArrayList<Button> postersView = new ArrayList<Button>();
-    ArrayList<AnchorPane> postersPanes = new ArrayList<AnchorPane>();
+    private final ArrayList<Button> postersView = new ArrayList<>();
+    private final ArrayList<AnchorPane> postersPanes = new ArrayList<>();
 
     @FXML
     GridPane postersPane;

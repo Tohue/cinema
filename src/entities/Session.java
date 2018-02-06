@@ -27,7 +27,7 @@ public class Session {
     public Session(String filmName, Date sessionDate, Time sessionTime, int theaterNumber, int idSession, int standartCost, int vipCost) {
         this.filmName = new SimpleStringProperty(filmName);
         DateFormat format = new SimpleDateFormat("kk : mm");
-        this.sessionDate = new SimpleObjectProperty<Date>(sessionDate);
+        this.sessionDate = new SimpleObjectProperty<>(sessionDate);
         this.sessionTime = new SimpleStringProperty(format.format(sessionTime));
         this.theaterNumber = new SimpleIntegerProperty(theaterNumber);
         this.idSession = new SimpleIntegerProperty(idSession);

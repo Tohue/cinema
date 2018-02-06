@@ -56,11 +56,11 @@ public class FilmListWindowController extends AbstractController {
         /**
          * Инициализация колонок таблицы
          */
-        numCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("id"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<Film, String>("name"));
-        countryCol.setCellValueFactory(new PropertyValueFactory<Film, String>("country"));
-        descCol.setCellValueFactory(new PropertyValueFactory<Film, String>("description"));
-        lenCol.setCellValueFactory(new PropertyValueFactory<Film, Integer>("length"));
+        numCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
+        descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        lenCol.setCellValueFactory(new PropertyValueFactory<>("length"));
         filmTable.setItems(observableList);
 
     }

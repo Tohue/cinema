@@ -9,7 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import windows.controllers.AbstractController;
-import windows.windowStarters.MainScreen;
 import windows.windowStarters.ScreenStarter;
 import java.sql.Connection;
 
@@ -31,7 +30,7 @@ public class DBLoginController  extends AbstractController {
         DBLoginController.primaryStage = primaryStage;
     }
 
-    public void connect(ActionEvent actionEvent) throws Exception {
+    public void connect(ActionEvent actionEvent)  {
 
 
         DBConnector.setValues(logField.getText(), passField.getText());

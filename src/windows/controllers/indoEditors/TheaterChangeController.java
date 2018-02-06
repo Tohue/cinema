@@ -35,7 +35,7 @@ public class TheaterChangeController extends AbstractController implements infoE
     @FXML
     Label errorEditLabel;
 
-    HashMap<Integer, Integer> theaters = null;
+    private HashMap<Integer, Integer> theaters = null;
 
     private static Stage primaryStage;
 
@@ -56,12 +56,9 @@ public class TheaterChangeController extends AbstractController implements infoE
 
 
 
-        editNumberField.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (theaters != null)
-                    editCountField.setText(theaters.get(editNumberField.getValue()).toString());
-            }
+        editNumberField.setOnAction(event -> {
+            if (theaters != null)
+                editCountField.setText(theaters.get(editNumberField.getValue()).toString());
         });
 
         updateInfo();

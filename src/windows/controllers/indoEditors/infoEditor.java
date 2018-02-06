@@ -1,15 +1,15 @@
 package windows.controllers.indoEditors;
 
-public interface infoEditor  {
+ interface infoEditor  {
 
-    public void saveEditing() throws Exception;
+     void saveEditing();
 
-    public void saveCreating() throws Exception;
+     void saveCreating();
 
-    public void updateInfo();
+     void updateInfo();
 
-    public void creatingError();
+     void creatingError();
 
-    public void editingError();
+     void editingError();
 
 }

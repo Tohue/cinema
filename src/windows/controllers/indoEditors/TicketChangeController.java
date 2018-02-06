@@ -18,7 +18,6 @@ import windows.windowStarters.ScreenStarter;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -146,12 +145,12 @@ public class TicketChangeController extends AbstractController implements infoEd
         /**
          * Инициализация колонок таблицы
          */
-        tickNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("idTicket"));
-        ordNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("bookID"));
-        sessNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("idSession"));
-        tickTypeCol.setCellValueFactory(new PropertyValueFactory<Ticket, String>("ticketType"));
-        rowNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("rowNumber"));
-        seatsNumCol.setCellValueFactory(new PropertyValueFactory<Ticket, Integer>("seatsNumber"));
+        tickNumCol.setCellValueFactory(new PropertyValueFactory<>("idTicket"));
+        ordNumCol.setCellValueFactory(new PropertyValueFactory<>("bookID"));
+        sessNumCol.setCellValueFactory(new PropertyValueFactory<>("idSession"));
+        tickTypeCol.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        rowNumCol.setCellValueFactory(new PropertyValueFactory<>("rowNumber"));
+        seatsNumCol.setCellValueFactory(new PropertyValueFactory<>("seatsNumber"));
         ticketInfoTable.setItems(observableList);
     }
 
@@ -168,48 +167,33 @@ public class TicketChangeController extends AbstractController implements infoEd
     public void initialize() {
 
         tickTypeCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        tickTypeCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Ticket, String> event) {
-                changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setTicketType(event.getNewValue());
-            }
+        tickTypeCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setTicketType(event.getNewValue());
         });
 
         sessNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        sessNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
-                changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdSession(event.getNewValue());
-            }
+        sessNumCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdSession(event.getNewValue());
         });
 
         ordNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        ordNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
-                changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setBookID(event.getNewValue());
-            }
+        ordNumCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setBookID(event.getNewValue());
         });
 
         rowNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        rowNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
-                changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setRowNumber(event.getNewValue());
-            }
+        rowNumCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setRowNumber(event.getNewValue());
         });
 
         seatsNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        seatsNumCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Ticket, Integer>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Ticket, Integer> event) {
-                changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setSeatsNumber(event.getNewValue());
-            }
+        seatsNumCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSeatsNumber(event.getNewValue());
         });
 
         updateLists();
@@ -260,11 +244,11 @@ public class TicketChangeController extends AbstractController implements infoEd
             ObservableList<Session> sessions = DataLoader.getSessionList();
             int sessionsID;
             String sessionName;
-            for (int i = 0; i < sessions.size(); i++) {
+            for (Session session : sessions) {
 
-                sessionsID = sessions.get(i).getIdSession();
-                sessionName = sessions.get(i).getFilmName();
-                addNumSessField.getItems().add(sessionsID + " (" + sessionName + " " + sessions.get(i).getSessionDate() + " " +  sessions.get(i).getSessionTime() + ")");
+                sessionsID = session.getIdSession();
+                sessionName = session.getFilmName();
+                addNumSessField.getItems().add(sessionsID + " (" + sessionName + " " + session.getSessionDate() + " " + session.getSessionTime() + ")");
 
             }
         } catch (SQLException e) {
