@@ -5,8 +5,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import windows.builders.FullSizeWindowBuilder;
 import windows.controllers.contentScreens.FilmInfoScreenController;
-
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
 

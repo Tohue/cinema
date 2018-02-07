@@ -131,7 +131,7 @@ public class MainScreenController extends AbstractController {
         postersPanes.add(pane11);
         postersPanes.add(pane12);
 
-        ArrayList<Image> posters = null;
+        ArrayList<Image> posters = new ArrayList<>();
         try {
             DataLoader.loadPosters();
             posters = DataLoader.getPostersList();

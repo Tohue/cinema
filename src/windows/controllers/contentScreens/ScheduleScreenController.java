@@ -4,15 +4,10 @@ package windows.controllers.contentScreens;
 import database.DataLoader;
 import entities.Session;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import windows.controllers.AbstractController;
-import windows.windowStarters.ScreenStarter;
-
-import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Calendar;

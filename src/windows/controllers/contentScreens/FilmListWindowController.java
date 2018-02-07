@@ -12,11 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
-
-import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Контроллер экрана со списком фильмов
@@ -79,24 +76,20 @@ public class FilmListWindowController extends AbstractController {
 
     private void setColumnsClickable() {
 
-        filmTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+        filmTable.setOnMouseClicked(event -> {
 
 
+            String country = filmTable.getSelectionModel().getSelectedItem().getCountry();
+            int length = filmTable.getSelectionModel().getSelectedItem().getLength();
+            String desc = filmTable.getSelectionModel().getSelectedItem().getDescription();
+            String genre = filmTable.getSelectionModel().getSelectedItem().getGenre();
+            Image poster = filmTable.getSelectionModel().getSelectedItem().getPoster();
+            String name = filmTable.getSelectionModel().getSelectedItem().getName();
 
-                String country = filmTable.getSelectionModel().getSelectedItem().getCountry();
-                int length = filmTable.getSelectionModel().getSelectedItem().getLength();
-                String desc = filmTable.getSelectionModel().getSelectedItem().getDescription();
-                String genre = filmTable.getSelectionModel().getSelectedItem().getGenre();
-                Image poster = filmTable.getSelectionModel().getSelectedItem().getPoster();
-                String name = filmTable.getSelectionModel().getSelectedItem().getName();
-
-                try {
-                    ScreenStarter.StartFilmInfoList("contentScreens/FilmInfoScreen.fxml", name, country, length, genre, desc, poster, stage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try {
+                ScreenStarter.StartFilmInfoList("contentScreens/FilmInfoScreen.fxml", name, country, length, genre, desc, poster, stage);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 

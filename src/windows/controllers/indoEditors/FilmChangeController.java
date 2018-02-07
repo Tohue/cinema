@@ -7,9 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import windows.controllers.AbstractController;
-import windows.windowStarters.ScreenStarter;
-
-import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

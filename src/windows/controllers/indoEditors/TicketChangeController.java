@@ -6,16 +6,12 @@ import database.Requests;
 import entities.Session;
 import entities.Ticket;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 import windows.controllers.AbstractController;
-import windows.windowStarters.ScreenStarter;
-
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashSet;

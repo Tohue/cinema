@@ -3,17 +3,12 @@ package windows.controllers.indoEditors;
 import database.DBConnector;
 import database.DataLoader;
 import database.Requests;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import windows.controllers.AbstractController;
-import windows.windowStarters.ScreenStarter;
-
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;

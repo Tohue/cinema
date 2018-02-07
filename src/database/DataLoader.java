@@ -3,7 +3,6 @@ package database;
 import entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 
 import java.io.IOException;

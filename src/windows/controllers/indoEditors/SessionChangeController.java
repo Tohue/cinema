@@ -87,13 +87,13 @@ public class SessionChangeController extends AbstractController implements infoE
         setFields();
         setTableEditable();
 
-        numberCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("idSession"));
-        filmCol.setCellValueFactory(new PropertyValueFactory<Session, String>("filmName"));
-        theaterCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("theaterNumber"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Session, Date>("sessionDate"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<Session, String>("sessionTime"));
-        standartPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("standartCost"));
-        vipPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("vipCost"));
+        numberCol.setCellValueFactory(new PropertyValueFactory<>("idSession"));
+        filmCol.setCellValueFactory(new PropertyValueFactory<>("filmName"));
+        theaterCol.setCellValueFactory(new PropertyValueFactory<>("theaterNumber"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("sessionDate"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
+        standartPriceCol.setCellValueFactory(new PropertyValueFactory<>("standartCost"));
+        vipPriceCol.setCellValueFactory(new PropertyValueFactory<>("vipCost"));
     }
 
     @Override
@@ -208,19 +208,9 @@ public class SessionChangeController extends AbstractController implements infoE
         minuteSlider.setMinorTickCount(2);
 
 
-        minuteSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                minuteLabel.setText(String.valueOf(Math.round(minuteSlider.getValue())));
-            }
-        });
+        minuteSlider.valueProperty().addListener((observable, oldValue, newValue) -> minuteLabel.setText(String.valueOf(Math.round(minuteSlider.getValue()))));
 
-        hourSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                hourLabel.setText(String.valueOf(Math.round(hourSlider.getValue())));
-            }
-        });
+        hourSlider.valueProperty().addListener((observable, oldValue, newValue) -> hourLabel.setText(String.valueOf(Math.round(hourSlider.getValue()))));
 
 
 
@@ -253,7 +243,7 @@ public class SessionChangeController extends AbstractController implements infoE
 
 
         ObservableList<Integer> list = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
-        theaterSpin.setValueFactory(new SpinnerValueFactory<Integer>() {
+        theaterSpin.setValueFactory(new SpinnerValueFactory<>() {
 
             int i = 0;
 
@@ -262,7 +252,7 @@ public class SessionChangeController extends AbstractController implements infoE
 
                 if (i - 1 >= 0) {
                     i--;
-                    setValue(list.get(i).intValue());
+                    setValue(list.get(i));
                 }
 
             }
@@ -272,7 +262,7 @@ public class SessionChangeController extends AbstractController implements infoE
 
                 if (i + 1 < list.size()) {
                     i++;
-                    setValue(list.get(i).intValue());
+                    setValue(list.get(i));
                 }
             }
         });
@@ -316,53 +306,35 @@ public class SessionChangeController extends AbstractController implements infoE
         dateCol.setCellFactory(TextFieldTableCell.forTableColumn(new DateStringConverter()));
         timeCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        standartPriceCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Integer>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Session, Integer> event) {
-                changedRows.add(event.getTablePosition().getRow());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setStandartCost(event.getNewValue());
-            }
+        standartPriceCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTablePosition().getRow());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setStandartCost(event.getNewValue());
         });
 
-        filmCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Session, String> event) {
-                changedRows.add(event.getTablePosition().getRow());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setFilmName(event.getNewValue());
-            }
+        filmCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTablePosition().getRow());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setFilmName(event.getNewValue());
         });
 
-        timeCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Session, String> event) {
-                changedRows.add(event.getTablePosition().getRow());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setSessionTime(event.getNewValue());
-            }
+        timeCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTablePosition().getRow());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSessionTime(event.getNewValue());
         });
 
-        theaterCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Integer>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Session, Integer> event) {
-                changedRows.add(event.getTablePosition().getRow());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setTheaterNumber(event.getNewValue());
-            }
+        theaterCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTablePosition().getRow());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setTheaterNumber(event.getNewValue());
         });
 
-        dateCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Date>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Session, Date> event) {
-                Date date = event.getNewValue();
-                changedRows.add(event.getTablePosition().getRow());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setSessionDate(new java.sql.Date(date.getTime()));
-            }
+        dateCol.setOnEditCommit(event -> {
+            Date date = event.getNewValue();
+            changedRows.add(event.getTablePosition().getRow());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSessionDate(new java.sql.Date(date.getTime()));
         });
 
-        vipPriceCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Integer>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<Session, Integer> event) {
-                changedRows.add(event.getTablePosition().getRow());
-                event.getTableView().getItems().get(event.getTablePosition().getRow()).setVipCost(event.getNewValue());
-            }
+        vipPriceCol.setOnEditCommit(event -> {
+            changedRows.add(event.getTablePosition().getRow());
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setVipCost(event.getNewValue());
         });
 
     }
