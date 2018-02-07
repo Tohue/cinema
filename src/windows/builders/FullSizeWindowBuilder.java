@@ -74,4 +74,23 @@ public class FullSizeWindowBuilder{
 
 
     }
+
+    public Stage getFullSizeScreen(String FXMLName, Stage lastWindow) throws IOException {
+
+
+        String currFXML = defaultFXMLPath + FXMLName;
+        Stage primaryStage = new Stage();
+
+        fxmlLoader.setLocation(getClass().getResource(currFXML));
+        fxmlLoader.setResources(ResourceBundle.getBundle(localePath, currentLocale));
+        Parent root = fxmlLoader.load();
+        primaryStage.setFullScreen(true);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.getScene().setRoot(root);
+        ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
+        ((AbstractController)fxmlLoader.getController()).setLastWindow(lastWindow);
+        return primaryStage;
+
+
+    }
 }

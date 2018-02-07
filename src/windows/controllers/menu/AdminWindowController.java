@@ -11,7 +11,7 @@ public class AdminWindowController extends AbstractController {
 
     public void openTicketChange() {
         try {
-            ScreenStarter.Start("infoEditors/TicketChangeScreen.fxml");
+            ScreenStarter.Start("infoEditors/TicketChangeScreen.fxml", stage);
             closeThisFuckinWindow();
         } catch (IOException e) {
             e.printStackTrace();
@@ -21,7 +21,7 @@ public class AdminWindowController extends AbstractController {
 
     public void openFilmChange() {
         try {
-            ScreenStarter.Start("infoEditors/FilmChangeScreen.fxml");
+            ScreenStarter.Start("infoEditors/FilmChangeScreen.fxml", stage);
             closeThisFuckinWindow();
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,7 +30,7 @@ public class AdminWindowController extends AbstractController {
 
     public void openTheaterChange() {
         try {
-            ScreenStarter.Start("infoEditors/TheaterChangeWindow.fxml");
+            ScreenStarter.Start("infoEditors/TheaterChangeWindow.fxml", stage);
             closeThisFuckinWindow();
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class AdminWindowController extends AbstractController {
     public void openSessionChange() {
 
         try {
-            ScreenStarter.Start("infoEditors/SessionChangeScreen.fxml");
+            ScreenStarter.Start("infoEditors/SessionChangeScreen.fxml", stage);
             closeThisFuckinWindow();
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,12 +54,12 @@ public class AdminWindowController extends AbstractController {
 
     }
 
-    public void back() {
-        try {
-            ScreenStarter.Start("contentScreens/MainScreen.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        closeThisFuckinWindow();
-    }
+//    public void back() {
+//        try {
+//            ScreenStarter.Start("contentScreens/MainScreen.fxml");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        closeThisFuckinWindow();
+//    }
 }

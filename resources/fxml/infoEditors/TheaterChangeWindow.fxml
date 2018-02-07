@@ -38,7 +38,7 @@
                 </Label>
                 <TextField fx:id="editCountField" layoutX="486.0" layoutY="435.0" prefHeight="55.0"
                            prefWidth="322.0" AnchorPane.leftAnchor="486.0" AnchorPane.topAnchor="435.0"/>
-                <Button layoutX="1341.0" layoutY="935.0" mnemonicParsing="false" onAction="#closeThisFuckinWindow"
+                <Button layoutX="1341.0" layoutY="935.0" mnemonicParsing="false" onAction="#back"
                         prefHeight="58.0" prefWidth="235.0" text="Отмена" AnchorPane.bottomAnchor="58.0"
                         AnchorPane.rightAnchor="344.0"/>
                 <Button layoutX="1626.0" layoutY="934.0" mnemonicParsing="false" onAction="#saveEditing"
@@ -82,7 +82,7 @@
                         onAction="#saveCreating" prefHeight="58.0" prefWidth="235.0" text="Сохранить"
                         AnchorPane.bottomAnchor="62.0" AnchorPane.rightAnchor="121.0"/>
                 <Button fx:id="cancel" layoutX="1288.0" layoutY="931.0" mnemonicParsing="false"
-                        onAction="#closeThisFuckinWindow" prefHeight="59.0" prefWidth="234.0" text="Отмена"
+                        onAction="#back" prefHeight="59.0" prefWidth="234.0" text="Отмена"
                         AnchorPane.bottomAnchor="61.0" AnchorPane.rightAnchor="398.0"/>
                 <Label fx:id="errorSaveLabel" layoutX="1288.0" layoutY="886.0" text="Ошибка сохранения данных"
                        textFill="RED" visible="false" AnchorPane.bottomAnchor="131.0"

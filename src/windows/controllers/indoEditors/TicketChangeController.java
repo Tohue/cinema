@@ -70,21 +70,20 @@ public class TicketChangeController extends AbstractController implements infoEd
     public void saveEditing() {
 
         Iterator<Integer> iterator = changedRows.iterator();
-        int i = 0;
         boolean errorHappened = false;
         while (iterator.hasNext()) {
 
-            int ticketNum = iterator.next();
+            int id = iterator.next();
 
             try {
 
                 PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.UPDATE_TICKET);
-                statement.setInt(1, ((Ticket) ticketInfoTable.getItems().get(i)).getIdSession());
-                statement.setString(2, ((Ticket) ticketInfoTable.getItems().get(i)).getTicketType());
-                statement.setInt(3, ((Ticket) ticketInfoTable.getItems().get(i)).getBookID());
-                statement.setInt(4, ((Ticket) ticketInfoTable.getItems().get(i)).getSeatsNumber());
-                statement.setInt(5, ((Ticket) ticketInfoTable.getItems().get(i)).getRowNumber());
-                statement.setInt(6, ticketNum);
+                statement.setInt(1, ((Ticket) ticketInfoTable.getItems().get(id)).getIdSession());
+                statement.setString(2, ((Ticket) ticketInfoTable.getItems().get(id)).getTicketType());
+                statement.setInt(3, ((Ticket) ticketInfoTable.getItems().get(id)).getBookID());
+                statement.setInt(4, ((Ticket) ticketInfoTable.getItems().get(id)).getSeatsNumber());
+                statement.setInt(5, ((Ticket) ticketInfoTable.getItems().get(id)).getRowNumber());
+                statement.setInt(6, ((Ticket) ticketInfoTable.getItems().get(id)).getIdTicket());
                 statement.executeUpdate();
 
             } catch (SQLException e) {
@@ -93,7 +92,6 @@ public class TicketChangeController extends AbstractController implements infoEd
                 e.printStackTrace();
             }
 
-            i++;
         }
 
         if (!errorHappened)
@@ -101,6 +99,7 @@ public class TicketChangeController extends AbstractController implements infoEd
         else editingError();
 
         updateInfo();
+        changedRows.clear();
     }
 
     @Override
@@ -168,31 +167,31 @@ public class TicketChangeController extends AbstractController implements infoEd
 
         tickTypeCol.setCellFactory(TextFieldTableCell.forTableColumn());
         tickTypeCol.setOnEditCommit(event -> {
-            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            changedRows.add(event.getTablePosition().getRow());
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setTicketType(event.getNewValue());
         });
 
         sessNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         sessNumCol.setOnEditCommit(event -> {
-            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            changedRows.add(event.getTablePosition().getRow());
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdSession(event.getNewValue());
         });
 
         ordNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         ordNumCol.setOnEditCommit(event -> {
-            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            changedRows.add(event.getTablePosition().getRow());
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setBookID(event.getNewValue());
         });
 
         rowNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         rowNumCol.setOnEditCommit(event -> {
-            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            changedRows.add(event.getTablePosition().getRow());
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setRowNumber(event.getNewValue());
         });
 
         seatsNumCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         seatsNumCol.setOnEditCommit(event -> {
-            changedRows.add(event.getTableView().getItems().get(event.getTablePosition().getRow()).getIdTicket());
+            changedRows.add(event.getTablePosition().getRow());
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setSeatsNumber(event.getNewValue());
         });
 
@@ -201,15 +200,6 @@ public class TicketChangeController extends AbstractController implements infoEd
 
     }
 
-    @Override
-    public void closeThisFuckinWindow() {
-        try {
-            ScreenStarter.Start("menu/AdminWindow.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        super.closeThisFuckinWindow();
-    }
 
     private void viewEditError() {
         errorEditLabel.setVisible(true);

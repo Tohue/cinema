@@ -74,15 +74,7 @@ public class FilmChangeController extends AbstractController implements infoEdit
         updateInfo();
     }
 
-    @Override
-    public void closeThisFuckinWindow() {
-        try {
-            ScreenStarter.Start("menu/AdminWindow.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        super.closeThisFuckinWindow();
-    }
+
 
     @Override
     public void updateInfo() {

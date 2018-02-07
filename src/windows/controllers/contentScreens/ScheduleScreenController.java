@@ -56,15 +56,6 @@ public class ScheduleScreenController extends AbstractController {
 
     }
 
-    @Override
-    public void closeThisFuckinWindow() {
-        try {
-            ScreenStarter.Start("ContentScreens/MainScreen.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        super.closeThisFuckinWindow();
-    }
 
     private void setFilmsByDate(LocalDate date) {
 

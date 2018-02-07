@@ -11,6 +11,9 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.ScheduleScreenController">
     <TableView fx:id="scheduleTable" layoutX="108.0" layoutY="176.0" prefHeight="544.0" prefWidth="884.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="176.0">
+      <placeholder>
+          <Label text = "%emptyScheduleText"/>
+      </placeholder>
       <columns>
           <TableColumn fx:id="nameCol" editable="false" prefWidth="350.0" text="%film.name" />
           <TableColumn fx:id="timeCol" editable="false" prefWidth="163.0" text="%film.time" />
@@ -32,7 +35,7 @@
                 <Font size="43.0" />
             </font>
         </Label>
-        <Button layoutX="32.0" layoutY="20.0" mnemonicParsing="false" onAction="#closeThisFuckinWindow" prefHeight="47.0" prefWidth="146.0" text="%back" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="20.0" />
+        <Button layoutX="32.0" layoutY="20.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="146.0" text="%back" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="20.0" />
     </AnchorPane>
     <Label layoutX="108.0" layoutY="127.0" prefHeight="38.0" prefWidth="66.0" text="Дата:" AnchorPane.leftAnchor="108.0" AnchorPane.topAnchor="127.0">
         <font>

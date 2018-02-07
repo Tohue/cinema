@@ -142,13 +142,5 @@ public class TheaterChangeController extends AbstractController implements infoE
 
     }
 
-    @Override
-    public void closeThisFuckinWindow() {
-        try {
-            ScreenStarter.Start("menu/AdminWindow.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        super.closeThisFuckinWindow();
-    }
+
 }

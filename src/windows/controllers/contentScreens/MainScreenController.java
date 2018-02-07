@@ -81,7 +81,7 @@ public class MainScreenController extends AbstractController {
      */
     public void openAdminScreen(ActionEvent actionEvent) {
         try {
-            ScreenStarter.Start("menu/AdminWindow.fxml");
+            ScreenStarter.Start("menu/AdminWindow.fxml", stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class MainScreenController extends AbstractController {
      */
     public void openSchedule(ActionEvent actionEvent) {
         try {
-            ScreenStarter.Start("ContentScreens/ScheduleScreen.fxml");
+            ScreenStarter.Start("ContentScreens/ScheduleScreen.fxml", stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,7 +109,7 @@ public class MainScreenController extends AbstractController {
     public void openFilmList(ActionEvent actionEvent) {
 
         try {
-            ScreenStarter.Start("ContentScreens/FilmListWindow.fxml");
+            ScreenStarter.Start("ContentScreens/FilmListWindow.fxml", stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,7 +149,7 @@ public class MainScreenController extends AbstractController {
                 }
             } else {
                 for (int i = 0; i < 6; i ++) {
-                    System.out.println("Показываем постер номер " + i);
+              //      System.out.println("Показываем постер номер " + i);
                     ImageView imageView = new ImageView(posters.get(i));
 
 

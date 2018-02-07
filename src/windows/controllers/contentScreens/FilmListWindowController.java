@@ -65,13 +65,5 @@ public class FilmListWindowController extends AbstractController {
 
     }
 
-    @Override
-    public void closeThisFuckinWindow() {
-        try {
-            ScreenStarter.Start("ContentScreens/MainScreen.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        super.closeThisFuckinWindow();
-    }
+
 }

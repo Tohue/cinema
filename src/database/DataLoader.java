@@ -3,6 +3,7 @@ package database;
 import entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class DataLoader {
     private static ObservableList<Integer> orderNumsList = FXCollections.observableArrayList();
     private static HashMap<Integer, Integer> theatersHashMap = new HashMap<>();
     private static ArrayList<Image> postersList = new ArrayList<>();
+    private static ObservableList<String> filmNames = FXCollections.observableArrayList();
+
 
     // Геттеры списков
     public static ObservableList<Ticket> getTicketList() {
@@ -50,6 +53,9 @@ public class DataLoader {
     }
     public static ObservableList<Integer> getOrderNumsList() {
         return orderNumsList;
+    }
+    public static ObservableList<String> getFilmNames() {
+        return filmNames;
     }
 
     /**
@@ -198,4 +204,20 @@ public class DataLoader {
         return sessions;
 
     }
+
+    public static ObservableList<String> loadFilmNames() throws SQLException {
+
+        filmNames.clear();
+
+        if (DBConnector.isConnected()) {
+
+            ResultSet names = DBConnector.sendRequest(Requests.GET_FILM_NAMES);
+            while (names.next())
+                filmNames.add(names.getString(1));
+
+        }
+
+        return filmNames;
+    }
+
 }

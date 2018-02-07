@@ -1,20 +1,33 @@
 package windows.controllers.indoEditors;
 
 
+import database.DBConnector;
 import database.DataLoader;
+import database.Requests;
+
 import entities.Session;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DateStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import windows.controllers.AbstractController;
 
+
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 
 public class SessionChangeController extends AbstractController implements infoEditor {
 
@@ -24,7 +37,7 @@ public class SessionChangeController extends AbstractController implements infoE
     @FXML
     Spinner<Integer> theaterSpin;
     @FXML
-    ChoiceBox<Integer> filmsField;
+    ChoiceBox<String> filmsField;
     @FXML
     DatePicker datePicker;
     @FXML
@@ -35,6 +48,10 @@ public class SessionChangeController extends AbstractController implements infoE
     Label hourLabel;
     @FXML
     Label minuteLabel;
+    @FXML
+    Spinner<Integer> standartPriceSpinner;
+    @FXML
+    Spinner<Integer> vipPriceSpinner;
 
     // Таблица
     @FXML
@@ -54,11 +71,22 @@ public class SessionChangeController extends AbstractController implements infoE
     @FXML
     TableColumn<Session, Integer> vipPriceCol;
 
+    @FXML
+    Label createSaveErrorLabel;
+    @FXML
+    Label editSaveErrorLabel;
+
     ObservableList<Session> sessionsInfoList = null;
+    ArrayList<Integer> changedRows = new ArrayList<>();
 
     public void initialize() {
 
+
+        updateInfo();  // должно выполниться первым
         setSliders();
+        setFields();
+        setTableEditable();
+
         numberCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("idSession"));
         filmCol.setCellValueFactory(new PropertyValueFactory<Session, String>("filmName"));
         theaterCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("theaterNumber"));
@@ -66,23 +94,68 @@ public class SessionChangeController extends AbstractController implements infoE
         timeCol.setCellValueFactory(new PropertyValueFactory<Session, String>("sessionTime"));
         standartPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("standartCost"));
         vipPriceCol.setCellValueFactory(new PropertyValueFactory<Session, Integer>("vipCost"));
-        numberCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-
-        updateInfo();
-
-
     }
 
     @Override
     public void saveEditing() {
 
+        Iterator<Integer> iterator = changedRows.iterator();
+        boolean error = false;
+
+        while (iterator.hasNext()) {
+
+            int id = iterator.next();
+
+            try {
+                PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.UPDATE_SCHEDULE);
+                statement.setString(1,((Session)sessionTable.getItems().get(id)).getFilmName());
+                System.out.println(((Session)sessionTable.getItems().get(id)).getFilmName());
+                statement.setInt(2, ((Session)sessionTable.getItems().get(id)).getTheaterNumber());
+                statement.setDate(3, ((Session)sessionTable.getItems().get(id)).getSessionDate());
+                statement.setInt(4, ((Session)sessionTable.getItems().get(id)).getStandartCost());
+                statement.setInt(5, ((Session)sessionTable.getItems().get(id)).getVipCost());
+                statement.setTime(6, getTimeFromString(((Session)sessionTable.getItems().get(id)).getSessionTime()));
+                statement.setInt(7, ((Session)sessionTable.getItems().get(id)).getIdSession());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                error = true;
+                e.printStackTrace();
+            }
+        }
+
+        if (!error)
+            hideErrors();
+        else editingError();
+
+        updateInfo();
+        changedRows.clear();
     }
 
     @Override
     public void saveCreating() {
 
+        if (DBConnector.isConnected()) {
+            try {
+                PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.ADD_SESSION);
+                statement.setInt(1, numSpin.getValue());
+                statement.setString(2, filmsField.getValue());
+                statement.setInt(3, theaterSpin.getValue());
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(datePicker.getValue().getYear(), datePicker.getValue().getMonthValue() - 1, datePicker.getValue().getDayOfMonth());
+                statement.setDate(4, new java.sql.Date(calendar.getTimeInMillis()));
+                statement.setInt(5, standartPriceSpinner.getValue());
+                statement.setInt(6, vipPriceSpinner.getValue());
+                statement.setTime(7, getSessionTime());
+                statement.executeUpdate();
+                hideErrors();
+                numSpin.increment();
+                updateInfo();
+            } catch (SQLException e) {
+                creatingError();
+                e.printStackTrace();
+            }
+        }
     }
-
     @Override
     public void updateInfo() {
 
@@ -104,21 +177,24 @@ public class SessionChangeController extends AbstractController implements infoE
 
     @Override
     public void creatingError() {
-
+        createSaveErrorLabel.setVisible(true);
     }
 
     @Override
     public void editingError() {
+        editSaveErrorLabel.setVisible(true);
+    }
 
+    private void hideErrors() {
+        createSaveErrorLabel.setVisible(false);
+        editSaveErrorLabel.setVisible(false);
     }
 
 
     private void setSliders() {
 
-        numSpin.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(7, 1000));
         hourSlider.setShowTickLabels(true);
         hourSlider.setShowTickMarks(true);
-        hourSlider.setSnapToTicks(true);
         hourSlider.setMin(0);
         hourSlider.setMax(24);
         hourSlider.setMajorTickUnit(12);
@@ -145,5 +221,149 @@ public class SessionChangeController extends AbstractController implements infoE
                 hourLabel.setText(String.valueOf(Math.round(hourSlider.getValue())));
             }
         });
+
+
+
+
+    }
+
+
+    private void setFields() {
+
+        if (DataLoader.getFilmNames() == null || DataLoader.getFilmNames().size() == 0) {
+            try {
+                DataLoader.loadFilmNames();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        filmsField.setItems(DataLoader.getFilmNames());
+
+
+        numSpin.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(sessionsInfoList.get(sessionsInfoList.size() - 1).getIdSession() + 1, 1000));
+
+        if (DataLoader.getTheatersHashMap() == null || DataLoader.getTheatersHashMap().size() == 0)
+            try {
+                DataLoader.loadTheaters();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+
+        ObservableList<Integer> list = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
+        theaterSpin.setValueFactory(new SpinnerValueFactory<Integer>() {
+
+            int i = 0;
+
+            @Override
+            public void decrement(int steps) {
+
+                if (i - 1 >= 0) {
+                    i--;
+                    setValue(list.get(i).intValue());
+                }
+
+            }
+
+            @Override
+            public void increment(int steps) {
+
+                if (i + 1 < list.size()) {
+                    i++;
+                    setValue(list.get(i).intValue());
+                }
+            }
+        });
+        theaterSpin.increment();
+        theaterSpin.decrement();
+
+
+        standartPriceSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 0, 10));
+        vipPriceSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 0, 10));
+
+    }
+
+    private Time getSessionTime() {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(0, 0,0, Integer.parseInt(hourLabel.getText()), Integer.parseInt(minuteLabel.getText()));
+        return new Time(calendar.getTimeInMillis());
+    }
+
+    private Time getTimeFromString(String string) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(0, 0,0, Integer.parseInt(string.substring(0, 2)), Integer.parseInt(string.substring(string.length() - 2, string.length())));
+        System.out.println(new Time(calendar.getTimeInMillis()));
+        return new Time(calendar.getTimeInMillis());
+
+    }
+
+    private void setTableEditable() {
+
+
+        standartPriceCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        vipPriceCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+        ObservableList<String> filmNames = DataLoader.getFilmNames();
+        filmCol.setCellFactory(ComboBoxTableCell.forTableColumn(filmNames));
+
+        ObservableList<Integer> theatersList = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
+        theaterCol.setCellFactory(ComboBoxTableCell.forTableColumn(theatersList));
+
+        dateCol.setCellFactory(TextFieldTableCell.forTableColumn(new DateStringConverter()));
+        timeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        standartPriceCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Session, Integer> event) {
+                changedRows.add(event.getTablePosition().getRow());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setStandartCost(event.getNewValue());
+            }
+        });
+
+        filmCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Session, String> event) {
+                changedRows.add(event.getTablePosition().getRow());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setFilmName(event.getNewValue());
+            }
+        });
+
+        timeCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Session, String> event) {
+                changedRows.add(event.getTablePosition().getRow());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setSessionTime(event.getNewValue());
+            }
+        });
+
+        theaterCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Session, Integer> event) {
+                changedRows.add(event.getTablePosition().getRow());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setTheaterNumber(event.getNewValue());
+            }
+        });
+
+        dateCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Date>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Session, Date> event) {
+                Date date = event.getNewValue();
+                changedRows.add(event.getTablePosition().getRow());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setSessionDate(new java.sql.Date(date.getTime()));
+            }
+        });
+
+        vipPriceCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Session, Integer>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Session, Integer> event) {
+                changedRows.add(event.getTablePosition().getRow());
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).setVipCost(event.getNewValue());
+            }
+        });
+
     }
 }
