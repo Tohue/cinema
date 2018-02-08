@@ -62,7 +62,8 @@ public class ScheduleScreenController extends AbstractController {
             Calendar calendar = Calendar.getInstance();
             calendar.set(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
 
-            sessionList = DataLoader.getSessionsByDate(new Date(calendar.getTime().getTime()));
+       //     sessionList = DataLoader.getSessionsByDate(new Date(calendar.getTime().getTime()));
+            sessionList = DataLoader.getSessionsByDate(new java.sql.Date(calendar.getTime().getTime()));
             timeCol.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
             nameCol.setCellValueFactory(new PropertyValueFactory<>("filmName"));
             theaterCol.setCellValueFactory(new PropertyValueFactory<>("theaterNumber"));

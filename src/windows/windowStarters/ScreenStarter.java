@@ -3,6 +3,7 @@ package windows.windowStarters;
 
 import entities.Film;
 import entities.Session;
+import entities.Theater;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import windows.builders.FullSizeWindowBuilder;
@@ -75,10 +76,11 @@ public class ScreenStarter {
     }
 
 
-    public static void StartSelectSeats(Session session, Stage lastWindow) throws IOException {
+    public static void StartSelectSeats(Session session, Theater theater, Stage lastWindow) throws IOException {
 
         String FXMLName ="/ContentScreens/SelectSeatsScreen.fxml";
         SelectSeatsController.setSession(session);
+        SelectSeatsController.setTheater(theater);
         Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName, lastWindow);
         primaryStage.setMinHeight(minWindowHeight);
         primaryStage.setMinWidth(minWindowWidth);

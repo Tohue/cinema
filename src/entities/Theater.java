@@ -4,8 +4,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class Theater {
+
     private IntegerProperty theaterNumber;
     private IntegerProperty seatsNumber;
+
 
     public Theater(int theaterNumber, int seatsNumber) {
         this.theaterNumber = new SimpleIntegerProperty(theaterNumber);

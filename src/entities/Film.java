@@ -106,4 +106,9 @@ public class Film {
     public void setPoster(Image poster) {
         this.poster.set(poster);
     }
+
+    @Override
+    public String toString() {
+        return new String(id.getValue() + "  " + name.getValue() + "  " + description.getValue() + "  " + genre.getValue() + "  " + country.getValue() + "  " + length.getValue() + "  " + poster.toString());
+    }
 }

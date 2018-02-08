@@ -8,10 +8,10 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.*;
+
 
 
 public class DataLoader {
@@ -190,7 +190,7 @@ public class DataLoader {
      * @return
      * @throws SQLException
      */
-    public static ObservableList<Session> getSessionsByDate(Date  date) throws SQLException {
+    public static ObservableList<Session> getSessionsByDate(Date date) throws SQLException {
 
         ObservableList<Session> sessions = FXCollections.observableArrayList();
         PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.GET_SESSIONS_BY_DATE);
@@ -229,6 +229,13 @@ public class DataLoader {
         return filmNames;
     }
 
+    /**
+     * Получение времени сеансов конретного фильма в конкретный день
+     * @param filmname
+     * @param date
+     * @return
+     * @throws SQLException
+     */
     public static ObservableList<Time> getFilmtimesByDate(String filmname, java.sql.Date date) throws SQLException {
 
         filmtimes.clear();
@@ -245,5 +252,63 @@ public class DataLoader {
 
         return filmtimes;
     }
+
+    /**
+     * Получение сеанса по дате, времени и названию фильма
+     * @param filmname
+     * @param date
+     * @param time
+     * @return
+     */
+    public static STPair getSessionByDatetimeAndName(String filmname, LocalDate date, Time time) {
+
+        Session session;
+        Theater theater;
+
+        if (DBConnector.isConnected()) {
+            try {
+
+                PreparedStatement statement  = DBConnector.getConnection().prepareStatement(Requests.GET_SESSION_BY_DATETIME_AND_NAME);
+                statement.setString(1, filmname);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
+                statement.setDate(2, new java.sql.Date(calendar.getTimeInMillis()));
+                statement.setTime(3, time);
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+                    session = new Session(resultSet.getString("FilmName"), resultSet.getDate("SessionDate"), resultSet.getTime("SessionTime"), resultSet.getInt("TheaterNumber"), resultSet.getInt("idSessions"), resultSet.getInt("OrdCost"), resultSet.getInt("VipCost"));
+                    theater = new Theater(resultSet.getInt("TheaterNumber"), resultSet.getInt("SeatsNumber"));
+                    return new STPair(theater, session);
+                } else return null;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return null;
+    }
+
+    public static Set<Pair<Integer>> getBookedSeats(Session session) {
+
+        Set<Pair<Integer>> seats = new HashSet<>();
+
+        try {
+            PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.GET_BOOKED_SEATS);
+            statement.setInt(1, session.getIdSession());
+            ResultSet pairs = statement.executeQuery();
+
+            while (pairs.next())
+                seats.add(new Pair<>(pairs.getInt("RowNumber"), pairs.getInt("SeatNumber")));
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return seats;
+    }
+
 }
 

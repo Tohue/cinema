@@ -2,6 +2,9 @@ package windows.controllers.contentScreens;
 
 import database.DataLoader;
 import entities.Film;
+import entities.STPair;
+import entities.Session;
+import entities.Theater;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +23,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.ResourceBundle;
+
 
 
 public  class FilmInfoScreenController extends AbstractController {
@@ -141,14 +144,18 @@ public  class FilmInfoScreenController extends AbstractController {
                         @Override
                         public void handle(ActionEvent event) {
                             try {
-                                ScreenStarter.StartSelectSeats(null, stage);
+                                STPair pair = DataLoader.getSessionByDatetimeAndName(filmName, datePicker.getValue(), time);
+                                Session selectedSession = pair.getSession();
+                                Theater sessionTheater = pair.getTheater();
+                                if (selectedSession != null)
+                                    ScreenStarter.StartSelectSeats(selectedSession, sessionTheater, stage);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         }
                     });
 
-                    timeLink.setText(time.toString());
+                    timeLink.setText(time.toString().substring(0, 5));
                     timePane.getChildren().add(timeLink);
                 }
             }
