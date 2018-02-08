@@ -36,14 +36,15 @@
                         <Label layoutX="50.0" layoutY="367.0" text="Дата:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="367.0" />
                         <Hyperlink fx:id="todayLink" layoutX="253.0" layoutY="364.0" text="%today" AnchorPane.leftAnchor="253.0" AnchorPane.topAnchor="364.0" />
                         <Hyperlink fx:id="tomorrowLink" layoutX="316.0" layoutY="364.0" text="%tomorrow" AnchorPane.leftAnchor="316.0" AnchorPane.topAnchor="364.0" />
-                        <FlowPane fx:id="timePane" layoutX="50.0" layoutY="405.0" prefHeight="121.0" prefWidth="266.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="405.0" />
+                        <Label fx:id="noFilmsLabel" layoutX="50.0" layoutY="412.0" text="%emptyScheduleText" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="429.0" />
+                        <FlowPane fx:id="timePane" layoutX="36.0" layoutY="429.0" prefHeight="121.0" prefWidth="266.0" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="429.0" />
                      </children>
                   </AnchorPane>
                </children>
             </HBox>
             <AnchorPane layoutX="673.0" layoutY="444.0" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: orange; -fx-background-radius: 10%;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-23.0">
                <children>
-                  <Button fx:id="buyBtn" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" text="%film.buy" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Button fx:id="buyBtn" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" text="%selectSeats" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
                   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" text="%back" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>

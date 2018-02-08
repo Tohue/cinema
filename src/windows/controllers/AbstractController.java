@@ -2,9 +2,13 @@ package windows.controllers;
 
 import javafx.stage.Stage;
 
+import java.util.ResourceBundle;
+
 public abstract class AbstractController {
 
     private Stage lastWindow;
+
+    private ResourceBundle bundle;
 
     protected Stage stage;
 

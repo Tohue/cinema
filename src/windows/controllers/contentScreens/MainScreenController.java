@@ -147,7 +147,7 @@ public class MainScreenController extends AbstractController {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    ScreenStarter.StartFilmInfoList("/ContentScreens/FilmInfoScreen.fxml", film, stage);
+                    ScreenStarter.StartFilmInfoList(film, stage);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

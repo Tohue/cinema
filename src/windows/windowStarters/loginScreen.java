@@ -17,22 +17,28 @@ public class loginScreen extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage)   {
 
-        File DBConfig =  new File("./resources/configFiles/DBConfig.xml");
-        DBPropertiesParser dbPropertiesParser = new DBPropertiesParser();
-        if (!DBConfig.exists()) {
-            System.out.println("не парсим");
-            dbPropertiesParser.newDBProperties();
+        try {
+
+
+            File DBConfig = new File("./resources/configFiles/DBConfig.xml");
+            DBPropertiesParser dbPropertiesParser = new DBPropertiesParser();
+            if (!DBConfig.exists()) {
+                System.out.println("не парсим");
+                dbPropertiesParser.newDBProperties();
+            } else {
+                System.out.println("будем парсить");
+                dbPropertiesParser.parseBDProperties();
+            }
+
+            primaryStage = new ModalityBuilder().getModalityScreen("system/DBLogin.fxml");
+            DBLoginController.setPrimaryStage(primaryStage);
+            primaryStage.show();
+
+        }catch (Exception e )
+        {
+            e.printStackTrace();
         }
-        else {
-            System.out.println("будем парсить");
-            dbPropertiesParser.parseBDProperties();
-        }
-
-        primaryStage = new ModalityBuilder().getModalityScreen("system/DBLogin.fxml");
-        DBLoginController.setPrimaryStage(primaryStage);
-        primaryStage.show();
-
     }
 }

@@ -1,5 +1,3 @@
 Manifest-Version: 1.0
-Class-Path: C:\Users\Erik\IdeaProjects\Кириллов\Cinema\cinema\
- src\
 Main-Class: windows.windowStarters.loginScreen
 

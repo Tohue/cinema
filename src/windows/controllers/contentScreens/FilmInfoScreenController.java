@@ -4,6 +4,8 @@ import database.DataLoader;
 import entities.Film;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -11,12 +13,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import windows.controllers.AbstractController;
+import windows.windowStarters.ScreenStarter;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.ResourceBundle;
 
 
 public  class FilmInfoScreenController extends AbstractController {
@@ -42,6 +46,13 @@ public  class FilmInfoScreenController extends AbstractController {
     FlowPane timePane;
     @FXML
     DatePicker datePicker;
+    @FXML
+    Hyperlink todayLink;
+    @FXML
+    Hyperlink tomorrowLink;
+
+    @FXML
+    Label noFilmsLabel;
 
     private static Film film;
 
@@ -98,6 +109,7 @@ public  class FilmInfoScreenController extends AbstractController {
         posterBut.setGraphic(posterView);
         setDatePicker();
         setFilmTimesByDate(filmName, datePicker.getValue());
+        setLinks();
 
     }
 
@@ -111,20 +123,67 @@ public  class FilmInfoScreenController extends AbstractController {
 
     private void setFilmTimesByDate(String filmName, LocalDate date) {
 
+        hideTimes();
+        datePicker.setValue(date);
         Calendar calendar = Calendar.getInstance();
         calendar.set(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
         try {
             System.out.println(new java.sql.Date(calendar.getTimeInMillis()));
             ObservableList<Time> times = DataLoader.getFilmtimesByDate(filmName, new java.sql.Date(calendar.getTimeInMillis()));
 
-            for (Time time : times) {
-                Hyperlink timeLink = new Hyperlink();
-                timeLink.setText(time.toString());
-                timePane.getChildren().add(timeLink);
+            if (times.size() > 0) {
+
+
+                for (Time time : times) {
+
+                    Hyperlink timeLink = new Hyperlink();
+                    timeLink.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            try {
+                                ScreenStarter.StartSelectSeats(null, stage);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                    timeLink.setText(time.toString());
+                    timePane.getChildren().add(timeLink);
+                }
             }
+
+            else
+                noFilmsLabel.setVisible(true);
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    private void hideTimes() {
+
+        noFilmsLabel.setVisible(false);
+        timePane.getChildren().clear();
+    }
+
+    private void setLinks() {
+
+        todayLink.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setFilmTimesByDate(filmName, LocalDate.now());
+            }
+        });
+
+        tomorrowLink.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setFilmTimesByDate(filmName, LocalDate.now().plusDays(1));
+            }
+        });
 
     }
 }
