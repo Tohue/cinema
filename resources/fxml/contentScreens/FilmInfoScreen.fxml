@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.FilmInfoScreenController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.FilmInfoScreenController">
    <children>
-      <AnchorPane layoutX="380.0" layoutY="82.0" prefHeight="578.0" prefWidth="613.0" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="82.0">
+      <AnchorPane fx:id="mainPanel" layoutX="380.0" layoutY="82.0" prefHeight="578.0" prefWidth="613.0" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="85.0" />
+      <AnchorPane layoutX="68.0" layoutY="52.0" prefHeight="589.0" prefWidth="902.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="52.0">
          <children>
-            <Label fx:id="filmNameLabel" alignment="CENTER" layoutY="36.0" text="Название фильма" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="countryLabel" layoutX="134.0" layoutY="101.0" text="%film.country" AnchorPane.leftAnchor="134.0" AnchorPane.topAnchor="101.0" />
-            <Label fx:id="lengthLabel" layoutX="137.0" layoutY="147.0" text="%film.length" AnchorPane.leftAnchor="137.0" AnchorPane.topAnchor="147.0" />
-            <Label fx:id="descField" alignment="TOP_LEFT" layoutX="137.0" layoutY="234.0" prefHeight="194.0" prefWidth="467.0" text="Label" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="234.0" />
-            <Label fx:id="genreLabel" layoutX="137.0" layoutY="189.0" text="%genre" AnchorPane.leftAnchor="137.0" AnchorPane.topAnchor="189.0" />
+            <HBox prefHeight="595.0" prefWidth="902.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane fx:id="imagePane" prefHeight="446.0" prefWidth="362.0">
+                     <children>
+                        <Button fx:id="posterBut" layoutX="61.0" layoutY="137.0" mnemonicParsing="false" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="504.0" prefWidth="566.0">
+                     <children>
+                        <Label fx:id="filmNameLabel" alignment="TOP_LEFT" text="Название фильма" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="countryLabel" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="50.0" layoutY="149.0" text="%film.country" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="149.0" />
+                        <Label fx:id="lengthLabel" alignment="TOP_LEFT" layoutX="50.0" layoutY="177.0" text="%film.length" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="177.0" />
+                        <Label fx:id="descField" alignment="TOP_LEFT" layoutX="50.0" layoutY="225.0" prefHeight="138.0" prefWidth="503.0" text="Label" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="225.0" />
+                        <Label fx:id="genreLabel" alignment="TOP_LEFT" layoutX="50.0" layoutY="202.0" text="%genre" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="202.0" />
+                        <DatePicker fx:id="datePicker" layoutX="102.0" layoutY="363.0" prefHeight="25.0" prefWidth="123.0" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="363.0" />
+                        <Label layoutX="50.0" layoutY="367.0" text="Дата:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="367.0" />
+                        <Hyperlink fx:id="todayLink" layoutX="253.0" layoutY="364.0" text="%today" AnchorPane.leftAnchor="253.0" AnchorPane.topAnchor="364.0" />
+                        <Hyperlink fx:id="tomorrowLink" layoutX="316.0" layoutY="364.0" text="%tomorrow" AnchorPane.leftAnchor="316.0" AnchorPane.topAnchor="364.0" />
+                        <FlowPane fx:id="timePane" layoutX="50.0" layoutY="405.0" prefHeight="121.0" prefWidth="266.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="405.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <AnchorPane layoutX="673.0" layoutY="444.0" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: orange; -fx-background-radius: 10%;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-23.0">
+               <children>
+                  <Button fx:id="buyBtn" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" text="%film.buy" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" text="%back" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="imagePane" layoutX="139.0" layoutY="65.0" prefHeight="446.0" prefWidth="362.0" style="-fx-background-color: yellow;" AnchorPane.leftAnchor="139.0" AnchorPane.topAnchor="65.0" />
-      <Button layoutX="139.0" layoutY="605.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" text="%back" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="139.0" />
    </children>
 </AnchorPane>

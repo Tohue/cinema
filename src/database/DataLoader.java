@@ -7,10 +7,7 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +26,7 @@ public class DataLoader {
     private static HashMap<Integer, Integer> theatersHashMap = new HashMap<>();
     private static ArrayList<Image> postersList = new ArrayList<>();
     private static ObservableList<String> filmNames = FXCollections.observableArrayList();
-
+    private static ObservableList<Time> filmtimes = FXCollections.observableArrayList();
 
     // Геттеры списков
     public static ObservableList<Ticket> getTicketList() {
@@ -69,9 +66,11 @@ public class DataLoader {
             ResultSet films = null;
             int i = 1;
             films = DBConnector.sendRequest(Requests.GET_ALL_FILMS);
+            InputStream blobStream = null;
 
             while (films.next()) {
-                    filmInfoList.add(new Film(i, films.getString(1), films.getString(4), films.getString(6), films.getString(3), films.getInt(2), null));
+                    blobStream = films.getBlob(5).getBinaryStream();
+                    filmInfoList.add(new Film(i, films.getString(1), films.getString(4), films.getString(6), films.getString(3), films.getInt(2), new Image(blobStream)));
                     i++;
             }
         }
@@ -185,6 +184,12 @@ public class DataLoader {
 
     }
 
+    /**
+     * Загрузка сеансов за определенную дату
+     * @param date
+     * @return
+     * @throws SQLException
+     */
     public static ObservableList<Session> getSessionsByDate(Date  date) throws SQLException {
 
         ObservableList<Session> sessions = FXCollections.observableArrayList();
@@ -204,6 +209,11 @@ public class DataLoader {
 
     }
 
+    /**
+     * Загрузка названий фильмов
+     * @return
+     * @throws SQLException
+     */
     public static ObservableList<String> loadFilmNames() throws SQLException {
 
         filmNames.clear();
@@ -219,4 +229,21 @@ public class DataLoader {
         return filmNames;
     }
 
+    public static ObservableList<Time> getFilmtimesByDate(String filmname, java.sql.Date date) throws SQLException {
+
+        filmtimes.clear();
+
+        if (DBConnector.isConnected()) {
+
+            PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.GET_FILMTIMES_BY_DATE);
+            statement.setDate(1, date);
+            statement.setString(2,  filmname);
+            ResultSet times = statement.executeQuery();
+            while (times.next())
+                filmtimes.add(times.getTime(1));
+        }
+
+        return filmtimes;
+    }
 }
+

@@ -85,6 +85,7 @@ public class FilmListWindowController extends AbstractController {
             String genre = filmTable.getSelectionModel().getSelectedItem().getGenre();
             Image poster = filmTable.getSelectionModel().getSelectedItem().getPoster();
             String name = filmTable.getSelectionModel().getSelectedItem().getName();
+            System.out.println(poster);
 
             try {
                 ScreenStarter.StartFilmInfoList("contentScreens/FilmInfoScreen.fxml", name, country, length, genre, desc, poster, stage);

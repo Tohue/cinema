@@ -15,6 +15,7 @@ public class Requests {
     public static final String GET_THEATERS = "SELECT * FROM Theaters";
     public static final String GET_TICKETS = "SELECT * FROM Tickets";
     public static final String GET_ORDERS = "SELECT * FROM Orders";
+    public static final String GET_FILMTIMES_BY_DATE = "SELECT SessionTime FROM Sessions WHERE SessionDate like ? AND FilmName like ?";
 
 
     /**
