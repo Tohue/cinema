@@ -7,11 +7,39 @@ public class Theater {
 
     private IntegerProperty theaterNumber;
     private IntegerProperty seatsNumber;
+    private IntegerProperty seatsInRow;
+    private IntegerProperty VIPRowNumber;
 
 
-    public Theater(int theaterNumber, int seatsNumber) {
+    public Theater(int theaterNumber, int seatsNumber, int seatsInRow, int VIPRowNumber) {
         this.theaterNumber = new SimpleIntegerProperty(theaterNumber);
         this.seatsNumber = new SimpleIntegerProperty(seatsNumber);
+        this.seatsInRow = new SimpleIntegerProperty(seatsInRow);
+        this.VIPRowNumber = new SimpleIntegerProperty(VIPRowNumber);
+    }
+
+    public int getSeatsInRow() {
+        return seatsInRow.get();
+    }
+
+    public IntegerProperty seatsInRowProperty() {
+        return seatsInRow;
+    }
+
+    public void setSeatsInRow(int seatsInRow) {
+        this.seatsInRow.set(seatsInRow);
+    }
+
+    public int getVIPRowNumber() {
+        return VIPRowNumber.get();
+    }
+
+    public IntegerProperty VIPRowNumberProperty() {
+        return VIPRowNumber;
+    }
+
+    public void setVIPRowNumber(int VIPRowNumber) {
+        this.VIPRowNumber.set(VIPRowNumber);
     }
 
     public int getTheaterNumber() {

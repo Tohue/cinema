@@ -6,6 +6,7 @@ import database.DataLoader;
 import database.Requests;
 
 import entities.Session;
+import entities.Theater;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -101,6 +102,7 @@ public class SessionChangeController extends AbstractController implements infoE
 
         Iterator<Integer> iterator = changedRows.iterator();
         boolean error = false;
+
 
         while (iterator.hasNext()) {
 
@@ -233,7 +235,7 @@ public class SessionChangeController extends AbstractController implements infoE
 
         numSpin.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(sessionsInfoList.get(sessionsInfoList.size() - 1).getIdSession() + 1, 1000));
 
-        if (DataLoader.getTheatersHashMap() == null || DataLoader.getTheatersHashMap().size() == 0)
+        if (DataLoader.getTheatersList() == null || DataLoader.getTheatersList().size() == 0)
             try {
                 DataLoader.loadTheaters();
             } catch (SQLException e) {
@@ -242,7 +244,12 @@ public class SessionChangeController extends AbstractController implements infoE
 
 
 
-        ObservableList<Integer> list = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
+
+   //     ObservableList<Integer> list = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
+        ArrayList<Integer> list = new ArrayList<>();
+        for (Theater k : DataLoader.getTheatersList())
+            list.add(k.getTheaterNumber());
+
         theaterSpin.setValueFactory(new SpinnerValueFactory<>() {
 
             int i = 0;
@@ -300,7 +307,11 @@ public class SessionChangeController extends AbstractController implements infoE
         ObservableList<String> filmNames = DataLoader.getFilmNames();
         filmCol.setCellFactory(ComboBoxTableCell.forTableColumn(filmNames));
 
-        ObservableList<Integer> theatersList = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
+        ArrayList<Integer> list = new ArrayList<>();
+        for (Theater k : DataLoader.getTheatersList())
+            list.add(k.getTheaterNumber());
+
+        ObservableList<Integer> theatersList = FXCollections.observableArrayList(list);
         theaterCol.setCellFactory(ComboBoxTableCell.forTableColumn(theatersList));
 
         dateCol.setCellFactory(TextFieldTableCell.forTableColumn(new DateStringConverter()));

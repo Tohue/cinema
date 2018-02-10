@@ -23,7 +23,7 @@ public class DataLoader {
     private static ObservableList<Ticket> ticketList = FXCollections.observableArrayList();
     private static ObservableList<Order> orderList = FXCollections.observableArrayList();
     private static ObservableList<Integer> orderNumsList = FXCollections.observableArrayList();
-    private static HashMap<Integer, Integer> theatersHashMap = new HashMap<>();
+    private static ArrayList<Theater> theatersList = new ArrayList<>();
     private static ArrayList<Image> postersList = new ArrayList<>();
     private static ObservableList<String> filmNames = FXCollections.observableArrayList();
     private static ObservableList<Time> filmtimes = FXCollections.observableArrayList();
@@ -41,8 +41,8 @@ public class DataLoader {
     public static ObservableList<Session> getSessionList() {
         return sessionList;
     }
-    public static HashMap<Integer, Integer> getTheatersHashMap() {
-        return theatersHashMap;
+    public static ArrayList<Theater> getTheatersList() {
+        return theatersList;
     }
     public static ObservableList<Order> getOrderList() {
         return orderList;
@@ -132,14 +132,14 @@ public class DataLoader {
      */
     public static void loadTheaters() throws SQLException {
 
-        theatersHashMap.clear();
+        theatersList.clear();
         if (DBConnector.isConnected()) {
 
             ResultSet theaters = null;
             theaters = DBConnector.sendRequest(Requests.GET_THEATERS);
 
             while (theaters.next())
-                theatersHashMap.put(theaters.getInt(1), theaters.getInt(2));
+                theatersList.add(new Theater(theaters.getInt(1), theaters.getInt(2), theaters.getInt(3), theaters.getInt(4)));
 
         }
 
@@ -278,7 +278,7 @@ public class DataLoader {
 
                 if (resultSet.next()) {
                     session = new Session(resultSet.getString("FilmName"), resultSet.getDate("SessionDate"), resultSet.getTime("SessionTime"), resultSet.getInt("TheaterNumber"), resultSet.getInt("idSessions"), resultSet.getInt("OrdCost"), resultSet.getInt("VipCost"));
-                    theater = new Theater(resultSet.getInt("TheaterNumber"), resultSet.getInt("SeatsNumber"));
+                    theater = new Theater(resultSet.getInt("TheaterNumber"), resultSet.getInt("SeatsNumber"), resultSet.getInt("SeatsInRow"), resultSet.getInt("VIPRow"));
                     return new STPair(theater, session);
                 } else return null;
 

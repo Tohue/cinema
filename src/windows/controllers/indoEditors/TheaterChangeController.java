@@ -3,14 +3,14 @@ package windows.controllers.indoEditors;
 import database.DBConnector;
 import database.DataLoader;
 import database.Requests;
+import entities.Theater;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import windows.controllers.AbstractController;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -23,14 +23,22 @@ public class TheaterChangeController extends AbstractController implements infoE
     @FXML
     ChoiceBox<Integer> editNumberField;
     @FXML
-    TextField editCountField;
+    Spinner<Integer> editCountField;
+    @FXML
+    Spinner<Integer> editSeatsInRowField;
+    @FXML
+    Spinner<Integer> editVIPRowField;
+    @FXML
+    TextField addSeatsInRowField;
+    @FXML
+    TextField addVIPRowField;
 
     @FXML
     Label errorSaveLabel;
     @FXML
     Label errorEditLabel;
 
-    private HashMap<Integer, Integer> theaters = null;
+    private ArrayList<Theater> theaters = null;
 
     private static Stage primaryStage;
 
@@ -52,9 +60,22 @@ public class TheaterChangeController extends AbstractController implements infoE
 
 
         editNumberField.setOnAction(event -> {
-            if (theaters != null)
-                editCountField.setText(theaters.get(editNumberField.getValue()).toString());
+            if (theaters != null) {
+                int i = 0;
+                int currTheaterIndex = 0;
+                for (Theater theater : theaters) {
+                    if (theater.getTheaterNumber() == editNumberField.getValue()) {
+                        currTheaterIndex = i;
+                        break;
+                    }
+                    i++;
+                }
+                editCountField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, theaters.get(currTheaterIndex).getSeatsNumber(), 1));
+                editSeatsInRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getSeatsInRow(), 1));
+                editVIPRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getVIPRowNumber(), 1));
+            }
         });
+
 
         updateInfo();
     }
@@ -70,6 +91,8 @@ public class TheaterChangeController extends AbstractController implements infoE
             PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.ADD_THEATER);
             statement.setInt(1, Integer.parseInt(addNumberField.getText()));
             statement.setInt(2, Integer.parseInt(addCountField.getText()));
+            statement.setInt(3, Integer.parseInt(addSeatsInRowField.getText()));
+            statement.setInt(4, Integer.parseInt(addVIPRowField.getText()));
             statement.executeUpdate();
             hideErrors();
             updateInfo();
@@ -87,13 +110,11 @@ public class TheaterChangeController extends AbstractController implements infoE
         editNumberField.getItems().clear();
         try {
             DataLoader.loadTheaters();
-            theaters = DataLoader.getTheatersHashMap();
+            theaters = DataLoader.getTheatersList();
 
-            Iterator iterator = theaters.entrySet().iterator();
-            while (iterator.hasNext()) {
-                HashMap.Entry<Integer, Integer> temp = (HashMap.Entry<Integer, Integer>)iterator.next();
-                editNumberField.getItems().add(temp.getKey());
-            }
+
+            for (Theater theater : theaters)
+                editNumberField.getItems().add(theater.getTheaterNumber());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -125,8 +146,10 @@ public class TheaterChangeController extends AbstractController implements infoE
         try {
             statement = DBConnector.getConnection().prepareStatement(Requests.UPDATE_THEATER);
 
-            statement.setInt(1, Integer.parseInt(editCountField.getText()));
+            statement.setInt(1, editCountField.getValue());
             statement.setInt(2, editNumberField.getValue());
+            statement.setInt(3, editSeatsInRowField.getValue());
+            statement.setInt(4, editVIPRowField.getValue());
             statement.executeUpdate();
             updateInfo();
             hideErrors();
