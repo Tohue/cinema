@@ -18,39 +18,39 @@ public class DataLoader {
 
 
     // Все данные из базы
-    private static ObservableList<Film> filmInfoList = FXCollections.observableArrayList();
-    private static ObservableList<Session> sessionList = FXCollections.observableArrayList();
-    private static ObservableList<Ticket> ticketList = FXCollections.observableArrayList();
-    private static ObservableList<Order> orderList = FXCollections.observableArrayList();
-    private static ObservableList<Integer> orderNumsList = FXCollections.observableArrayList();
-    private static ArrayList<Theater> theatersList = new ArrayList<>();
-    private static ArrayList<Image> postersList = new ArrayList<>();
-    private static ObservableList<String> filmNames = FXCollections.observableArrayList();
-    private static ObservableList<Time> filmtimes = FXCollections.observableArrayList();
+    private  ObservableList<Film> filmInfoList = FXCollections.observableArrayList();
+    private  ObservableList<Session> sessionList = FXCollections.observableArrayList();
+    private  ObservableList<Ticket> ticketList = FXCollections.observableArrayList();
+    private  ObservableList<Order> orderList = FXCollections.observableArrayList();
+    private  ObservableList<Integer> orderNumsList = FXCollections.observableArrayList();
+    private  ArrayList<Theater> theatersList = new ArrayList<>();
+    private  ArrayList<Image> postersList = new ArrayList<>();
+    private  ObservableList<String> filmNames = FXCollections.observableArrayList();
+    private  ObservableList<Time> filmtimes = FXCollections.observableArrayList();
 
     // Геттеры списков
-    public static ObservableList<Ticket> getTicketList() {
+    public  ObservableList<Ticket> getTicketList() {
         return ticketList;
     }
-    public static ArrayList<Image> getPostersList() {
+    public  ArrayList<Image> getPostersList() {
         return postersList;
     }
-    public static ObservableList<Film> getFilmInfoList() {
+    public  ObservableList<Film> getFilmInfoList() {
         return filmInfoList;
     }
-    public static ObservableList<Session> getSessionList() {
+    public  ObservableList<Session> getSessionList() {
         return sessionList;
     }
-    public static ArrayList<Theater> getTheatersList() {
+    public  ArrayList<Theater> getTheatersList() {
         return theatersList;
     }
-    public static ObservableList<Order> getOrderList() {
+    public  ObservableList<Order> getOrderList() {
         return orderList;
     }
-    public static ObservableList<Integer> getOrderNumsList() {
+    public  ObservableList<Integer> getOrderNumsList() {
         return orderNumsList;
     }
-    public static ObservableList<String> getFilmNames() {
+    public  ObservableList<String> getFilmNames() {
         return filmNames;
     }
 
@@ -58,7 +58,7 @@ public class DataLoader {
      * Загрузка списка фильмов
      * @throws SQLException
      */
-    public static void loadFilmInfo() throws SQLException {
+    public  void loadFilmInfo() throws SQLException {
 
         filmInfoList.clear();
         if (DBConnector.isConnected()) {
@@ -80,7 +80,7 @@ public class DataLoader {
      * Загрузка расписания
      * @throws SQLException
      */
-    public static void loadSchedule() throws SQLException {
+    public  void loadSchedule() throws SQLException {
 
         sessionList.clear();
         if (DBConnector.isConnected()) {
@@ -99,7 +99,7 @@ public class DataLoader {
      * Загрузка постеров
      * @throws SQLException
      */
-    public static void loadPosters() throws SQLException {
+    public  void loadPosters() throws SQLException {
 
         postersList.clear();
         if (DBConnector.isConnected()) {
@@ -130,7 +130,7 @@ public class DataLoader {
      * Загрузка списка залов
      * @throws SQLException
      */
-    public static void loadTheaters() throws SQLException {
+    public  void loadTheaters() throws SQLException {
 
         theatersList.clear();
         if (DBConnector.isConnected()) {
@@ -150,7 +150,7 @@ public class DataLoader {
      * Загрузка списка билетов
      * @throws SQLException
      */
-    public static void loadTickets() throws SQLException {
+    public  void loadTickets() throws SQLException {
 
         ticketList.clear();
         if (DBConnector.isConnected()) {
@@ -168,7 +168,7 @@ public class DataLoader {
     /**
      * Загрузка списка заказов
      */
-    public static void loadOrders() throws SQLException {
+    public  void loadOrders() throws SQLException {
 
         orderList.clear();
         if (DBConnector.isConnected()) {
@@ -214,7 +214,7 @@ public class DataLoader {
      * @return
      * @throws SQLException
      */
-    public static ObservableList<String> loadFilmNames() throws SQLException {
+    public  ObservableList<String> loadFilmNames() throws SQLException {
 
         filmNames.clear();
 
@@ -236,7 +236,7 @@ public class DataLoader {
      * @return
      * @throws SQLException
      */
-    public static ObservableList<Time> getFilmtimesByDate(String filmname, java.sql.Date date) throws SQLException {
+    public  ObservableList<Time> getFilmtimesByDate(String filmname, java.sql.Date date) throws SQLException {
 
         filmtimes.clear();
 
@@ -260,7 +260,7 @@ public class DataLoader {
      * @param time
      * @return
      */
-    public static STPair getSessionByDatetimeAndName(String filmname, LocalDate date, Time time) {
+    public  STPair getSessionByDatetimeAndName(String filmname, LocalDate date, Time time) {
 
         Session session;
         Theater theater;
@@ -290,7 +290,7 @@ public class DataLoader {
         return null;
     }
 
-    public static Set<Pair<Integer>> getBookedSeats(Session session) {
+    public  Set<Pair<Integer>> getBookedSeats(Session session) {
 
         Set<Pair<Integer>> seats = new HashSet<>();
 

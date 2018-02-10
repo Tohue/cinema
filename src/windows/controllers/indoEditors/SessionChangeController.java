@@ -163,14 +163,16 @@ public class SessionChangeController extends AbstractController implements infoE
 
 
         sessionTable.getItems().clear();
+        DataLoader dataLoader = new DataLoader();
 
         try {
-            DataLoader.loadSchedule();
-            sessionsInfoList = DataLoader.getSessionList();
+
+            dataLoader.loadSchedule();
+            sessionsInfoList = dataLoader.getSessionList();
         } catch (SQLException e) {
             e.printStackTrace();
-            if (DataLoader.getSessionList() != null)
-                sessionsInfoList = DataLoader.getSessionList();
+            if (dataLoader.getSessionList() != null)
+                sessionsInfoList = dataLoader.getSessionList();
         }
 
         sessionTable.setItems(sessionsInfoList);
@@ -222,22 +224,23 @@ public class SessionChangeController extends AbstractController implements infoE
 
     private void setFields() {
 
-        if (DataLoader.getFilmNames() == null || DataLoader.getFilmNames().size() == 0) {
+        DataLoader dataLoader = new DataLoader();
+        if (dataLoader.getFilmNames() == null || dataLoader.getFilmNames().size() == 0) {
             try {
-                DataLoader.loadFilmNames();
+                dataLoader.loadFilmNames();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
 
-        filmsField.setItems(DataLoader.getFilmNames());
+        filmsField.setItems(dataLoader.getFilmNames());
 
 
         numSpin.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(sessionsInfoList.get(sessionsInfoList.size() - 1).getIdSession() + 1, 1000));
 
-        if (DataLoader.getTheatersList() == null || DataLoader.getTheatersList().size() == 0)
+        if (dataLoader.getTheatersList() == null || dataLoader.getTheatersList().size() == 0)
             try {
-                DataLoader.loadTheaters();
+                dataLoader.loadTheaters();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -247,7 +250,7 @@ public class SessionChangeController extends AbstractController implements infoE
 
    //     ObservableList<Integer> list = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
         ArrayList<Integer> list = new ArrayList<>();
-        for (Theater k : DataLoader.getTheatersList())
+        for (Theater k : dataLoader.getTheatersList())
             list.add(k.getTheaterNumber());
 
         theaterSpin.setValueFactory(new SpinnerValueFactory<>() {
@@ -300,15 +303,16 @@ public class SessionChangeController extends AbstractController implements infoE
 
     private void setTableEditable() {
 
+        DataLoader dataLoader = new DataLoader();
 
         standartPriceCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         vipPriceCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
-        ObservableList<String> filmNames = DataLoader.getFilmNames();
+        ObservableList<String> filmNames = dataLoader.getFilmNames();
         filmCol.setCellFactory(ComboBoxTableCell.forTableColumn(filmNames));
 
         ArrayList<Integer> list = new ArrayList<>();
-        for (Theater k : DataLoader.getTheatersList())
+        for (Theater k : dataLoader.getTheatersList())
             list.add(k.getTheaterNumber());
 
         ObservableList<Integer> theatersList = FXCollections.observableArrayList(list);

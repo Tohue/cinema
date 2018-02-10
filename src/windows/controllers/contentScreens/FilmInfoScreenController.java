@@ -44,8 +44,6 @@ public  class FilmInfoScreenController extends AbstractController {
     @FXML
     Pane mainPanel;
     @FXML
-    Button buyBtn;
-    @FXML
     FlowPane timePane;
     @FXML
     DatePicker datePicker;
@@ -132,7 +130,8 @@ public  class FilmInfoScreenController extends AbstractController {
         calendar.set(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
         try {
             System.out.println(new java.sql.Date(calendar.getTimeInMillis()));
-            ObservableList<Time> times = DataLoader.getFilmtimesByDate(filmName, new java.sql.Date(calendar.getTimeInMillis()));
+            DataLoader dataLoader = new DataLoader();
+            ObservableList<Time> times = dataLoader.getFilmtimesByDate(filmName, new java.sql.Date(calendar.getTimeInMillis()));
 
             if (times.size() > 0) {
 
@@ -144,7 +143,7 @@ public  class FilmInfoScreenController extends AbstractController {
                         @Override
                         public void handle(ActionEvent event) {
                             try {
-                                STPair pair = DataLoader.getSessionByDatetimeAndName(filmName, datePicker.getValue(), time);
+                                STPair pair = dataLoader.getSessionByDatetimeAndName(filmName, datePicker.getValue(), time);
                                 Session selectedSession = pair.getSession();
                                 Theater sessionTheater = pair.getTheater();
                                 if (selectedSession != null)

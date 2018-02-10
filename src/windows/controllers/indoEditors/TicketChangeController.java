@@ -12,6 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 import windows.controllers.AbstractController;
+
+import javax.xml.crypto.Data;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -131,8 +133,9 @@ public class TicketChangeController extends AbstractController implements infoEd
          * Загрузка списка фильмов
          */
         try {
-            DataLoader.loadTickets();
-            observableList = DataLoader.getTicketList();
+            DataLoader dataLoader = new DataLoader();
+            dataLoader.loadTickets();
+            observableList = dataLoader.getTicketList();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -225,9 +228,9 @@ public class TicketChangeController extends AbstractController implements infoEd
         addTickTypeField.getItems().add("VIP");
 
         try {
-
-            DataLoader.loadSchedule();
-            ObservableList<Session> sessions = DataLoader.getSessionList();
+            DataLoader dataLoader = new DataLoader();
+            dataLoader.loadSchedule();
+            ObservableList<Session> sessions = dataLoader.getSessionList();
             int sessionsID;
             String sessionName;
             for (Session session : sessions) {
@@ -242,8 +245,9 @@ public class TicketChangeController extends AbstractController implements infoEd
         }
 
         try {
-            DataLoader.loadOrders();
-            addNumOrdField.setItems(DataLoader.getOrderNumsList());
+            DataLoader dataLoader = new DataLoader();
+            dataLoader.loadOrders();
+            addNumOrdField.setItems(dataLoader.getOrderNumsList());
         } catch (SQLException e) {
             e.printStackTrace();
         }

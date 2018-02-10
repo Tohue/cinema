@@ -4,6 +4,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,14 +12,20 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.FilmInfoScreenController">
    <children>
-      <AnchorPane fx:id="mainPanel" layoutX="380.0" layoutY="82.0" prefHeight="578.0" prefWidth="613.0" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="85.0" />
+      <AnchorPane fx:id="mainPanel" layoutX="380.0" layoutY="82.0" prefHeight="578.0" prefWidth="613.0" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="85.0">
+         <effect>
+            <DropShadow height="0.0" radius="15.807500000000001" width="65.23" />
+         </effect></AnchorPane>
       <AnchorPane layoutX="68.0" layoutY="52.0" prefHeight="589.0" prefWidth="902.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="52.0">
          <children>
             <HBox prefHeight="595.0" prefWidth="902.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane fx:id="imagePane" prefHeight="446.0" prefWidth="362.0">
                      <children>
-                        <Button fx:id="posterBut" layoutX="61.0" layoutY="137.0" mnemonicParsing="false" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="posterBut" layoutX="61.0" layoutY="137.0" mnemonicParsing="false" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <effect>
+                              <DropShadow radius="7.715" width="11.86" />
+                           </effect></Button>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="504.0" prefWidth="566.0">
@@ -42,13 +49,8 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <AnchorPane layoutX="673.0" layoutY="444.0" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: orange; -fx-background-radius: 10%;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-23.0">
-               <children>
-                  <Button fx:id="buyBtn" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" text="%selectSeats" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" text="%back" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
+      <Button layoutX="14.0" layoutY="660.0" mnemonicParsing="false" onAction="#back" prefHeight="45.0" prefWidth="166.0" text="%back" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" />
    </children>
 </AnchorPane>

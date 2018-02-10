@@ -4,6 +4,10 @@ import database.DataLoader;
 import entities.Pair;
 import entities.Session;
 import entities.Theater;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,8 +18,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import windows.components.SeatView;
 import windows.controllers.AbstractController;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -25,14 +31,14 @@ public class SelectSeatsController extends AbstractController {
 
     private static Session session;
     private static Theater theater;
-    private final int seatsInRow = 10;
+    private int ticketSum;
+    private int countSelectedSeats;
 
     @FXML
     AnchorPane mainPane;
     @FXML
     AnchorPane infoPane;
-    @FXML
-    GridPane seatsPane;
+
     @FXML
     Label theaterNumLabel;
     @FXML
@@ -49,6 +55,8 @@ public class SelectSeatsController extends AbstractController {
     Button acceptButton;
     @FXML
     Label orderedLabel;
+    @FXML
+    AnchorPane seatsAnchorPane;
 
     public static void setTheater(Theater theater) {
         SelectSeatsController.theater = theater;
@@ -75,39 +83,73 @@ public class SelectSeatsController extends AbstractController {
 
     private void setSeatsView() {
 
-        Set<Pair<Integer>> booked = DataLoader.getBookedSeats(session);
+        DataLoader dataLoader = new DataLoader();
+        Set<Pair<Integer>> booked = dataLoader.getBookedSeats(session);
+
         orderedLabel.setText(orderedLabel.getText() +  " " + booked.size());
+        freeSeatsCountLabel.setText(freeSeatsCountLabel.getText() + " " + (theater.getSeatsNumber() - booked.size()));
+
+        int seatsInRow = theater.getSeatsInRow();
+        int VIPRows = theater.getVIPRowNumber();
+        int ordRows = theater.getSeatsNumber() / seatsInRow - VIPRows;
+        int allRows = ordRows + VIPRows;
 
         int seatsCount = 1;
-        int row = 0;
-        int XMargin = 100;
-        int YMargin = 80;
+        int XAnchor;
+        int YAnchor = 0;
 
-        seatsPane.getColumnConstraints().get(0).setPercentWidth(100 / seatsInRow);
-        while (seatsCount <= theater.getSeatsNumber()) {
+        seatsAnchorPane.prefWidthProperty().bind(mainPane.widthProperty().divide(1.5));
+        seatsAnchorPane.prefHeightProperty().bind(mainPane.heightProperty().divide(2))
+        ;
+        IntegerProperty XLayout = new SimpleIntegerProperty();
+        XLayout.bind(seatsAnchorPane.widthProperty().divide(3));
 
+        for (int currRowIndex = 1; currRowIndex <= allRows; currRowIndex++) {
+            XAnchor = 0;
+            YAnchor += 50;
+            for (int currSeatNum = 1; currSeatNum < seatsInRow; currSeatNum++) {
 
-            for (int i = 0; i < seatsInRow; i++) {
-
-                CheckBox seat = new CheckBox();
-                seat.setPrefHeight(30);
-                seat.setPrefWidth(30);
-             //   seat.setPadding(new Insets(5, 30, 5, 30));
+                SeatView seat = new SeatView();
 
                 for (Pair<Integer> pair : booked)
-                    if (pair.getElement1() == row + 1 && pair.getElement2() == i + 1) {
-                        seat.setSelected(true);
-                        seat.setDisable(true);
-                    }
+                    if (pair.getElement1() == currRowIndex && pair.getElement2() == currSeatNum)
+                        seat.setOrder(true);
 
-                seatsPane.addRow(row, seat);
-                for (ColumnConstraints constraints : seatsPane.getColumnConstraints())
-                    constraints.setPercentWidth(100 / seatsInRow);
-                seatsCount++;
+
+                if (currRowIndex > ordRows)
+                    seat.setVIP(true);
+
+                seat.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        if (seat.isSelected()) {
+                            if (seat.isVIP())
+                                ticketSum += session.getVipCost();
+                            else ticketSum += session.getStandartCost();
+                            countSelectedSeats++;
+                        } else {
+                            if (seat.isVIP())
+                                ticketSum -= session.getVipCost();
+                            else ticketSum -= session.getStandartCost();
+                            countSelectedSeats--;
+                        }
+                        updateFields();
+                    }
+                });
+
+                AnchorPane.setTopAnchor(seat, YAnchor * 1.0);
+                AnchorPane.setLeftAnchor(seat, XAnchor * 1.0);
+                seatsAnchorPane.getChildren().add(seat);
+                XAnchor += 50;
             }
-            row++;
         }
 
+    }
+
+    private void updateFields() {
+
+        sumLabel.setText(String.valueOf(ticketSum));
+        ticketCountLabel.setText(String.valueOf(countSelectedSeats));
     }
 
 }

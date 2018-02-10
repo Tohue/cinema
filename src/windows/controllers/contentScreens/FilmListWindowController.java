@@ -47,15 +47,16 @@ public class FilmListWindowController extends AbstractController {
         /**
          * Загрузка списка фильмов, если он пустой
          */
-        if (DataLoader.getFilmInfoList().isEmpty()) {
+        DataLoader dataLoader = new DataLoader();
+        if (dataLoader.getFilmInfoList().isEmpty()) {
             try {
-                DataLoader.loadFilmInfo();
-                observableList = DataLoader.getFilmInfoList();
+                dataLoader.loadFilmInfo();
+                observableList = dataLoader.getFilmInfoList();
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else observableList = DataLoader.getFilmInfoList();
+        } else observableList = dataLoader.getFilmInfoList();
 
         /**
          * Инициализация колонок таблицы

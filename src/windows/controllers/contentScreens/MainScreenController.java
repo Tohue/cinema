@@ -115,8 +115,9 @@ public class MainScreenController extends AbstractController {
         ObservableList<Film> films;
         try {
 
-            DataLoader.loadFilmInfo();
-            films = DataLoader.getFilmInfoList();
+            DataLoader dataLoader = new DataLoader();
+            dataLoader.loadFilmInfo();
+            films = dataLoader.getFilmInfoList();
 
             System.out.println("Получили фильмов: " + films.size());
             if (films.size() > 0) {

@@ -109,8 +109,9 @@ public class TheaterChangeController extends AbstractController implements infoE
 
         editNumberField.getItems().clear();
         try {
-            DataLoader.loadTheaters();
-            theaters = DataLoader.getTheatersList();
+            DataLoader dataLoader = new DataLoader();
+            dataLoader.loadTheaters();
+            theaters = dataLoader.getTheatersList();
 
 
             for (Theater theater : theaters)
