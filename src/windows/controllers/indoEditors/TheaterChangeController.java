@@ -133,6 +133,26 @@ public class TheaterChangeController extends AbstractController implements infoE
         errorEditLabel.setVisible(true);
     }
 
+    @Override
+    public void delete() {
+
+        if (editNumberField.getValue() != null) {
+            try {
+                PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.DELETE_THEATER);
+                System.out.println(1);
+                statement.setInt(1, editNumberField.getValue());
+                System.out.println(2);
+                statement.executeUpdate();
+                System.out.println(3);
+                updateInfo();
+                System.out.println(4);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     private void hideErrors () {
         errorEditLabel.setVisible(false);
         errorSaveLabel.setVisible(false);

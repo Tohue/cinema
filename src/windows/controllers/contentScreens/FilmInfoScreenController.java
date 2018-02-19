@@ -139,18 +139,15 @@ public  class FilmInfoScreenController extends AbstractController {
                 for (Time time : times) {
 
                     Hyperlink timeLink = new Hyperlink();
-                    timeLink.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            try {
-                                STPair pair = dataLoader.getSessionByDatetimeAndName(filmName, datePicker.getValue(), time);
-                                Session selectedSession = pair.getSession();
-                                Theater sessionTheater = pair.getTheater();
-                                if (selectedSession != null)
-                                    ScreenStarter.StartSelectSeats(selectedSession, sessionTheater, stage);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                    timeLink.setOnAction(event -> {
+                        try {
+                            STPair pair = dataLoader.getSessionByDatetimeAndName(filmName, datePicker.getValue(), time);
+                            Session selectedSession = pair.getSession();
+                            Theater sessionTheater = pair.getTheater();
+                            if (selectedSession != null)
+                                ScreenStarter.StartSelectSeats(selectedSession, sessionTheater, stage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     });
 
@@ -177,19 +174,9 @@ public  class FilmInfoScreenController extends AbstractController {
 
     private void setLinks() {
 
-        todayLink.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                setFilmTimesByDate(filmName, LocalDate.now());
-            }
-        });
+        todayLink.setOnAction(event -> setFilmTimesByDate(filmName, LocalDate.now()));
 
-        tomorrowLink.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                setFilmTimesByDate(filmName, LocalDate.now().plusDays(1));
-            }
-        });
+        tomorrowLink.setOnAction(event -> setFilmTimesByDate(filmName, LocalDate.now().plusDays(1)));
 
     }
 }

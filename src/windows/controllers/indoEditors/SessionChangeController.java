@@ -7,11 +7,8 @@ import database.Requests;
 
 import entities.Session;
 import entities.Theater;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
@@ -189,6 +186,27 @@ public class SessionChangeController extends AbstractController implements infoE
         editSaveErrorLabel.setVisible(true);
     }
 
+    @Override
+    public void delete() {
+
+        if (sessionTable.getSelectionModel().getSelectedItems() != null) {
+
+                try {
+                    PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.DELETE_SESSION);
+                    statement.setInt(1, sessionTable.getSelectionModel().getSelectedItem().getIdSession());
+                    statement.executeUpdate();
+                    updateInfo();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
+
+        }
+
+
+    }
+
     private void hideErrors() {
         createSaveErrorLabel.setVisible(false);
         editSaveErrorLabel.setVisible(false);
@@ -246,9 +264,6 @@ public class SessionChangeController extends AbstractController implements infoE
             }
 
 
-
-
-   //     ObservableList<Integer> list = FXCollections.observableArrayList(DataLoader.getTheatersHashMap().keySet());
         ArrayList<Integer> list = new ArrayList<>();
         for (Theater k : dataLoader.getTheatersList())
             list.add(k.getTheaterNumber());
@@ -308,6 +323,11 @@ public class SessionChangeController extends AbstractController implements infoE
         standartPriceCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         vipPriceCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
+        try {
+            dataLoader.loadFilmNames();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         ObservableList<String> filmNames = dataLoader.getFilmNames();
         filmCol.setCellFactory(ComboBoxTableCell.forTableColumn(filmNames));
 

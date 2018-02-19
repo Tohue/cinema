@@ -12,4 +12,6 @@ package windows.controllers.indoEditors;
 
      void editingError();
 
+     void delete();
+
 }

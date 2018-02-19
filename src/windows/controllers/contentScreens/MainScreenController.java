@@ -143,14 +143,13 @@ public class MainScreenController extends AbstractController {
         image.fitHeightProperty().bind(postersPane.heightProperty().divide(2));
         button.setGraphic(image);
         filmKeys.put(button, film);
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    ScreenStarter.StartFilmInfoList(film, stage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
+
+        button.setOnAction(event -> {
+            try {
+                ScreenStarter.StartFilmInfoList(film, stage);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 

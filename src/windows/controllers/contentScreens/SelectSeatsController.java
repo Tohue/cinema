@@ -4,7 +4,9 @@ import database.DataLoader;
 import entities.Pair;
 import entities.Session;
 import entities.Theater;
+import entities.Ticket;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,8 +22,10 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import windows.components.SeatView;
 import windows.controllers.AbstractController;
+import windows.windowStarters.ScreenStarter;
 
 import javax.xml.crypto.Data;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -33,6 +37,7 @@ public class SelectSeatsController extends AbstractController {
     private static Theater theater;
     private int ticketSum;
     private int countSelectedSeats;
+    private SimpleBooleanProperty isSelected = new SimpleBooleanProperty(false);
 
     @FXML
     AnchorPane mainPane;
@@ -70,6 +75,7 @@ public class SelectSeatsController extends AbstractController {
 
         setSessionInfo();
         setSeatsView();
+        checkSelection();
 
     }
 
@@ -126,12 +132,14 @@ public class SelectSeatsController extends AbstractController {
                             if (seat.isVIP())
                                 ticketSum += session.getVipCost();
                             else ticketSum += session.getStandartCost();
+
                             countSelectedSeats++;
                         } else {
                             if (seat.isVIP())
                                 ticketSum -= session.getVipCost();
                             else ticketSum -= session.getStandartCost();
                             countSelectedSeats--;
+                            checkSelection();
                         }
                         updateFields();
                     }
@@ -150,6 +158,25 @@ public class SelectSeatsController extends AbstractController {
 
         sumLabel.setText(String.valueOf(ticketSum));
         ticketCountLabel.setText(String.valueOf(countSelectedSeats));
+        acceptButton.disableProperty().bind(isSelected.not());
+
+    }
+
+    private void checkSelection() {
+
+        if (countSelectedSeats == 0)
+            isSelected.setValue(false);
+
+    }
+
+    private void openGoodScreen() {
+
+//        try {
+//            ScreenStarter.StartGoodBuyingScreen(null, session, stage);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
     }
 
 }

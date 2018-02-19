@@ -162,6 +162,11 @@ public class TicketChangeController extends AbstractController implements infoEd
         viewEditError();
     }
 
+    @Override
+    public void delete() {
+
+    }
+
     public void initialize() {
 
         tickTypeCol.setCellFactory(TextFieldTableCell.forTableColumn());

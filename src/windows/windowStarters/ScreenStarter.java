@@ -4,9 +4,11 @@ package windows.windowStarters;
 import entities.Film;
 import entities.Session;
 import entities.Theater;
+import entities.Ticket;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import windows.builders.FullSizeWindowBuilder;
+import windows.controllers.contentScreens.BuyScreenController;
 import windows.controllers.contentScreens.FilmInfoScreenController;
 import windows.controllers.contentScreens.SelectSeatsController;
 
@@ -85,6 +87,18 @@ public class ScreenStarter {
         primaryStage.setMinHeight(minWindowHeight);
         primaryStage.setMinWidth(minWindowWidth);
         primaryStage.show();
+    }
+
+    public static void StartGoodBuyingScreen(Ticket ticket, Session session, Stage lastWindow) throws IOException {
+
+        String FXMLName ="/ContentScreens/BuyScreenController.fxml";
+        Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName, lastWindow);
+        BuyScreenController.setSession(session);
+        BuyScreenController.setTicket(ticket);
+        primaryStage.setMinHeight(minWindowHeight);
+        primaryStage.setMinWidth(minWindowWidth);
+        primaryStage.show();
+
     }
 
 

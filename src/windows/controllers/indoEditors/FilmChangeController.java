@@ -88,6 +88,11 @@ public class FilmChangeController extends AbstractController implements infoEdit
         errorEditLabel.setVisible(true);
     }
 
+    @Override
+    public void delete() {
+
+    }
+
     private void hideErrors() {
         errorEditLabel.setVisible(false);
         errorSaveLabel.setVisible(false);

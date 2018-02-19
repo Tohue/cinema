@@ -79,7 +79,7 @@
             <Insets left="150.0" right="150.0" />
          </padding>
       </HBox>
-      <Button layoutX="995.0" layoutY="115.0" mnemonicParsing="false" onAction="#openAdminScreen" prefHeight="25.0" prefWidth="71.0" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="995.0" layoutY="115.0" mnemonicParsing="false" onAction="#openAdminScreen" prefHeight="25.0" prefWidth="71.0" text="%AdminBtnText" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
     </AnchorPane>
    <Separator fx:id="bottomSeparator" prefWidth="200.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
 </AnchorPane>
