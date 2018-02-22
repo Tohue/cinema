@@ -11,20 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/fxml/infoEditors/AdminPanelLogIn.fxml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/windows/controllers/system/AdminPanelLogIn.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/database/Requests.class" afterPath="$PROJECT_DIR$/out/production/cinema/database/Requests.class" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/contentScreens/FilmInfoScreen.fxml" afterPath="$PROJECT_DIR$/resources/fxml/contentScreens/FilmInfoScreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/infoEditors/FilmChangeScreen.fxml" afterPath="$PROJECT_DIR$/resources/fxml/infoEditors/FilmChangeScreen.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/infoEditors/TheaterChangeWindow.fxml" afterPath="$PROJECT_DIR$/resources/fxml/infoEditors/TheaterChangeWindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/infoEditors/TicketChangeScreen.fxml" afterPath="$PROJECT_DIR$/resources/fxml/infoEditors/TicketChangeScreen.fxml" />
+      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/builders/FullSizeWindowBuilder.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/builders/FullSizeWindowBuilder.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/builders/ModalityBuilder.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/builders/ModalityBuilder.class" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/infoEditors/AdminPanelLogIn.fxml" afterPath="$PROJECT_DIR$/resources/fxml/system/AdminPanelLogIn.fxml" />
       <change beforePath="$PROJECT_DIR$/src/database/Requests.java" afterPath="$PROJECT_DIR$/src/database/Requests.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/builders/FullSizeWindowBuilder.java" afterPath="$PROJECT_DIR$/src/windows/builders/FullSizeWindowBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/builders/ModalityBuilder.java" afterPath="$PROJECT_DIR$/src/windows/builders/ModalityBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/indoEditors/FilmChangeController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/indoEditors/FilmChangeController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/indoEditors/TheaterChangeController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/indoEditors/TheaterChangeController.java" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/indoEditors/TicketChangeController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/indoEditors/TicketChangeController.java" />
+      <change beforePath="$PROJECT_DIR$/src/windows/controllers/AbstractController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/AbstractController.java" />
+      <change beforePath="$PROJECT_DIR$/src/windows/controllers/contentScreens/MainScreenController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/contentScreens/MainScreenController.java" />
+      <change beforePath="$PROJECT_DIR$/src/windows/controllers/system/AdminPanelLogIn.java" afterPath="$PROJECT_DIR$/src/windows/controllers/system/AdminPanelLogIn.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -117,18 +111,18 @@
       <file leaf-file-name="Requests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/Requests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="43" column="67" lean-forward="false" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+            <state relative-caret-position="238">
+              <caret line="20" column="88" lean-forward="false" selection-start-line="20" selection-start-column="88" selection-end-line="20" selection-end-column="88" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="AdminPanelLogIn.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/fxml/infoEditors/AdminPanelLogIn.fxml">
+        <entry file="file://$PROJECT_DIR$/resources/fxml/system/AdminPanelLogIn.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="126" lean-forward="true" selection-start-line="8" selection-start-column="126" selection-end-line="8" selection-end-column="126" />
+            <state relative-caret-position="459">
+              <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -140,8 +134,55 @@
       <file leaf-file-name="AdminPanelLogIn.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/windows/controllers/system/AdminPanelLogIn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="110">
+              <caret line="42" column="36" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/windows/controllers/AbstractController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+              <folding>
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#563#564#0" expanded="true" />
+                <element signature="e#599#600#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainScreenController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/MainScreenController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="63" column="55" lean-forward="false" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FullSizeWindowBuilder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/windows/builders/FullSizeWindowBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScreenStarter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/windows/windowStarters/ScreenStarter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -183,7 +224,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/windows/components/tableDataUpdater.java" />
         <option value="$PROJECT_DIR$/src/entities/Ticket.java" />
         <option value="$PROJECT_DIR$/src/entities/Order.java" />
         <option value="$PROJECT_DIR$/src/windows/windowStarters/MainScreen.java" />
@@ -200,7 +240,6 @@
         <option value="$PROJECT_DIR$/resources/fxml/infoEditors/FilmChangeScreen.fxml" />
         <option value="$PROJECT_DIR$/resources/fxml/infoEditors/TicketChangeScreen.fxml" />
         <option value="$PROJECT_DIR$/resources/fxml/contentScreens/ScheduleScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/windows/controllers/AbstractController.java" />
         <option value="$PROJECT_DIR$/src/windows/windowStarters/loginScreen.java" />
         <option value="$PROJECT_DIR$/src/windows/controllers/SelectSeatsController.java" />
         <option value="$PROJECT_DIR$/resources/fxml/contentScreens/selectSeatsScreen.fxml" />
@@ -216,7 +255,6 @@
         <option value="$PROJECT_DIR$/src/windows/controllers/contentScreens/BuyScreen.java" />
         <option value="$PROJECT_DIR$/resources/bundles/locale/locale_ru.properties" />
         <option value="$PROJECT_DIR$/resources/bundles/locale/locale_en.properties" />
-        <option value="$PROJECT_DIR$/src/windows/controllers/contentScreens/MainScreenController.java" />
         <option value="$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmInfoScreenController.java" />
         <option value="$PROJECT_DIR$/resources/fxml/contentScreens/BuyScreen.fxml" />
         <option value="$PROJECT_DIR$/resources/fxml/contentScreens/mainScreen.fxml" />
@@ -231,8 +269,11 @@
         <option value="$PROJECT_DIR$/src/windows/builders/ModalityBuilder.java" />
         <option value="$PROJECT_DIR$/src/windows/controllers/indoEditors/FilmChangeController.java" />
         <option value="$PROJECT_DIR$/src/windows/controllers/indoEditors/TicketChangeController.java" />
-        <option value="$PROJECT_DIR$/src/database/Requests.java" />
         <option value="$PROJECT_DIR$/resources/fxml/infoEditors/AdminPanelLogIn.fxml" />
+        <option value="$PROJECT_DIR$/resources/fxml/system/AdminPanelLogIn.fxml" />
+        <option value="$PROJECT_DIR$/src/database/Requests.java" />
+        <option value="$PROJECT_DIR$/src/windows/controllers/contentScreens/MainScreenController.java" />
+        <option value="$PROJECT_DIR$/src/windows/controllers/AbstractController.java" />
         <option value="$PROJECT_DIR$/src/windows/controllers/system/AdminPanelLogIn.java" />
       </list>
     </option>
@@ -304,7 +345,14 @@
               <item name="cinema" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="fxml" type="462c0819:PsiDirectoryNode" />
-              <item name="infoEditors" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="fxml" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
@@ -435,8 +483,8 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Erik\IdeaProjects\Кириллов\Cinema\cinema\resources\fxml\menu" />
       <recent name="C:\Users\Erik\IdeaProjects\Кириллов\Cinema\cinema\resources\fxml\system" />
+      <recent name="C:\Users\Erik\IdeaProjects\Кириллов\Cinema\cinema\resources\fxml\menu" />
       <recent name="C:\Users\Erik\IdeaProjects\Кириллов\Cinema\cinema\resources\fxml\contentScreens" />
       <recent name="C:\Users\Erik\IdeaProjects\Кириллов\Cinema\cinema\resources\fxml\infoEditors" />
       <recent name="C:\Users\Erik\IdeaProjects\Кириллов\Cinema\cinema\resources\DBFiles" />
@@ -859,7 +907,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519069108290</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Удаление почти всего">
+      <created>1519318107867</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1519318107867</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -912,8 +967,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Коннект с БД" />
-    <MESSAGE value="Логин при открытии проги" />
     <MESSAGE value="чет хуйня" />
     <MESSAGE value="чет бльшая хуйня" />
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
@@ -937,7 +990,9 @@
     <MESSAGE value="Вся хуйня с залами" />
     <MESSAGE value="Почти готовый выбор мест" />
     <MESSAGE value="ебучка" />
-    <option name="LAST_COMMIT_MESSAGE" value="ебучка" />
+    <MESSAGE value="Удаление почти всего" />
+    <MESSAGE value="Логин в админку" />
+    <option name="LAST_COMMIT_MESSAGE" value="Логин в админку" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1069,13 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/windows/controllers/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Entities.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1179,13 +1227,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/MainScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="147" column="8" lean-forward="false" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/fxml/contentScreens/BuyScreen.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1225,13 +1266,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/windows/windowStarters/ScreenStarter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="70" column="47" lean-forward="false" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1276,14 +1310,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/windows/builders/FullSizeWindowBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmListWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1297,7 +1323,7 @@
         <state relative-caret-position="-96">
           <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
           <folding>
-            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1307,11 +1333,11 @@
         <state relative-caret-position="470">
           <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4265#4266#0" expanded="true" />
-            <element signature="e#4312#4313#0" expanded="true" />
-            <element signature="e#4360#4361#0" expanded="true" />
-            <element signature="e#4407#4408#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4265#4266#0" expanded="false" />
+            <element signature="e#4312#4313#0" expanded="false" />
+            <element signature="e#4360#4361#0" expanded="false" />
+            <element signature="e#4407#4408#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1353,6 +1379,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/fxml/system/AdminPanelLogIn.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/controllers/indoEditors/infoEditor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1363,28 +1400,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/Requests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="43" column="67" lean-forward="false" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+        <state relative-caret-position="238">
+          <caret line="20" column="88" lean-forward="false" selection-start-line="20" selection-start-column="88" selection-end-line="20" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/fxml/infoEditors/AdminPanelLogIn.fxml">
+    <entry file="file://$PROJECT_DIR$/src/windows/builders/FullSizeWindowBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="126" lean-forward="true" selection-start-line="8" selection-start-column="126" selection-end-line="8" selection-end-column="126" />
+        <state relative-caret-position="229">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/windows/windowStarters/ScreenStarter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/MainScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="63" column="55" lean-forward="false" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/windows/controllers/AbstractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding>
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#563#564#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/controllers/system/AdminPanelLogIn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="110">
+          <caret line="42" column="36" lean-forward="true" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

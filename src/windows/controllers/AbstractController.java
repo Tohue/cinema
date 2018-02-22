@@ -26,6 +26,14 @@ public abstract class AbstractController {
         stage.close();
     }
 
+    public void close() {
+        stage.close();
+    }
+
+    public Stage getLastWindow() {
+        return lastWindow;
+    }
+
     public void openLastWindow() {
         lastWindow.setFullScreen(true);
         lastWindow.show(); }

@@ -18,6 +18,7 @@ public class Requests {
     public static final String GET_FILMTIMES_BY_DATE = "SELECT SessionTime FROM Sessions WHERE SessionDate like ? AND FilmName like ?";
     public static final String GET_SESSION_BY_DATETIME_AND_NAME = "SELECT * FROM (Sessions INNER JOIN Theaters on Theaters.TheaterNumber = Sessions.TheaterNumber) WHERE FilmName like ? AND SessionDate like ? AND SessionTime like ?";
     public static final String GET_BOOKED_SEATS = "SELECT SeatNumber, RowNumber FROM Tickets WHERE idSessions = ?";
+    public static final String CHECK_USER = "SELECT Password FROM Admins WHERE Login = ?";
 
     /**
      * INSERT

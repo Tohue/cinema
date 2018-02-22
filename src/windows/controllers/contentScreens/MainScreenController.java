@@ -61,7 +61,7 @@ public class MainScreenController extends AbstractController {
      */
     public void openAdminScreen(ActionEvent actionEvent) {
         try {
-            ScreenStarter.Start("menu/AdminWindow.fxml", stage);
+            ScreenStarter.Start("system/AdminPanelLogIn.fxml", stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
