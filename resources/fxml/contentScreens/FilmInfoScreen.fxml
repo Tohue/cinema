@@ -16,16 +16,17 @@
          <effect>
             <DropShadow height="0.0" radius="15.807500000000001" width="65.23" />
          </effect></AnchorPane>
-      <AnchorPane layoutX="68.0" layoutY="52.0" prefHeight="589.0" prefWidth="902.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="52.0">
+      <AnchorPane layoutX="68.0" layoutY="52.0" prefHeight="589.0" prefWidth="902.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="30.0">
          <children>
-            <HBox prefHeight="595.0" prefWidth="902.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox layoutY="-26.0" prefHeight="595.0" prefWidth="902.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane fx:id="imagePane" prefHeight="446.0" prefWidth="362.0">
                      <children>
                         <Button fx:id="posterBut" layoutX="61.0" layoutY="137.0" mnemonicParsing="false" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <effect>
                               <DropShadow radius="7.715" width="11.86" />
-                           </effect></Button>
+                           </effect>
+                        </Button>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="504.0" prefWidth="566.0">
@@ -37,7 +38,7 @@
                         </Label>
                         <Label fx:id="countryLabel" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="50.0" layoutY="149.0" text="%film.country" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="149.0" />
                         <Label fx:id="lengthLabel" alignment="TOP_LEFT" layoutX="50.0" layoutY="177.0" text="%film.length" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="177.0" />
-                        <Label fx:id="descField" alignment="TOP_LEFT" layoutX="50.0" layoutY="225.0" prefHeight="138.0" prefWidth="503.0" text="Label" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="225.0" />
+                        <Label fx:id="descField" alignment="TOP_LEFT" layoutX="50.0" layoutY="225.0" prefHeight="138.0" prefWidth="503.0" text="Label" wrapText="true" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="225.0" />
                         <Label fx:id="genreLabel" alignment="TOP_LEFT" layoutX="50.0" layoutY="202.0" text="%genre" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="202.0" />
                         <DatePicker fx:id="datePicker" layoutX="102.0" layoutY="363.0" prefHeight="25.0" prefWidth="123.0" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="363.0" />
                         <Label layoutX="50.0" layoutY="367.0" text="Дата:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="367.0" />

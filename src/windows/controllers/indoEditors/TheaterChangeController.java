@@ -4,6 +4,8 @@ import database.DBConnector;
 import database.DataLoader;
 import database.Requests;
 import entities.Theater;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -57,25 +59,25 @@ public class TheaterChangeController extends AbstractController implements infoE
     public void initialize() {
 
 
-
-
-        editNumberField.setOnAction(event -> {
-            if (theaters != null) {
-                int i = 0;
-                int currTheaterIndex = 0;
-                for (Theater theater : theaters) {
-                    if (theater.getTheaterNumber() == editNumberField.getValue()) {
-                        currTheaterIndex = i;
-                        break;
+        editNumberField.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
+                if (theaters != null && editNumberField.getValue() != null) {
+                    int i = 0;
+                    int currTheaterIndex = 0;
+                    for (Theater theater : theaters) {
+                        if (theater.getTheaterNumber() == editNumberField.getValue()) {
+                            currTheaterIndex = i;
+                            break;
+                        }
+                        i++;
                     }
-                    i++;
+                    editCountField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, theaters.get(currTheaterIndex).getSeatsNumber(), 1));
+                    editSeatsInRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getSeatsInRow(), 1));
+                    editVIPRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getVIPRowNumber(), 1));
                 }
-                editCountField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, theaters.get(currTheaterIndex).getSeatsNumber(), 1));
-                editSeatsInRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getSeatsInRow(), 1));
-                editVIPRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getVIPRowNumber(), 1));
             }
         });
-
 
         updateInfo();
     }
@@ -107,7 +109,8 @@ public class TheaterChangeController extends AbstractController implements infoE
     @Override
     public void updateInfo() {
 
-        editNumberField.getItems().clear();
+        if (editNumberField.getItems() != null)
+            editNumberField.getItems().clear();
         try {
             DataLoader dataLoader = new DataLoader();
             dataLoader.loadTheaters();
@@ -139,13 +142,10 @@ public class TheaterChangeController extends AbstractController implements infoE
         if (editNumberField.getValue() != null) {
             try {
                 PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.DELETE_THEATER);
-                System.out.println(1);
                 statement.setInt(1, editNumberField.getValue());
-                System.out.println(2);
-                statement.executeUpdate();
-                System.out.println(3);
+                statement.execute();
+                clearEditFields();
                 updateInfo();
-                System.out.println(4);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -179,6 +179,20 @@ public class TheaterChangeController extends AbstractController implements infoE
             e.printStackTrace();
         }
 
+    }
+
+    private void clearAddFields() {
+        addCountField.clear();
+        addNumberField.clear();
+        addSeatsInRowField.clear();
+        addVIPRowField.clear();
+    }
+
+    private void clearEditFields() {
+        editNumberField.setValue(null);
+        editVIPRowField.getValueFactory().setValue(0);
+        editCountField.getValueFactory().setValue(0);
+        editSeatsInRowField.getValueFactory().setValue(0);
     }
 
 

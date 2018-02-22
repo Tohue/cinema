@@ -23,7 +23,7 @@ public class TicketChangeController extends AbstractController implements infoEd
 
     //Таблица
     @FXML
-    TableView ticketInfoTable;
+    TableView<Ticket> ticketInfoTable;
 
     @FXML
     TableColumn<Ticket, Integer> tickNumCol;
@@ -164,6 +164,18 @@ public class TicketChangeController extends AbstractController implements infoEd
 
     @Override
     public void delete() {
+
+        if (ticketInfoTable.getSelectionModel().getSelectedItems() != null && ticketInfoTable.getSelectionModel().getSelectedItems().size() > 0) {
+            try {
+                PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.DELETE_TICKET);
+                statement.setInt(1, ticketInfoTable.getSelectionModel().getSelectedItem().getIdTicket());
+                statement.executeUpdate();
+                updateInfo();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 

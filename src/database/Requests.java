@@ -40,4 +40,7 @@ public class Requests {
      */
     public static final String DELETE_SESSION = "DELETE FROM Sessions Where idSessions = ?";
     public static final String DELETE_THEATER = "DELETE FROM Theaters Where TheaterNumber = ?";
+    public static final String DELETE_FILM = "DELETE FROM Films WHERE Name = ?";
+    public static final String DELETE_TICKET = "DELETE FROM Tickets WHERE idTickets = ?";
+
 }

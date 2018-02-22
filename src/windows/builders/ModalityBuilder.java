@@ -71,6 +71,7 @@ public class ModalityBuilder{
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setScene(new Scene(root));
         primaryStage.getScene().setRoot(root);
+        primaryStage.setTitle("Кинотеатр \"Родина\"");
         ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
         return primaryStage;
     }

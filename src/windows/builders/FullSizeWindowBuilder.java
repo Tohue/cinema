@@ -85,6 +85,7 @@ public class FullSizeWindowBuilder{
         Parent root = fxmlLoader.load();
         primaryStage.setFullScreen(true);
         primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("Кинотеатр \"Родина\"");
         ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
         ((AbstractController)fxmlLoader.getController()).setLastWindow(lastWindow);
         primaryStage.getScene().setRoot(root);
