@@ -107,12 +107,11 @@ public class TicketChangeController extends AbstractController implements infoEd
             try {
 
             PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.ADD_TICKET);
-            statement.setInt(1, Integer.parseInt(addNumTickField.getText()));
-            statement.setInt(2, getFilmsNumFromString(addNumSessField.getValue()));
-            statement.setString(3, addTickTypeField.getValue());
-            statement.setInt(4, addNumOrdField.getValue());
-            statement.setInt(5, Integer.parseInt(addNumSeatsField.getText()));
-            statement.setInt(6, Integer.parseInt(addNumRowField.getText()));
+            statement.setInt(1, getFilmsNumFromString(addNumSessField.getValue()));
+            statement.setString(2, addTickTypeField.getValue());
+            statement.setInt(3, addNumOrdField.getValue());
+            statement.setInt(4, Integer.parseInt(addNumSeatsField.getText()));
+            statement.setInt(5, Integer.parseInt(addNumRowField.getText()));
             statement.executeUpdate();
             hideSaveError();
             } catch (SQLException e) {

@@ -19,6 +19,7 @@ public class Requests {
     public static final String GET_SESSION_BY_DATETIME_AND_NAME = "SELECT * FROM (Sessions INNER JOIN Theaters on Theaters.TheaterNumber = Sessions.TheaterNumber) WHERE FilmName like ? AND SessionDate like ? AND SessionTime like ?";
     public static final String GET_BOOKED_SEATS = "SELECT SeatNumber, RowNumber FROM Tickets WHERE idSessions = ?";
     public static final String CHECK_USER = "SELECT Password FROM Admins WHERE Login = ?";
+    public static final String GET_LAST_ORDER_ID = "SELECT idOrders FROM Orders ORDER BY idOrders DESC LIMIT 1";
 
     /**
      * INSERT
@@ -26,8 +27,9 @@ public class Requests {
     public static final String ADD_FILM = "INSERT INTO  Poster VALUES (?, ?, ?, ?, ?, ?)";
     public static final String ADD_FILM_WITHOUT_POSTERS = "INSERT INTO  Poster (Name, Length, Country, Description, Genre) VALUES (?, ?, ?, ?, ?)";
     public static final String ADD_THEATER = "INSERT INTO Theaters VALUES (?, ?, ?, ?)";
-    public static final String ADD_TICKET = "INSERT INTO Tickets VALUES (?, ?, ?, ?, ?, ?)";
+    public static final String ADD_TICKET = "INSERT INTO Tickets (idSessions, TicketType, BookID, SeatNumber, RowNumber) VALUES ( ?, ?, ?, ?, ?)";
     public static final String ADD_SESSION = "INSERT INTO Sessions VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public static final String ADD_ORDER = "Insert INTO Orders (OrderDateTime, TotalCost) VALUES(?, ?)";
 
     /**
      * UPDATE

@@ -310,5 +310,21 @@ public class DataLoader {
         return seats;
     }
 
+    public Integer getLastOrderId() {
+
+        Integer id = null;
+        try {
+            ResultSet resultSet = DBConnector.sendRequest(Requests.GET_LAST_ORDER_ID);
+            resultSet.next();
+            id = resultSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return id;
+    }
+
+
+
 }
 

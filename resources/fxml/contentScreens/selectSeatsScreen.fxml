@@ -18,7 +18,7 @@
             <AnchorPane fx:id="seatsAnchorPane" layoutX="127.0" layoutY="60.0" prefHeight="457.0" prefWidth="448.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="acceptButton" layoutX="695.0" layoutY="587.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" text="%accept" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="235.0" />
+      <Button fx:id="acceptButton" layoutX="695.0" layoutY="587.0" mnemonicParsing="false" onAction="#openGoodScreen" prefHeight="55.0" prefWidth="150.0" text="%accept" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="235.0" />
       <Button layoutX="481.0" layoutY="587.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" text="%back" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="449.0" />
       <AnchorPane layoutX="852.0" layoutY="60.0" prefHeight="365.0" prefWidth="214.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0">
          <children>

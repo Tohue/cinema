@@ -35,6 +35,17 @@ public class Session {
         this.vipCost = new SimpleIntegerProperty(vipCost);
     }
 
+    @Override
+    public String toString() {
+        return  "ID: " + idSession +
+                "\nFILM: " + filmName.getValue() +
+                "\nDATE: " + sessionDate.getValue() +
+                "\nTIME: " + sessionTime.getValue() +
+                "\nTHEATER: " + theaterNumber +
+                "\nSTANDART COST: " + standartCost +
+                "\nVIP COST " + vipCost;
+    }
+
     public int getStandartCost() {
         return standartCost.get();
     }
@@ -118,4 +129,6 @@ public class Session {
     public void setIdSession(int idSession) {
         this.idSession.set(idSession);
     }
+
+
 }

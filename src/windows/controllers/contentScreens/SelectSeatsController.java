@@ -4,30 +4,21 @@ import database.DataLoader;
 import entities.Pair;
 import entities.Session;
 import entities.Theater;
-import entities.Ticket;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import windows.components.SeatView;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 
 
@@ -35,9 +26,12 @@ public class SelectSeatsController extends AbstractController {
 
     private static Session session;
     private static Theater theater;
-    private int ticketSum;
-    private int countSelectedSeats;
+    private int ticketSum = 0;
+    private int countSelectedSeats = 0;
+    private int vipNum = 0;
+    private int ordNum = 0;
     private SimpleBooleanProperty isSelected = new SimpleBooleanProperty(false);
+    private ArrayList<SeatView> seatsList = new ArrayList<>();
 
     @FXML
     AnchorPane mainPane;
@@ -73,9 +67,11 @@ public class SelectSeatsController extends AbstractController {
 
     public void initialize() {
 
+        acceptButton.disableProperty().bind(isSelected.not());
         setSessionInfo();
         setSeatsView();
         checkSelection();
+        updateFields();
 
     }
 
@@ -100,13 +96,12 @@ public class SelectSeatsController extends AbstractController {
         int ordRows = theater.getSeatsNumber() / seatsInRow - VIPRows;
         int allRows = ordRows + VIPRows;
 
-        int seatsCount = 1;
         int XAnchor;
         int YAnchor = 0;
 
         seatsAnchorPane.prefWidthProperty().bind(mainPane.widthProperty().divide(1.5));
-        seatsAnchorPane.prefHeightProperty().bind(mainPane.heightProperty().divide(2))
-        ;
+        seatsAnchorPane.prefHeightProperty().bind(mainPane.heightProperty().divide(2));
+
         IntegerProperty XLayout = new SimpleIntegerProperty();
         XLayout.bind(seatsAnchorPane.widthProperty().divide(3));
 
@@ -115,7 +110,7 @@ public class SelectSeatsController extends AbstractController {
             YAnchor += 50;
             for (int currSeatNum = 1; currSeatNum < seatsInRow; currSeatNum++) {
 
-                SeatView seat = new SeatView();
+                SeatView seat = new SeatView(currRowIndex, currSeatNum);
 
                 for (Pair<Integer> pair : booked)
                     if (pair.getElement1() == currRowIndex && pair.getElement2() == currSeatNum)
@@ -129,18 +124,33 @@ public class SelectSeatsController extends AbstractController {
                     @Override
                     public void handle(ActionEvent event) {
                         if (seat.isSelected()) {
-                            if (seat.isVIP())
+                            if (seat.isVIP()) {
                                 ticketSum += session.getVipCost();
-                            else ticketSum += session.getStandartCost();
+                                vipNum++;
+                                seatsList.add(seat);
+                            }
+                            else {
+                                ticketSum += session.getStandartCost();
+                                ordNum++;
+                                seatsList.add(seat);
+                            }
 
                             countSelectedSeats++;
                         } else {
-                            if (seat.isVIP())
+                            if (seat.isVIP()) {
                                 ticketSum -= session.getVipCost();
-                            else ticketSum -= session.getStandartCost();
+                                vipNum--;
+                               seatsList.remove(seat);
+                            }
+                            else {
+                                ticketSum -= session.getStandartCost();
+                                ordNum--;
+                                seatsList.remove(seat);
+                            }
                             countSelectedSeats--;
-                            checkSelection();
+
                         }
+                        checkSelection();
                         updateFields();
                     }
                 });
@@ -148,7 +158,7 @@ public class SelectSeatsController extends AbstractController {
                 AnchorPane.setTopAnchor(seat, YAnchor * 1.0);
                 AnchorPane.setLeftAnchor(seat, XAnchor * 1.0);
                 seatsAnchorPane.getChildren().add(seat);
-                XAnchor += 50;
+                XAnchor += 40;
             }
         }
 
@@ -158,7 +168,7 @@ public class SelectSeatsController extends AbstractController {
 
         sumLabel.setText(String.valueOf(ticketSum));
         ticketCountLabel.setText(String.valueOf(countSelectedSeats));
-        acceptButton.disableProperty().bind(isSelected.not());
+
 
     }
 
@@ -166,16 +176,19 @@ public class SelectSeatsController extends AbstractController {
 
         if (countSelectedSeats == 0)
             isSelected.setValue(false);
+        if (!isSelected.get() && countSelectedSeats > 0)
+            isSelected.setValue(true);
 
     }
 
-    private void openGoodScreen() {
 
-//        try {
-//            ScreenStarter.StartGoodBuyingScreen(null, session, stage);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    public void openGoodScreen() {
+
+        try {
+            ScreenStarter.StartGoodBuyingScreen(session, ordNum, vipNum, ticketSum, seatsList, stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

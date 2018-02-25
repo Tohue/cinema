@@ -1,18 +1,19 @@
 package windows.windowStarters;
 
 
-import entities.Film;
-import entities.Session;
-import entities.Theater;
-import entities.Ticket;
+import entities.*;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import windows.builders.FullSizeWindowBuilder;
+import windows.components.SeatView;
 import windows.controllers.contentScreens.BuyScreenController;
 import windows.controllers.contentScreens.FilmInfoScreenController;
 import windows.controllers.contentScreens.SelectSeatsController;
 
+import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class ScreenStarter {
@@ -27,7 +28,6 @@ public class ScreenStarter {
         primaryStage.setMinHeight(minWindowHeight);
         primaryStage.setMinWidth(minWindowWidth);
         primaryStage.show();
-     //   return primaryStage;
 
     }
 
@@ -89,17 +89,22 @@ public class ScreenStarter {
         primaryStage.show();
     }
 
-    public static void StartGoodBuyingScreen(Ticket ticket, Session session, Stage lastWindow) throws IOException {
+    public static void StartGoodBuyingScreen(Session session, int ordNum, int vipNum, int sum, ArrayList<SeatView> seats, Stage lastWindow) throws IOException {
 
-        String FXMLName ="/ContentScreens/BuyScreenController.fxml";
-        Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName, lastWindow);
+        String FXMLName ="/ContentScreens/BuyScreen.fxml";
         BuyScreenController.setSession(session);
-        BuyScreenController.setTicket(ticket);
+        BuyScreenController.setOrdTicketNum(ordNum);
+        BuyScreenController.setVipTicketNum(vipNum);
+        BuyScreenController.setSum(sum);
+        BuyScreenController.setSeatsCoordsList(seats);
+        Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName, lastWindow);
         primaryStage.setMinHeight(minWindowHeight);
         primaryStage.setMinWidth(minWindowWidth);
         primaryStage.show();
 
     }
+
+
 
 
 }
