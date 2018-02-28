@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 
 import windows.components.SeatView;
 import windows.controllers.AbstractController;
+import windows.windowStarters.ScreenStarter;
 
 
 import java.io.IOException;
@@ -41,8 +42,6 @@ public class BuyScreenController extends AbstractController {
     Label sumLabel;
     @FXML
     Label theaterLabel;
-    @FXML
-    SubScene subScene;
     @FXML
     AnchorPane mainPane;
 
@@ -75,8 +74,6 @@ public class BuyScreenController extends AbstractController {
     public void initialize() {
 
 
-        subScene.heightProperty().bind(mainPane.heightProperty());
-        subScene.widthProperty().bind(mainPane.widthProperty());
         filmNameLabel.setText(filmNameLabel.getText() + " " + session.getFilmName());
         filmTimeLabel.setText(filmTimeLabel.getText() + " " + session.getSessionTime());
         theaterLabel.setText(theaterLabel.getText() + " " + session.getTheaterNumber());
@@ -117,7 +114,6 @@ public class BuyScreenController extends AbstractController {
                     orderStatement.close();
 
 
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -139,8 +135,8 @@ public class BuyScreenController extends AbstractController {
 
     private void backToMainScreen() throws IOException {
 
+        ScreenStarter.Start("/contentScreens/MainScreen.fxml");
         stage.close();
-        getLastWindow().close();
 
 
     }

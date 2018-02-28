@@ -61,6 +61,7 @@ public class NearFilmListController extends AbstractController {
             public void handle(ActionEvent event) {
                 try {
                     ScreenStarter.StartFilmInfoList(film, stage);
+                    close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

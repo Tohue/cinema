@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,12 +15,13 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: D64541;" styleClass="main_bc_color" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.MainScreenController">
-    <Label fx:id="mainTitle" alignment="CENTER" layoutY="57.0" prefHeight="78.0" prefWidth="1080.0" style="-fx-background-color: EE0000;" text="%CinemaName" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="57.0">
+    <Label fx:id="mainTitle" alignment="CENTER" layoutY="71.0" prefHeight="63.0" prefWidth="1080.0" text="%CinemaName" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="71.0">
         <font>
           <Font size="49.0" />
         </font>
     </Label>
-    <AnchorPane layoutY="135.0" prefHeight="432.0" prefWidth="1080.0" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="135.0">
+   <Separator layoutY="141.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="141.0" />
+    <AnchorPane layoutY="150.0" prefHeight="432.0" prefWidth="1080.0" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
         <GridPane fx:id="postersPane" prefHeight="438.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
@@ -71,7 +73,7 @@
             </AnchorPane>
         </GridPane>
     </AnchorPane>
-    <AnchorPane layoutY="567.0" prefHeight="154.0" prefWidth="1080.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+    <AnchorPane fx:id="bottomPane" layoutY="567.0" prefHeight="142.0" prefWidth="1080.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Button mnemonicParsing="false" onAction="#openPremieres" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%premieres" />
@@ -82,13 +84,14 @@
             <Insets left="150.0" right="150.0" />
          </padding>
       </HBox>
-      <Button layoutX="995.0" layoutY="115.0" mnemonicParsing="false" onAction="#openAdminScreen" prefHeight="25.0" prefWidth="71.0" text="%AdminBtnText" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button fx:id="adminBtn" layoutX="995.0" layoutY="115.0" mnemonicParsing="false" onAction="#openAdminScreen" prefHeight="25.0" prefWidth="71.0" text="%AdminBtnText" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
     </AnchorPane>
    <Separator fx:id="bottomSeparator" prefWidth="200.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-   <ToggleButton fx:id="en_toggle" layoutX="864.0" layoutY="14.0" mnemonicParsing="false" onAction="#setENLocale" prefHeight="33.0" prefWidth="97.0" text="English" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="14.0">
+   <ToggleButton fx:id="en_toggle" layoutX="920.0" layoutY="14.0" mnemonicParsing="false" onAction="#setENLocale" prefHeight="33.0" prefWidth="125.0" text="English" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
       <toggleGroup>
          <ToggleGroup fx:id="tg_group" />
       </toggleGroup>
    </ToggleButton>
-   <ToggleButton fx:id="ru_toggle" layoutX="864.0" layoutY="14.0" mnemonicParsing="false" onAction="#setRULocale" prefHeight="33.0" prefWidth="97.0" text="Русский" toggleGroup="$tg_group" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="14.0" />
+   <ToggleButton fx:id="ru_toggle" layoutX="769.0" layoutY="12.0" mnemonicParsing="false" onAction="#setRULocale" prefHeight="33.0" prefWidth="125.0" text="Русский" toggleGroup="$tg_group" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="12.0" />
+   <ImageView fx:id="logoView" fitHeight="126.0" fitWidth="133.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0" />
 </AnchorPane>

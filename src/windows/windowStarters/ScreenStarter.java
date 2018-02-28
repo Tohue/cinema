@@ -91,7 +91,7 @@ public class ScreenStarter {
 
     public static void StartGoodBuyingScreen(Session session, int ordNum, int vipNum, int sum, ArrayList<SeatView> seats, Stage lastWindow) throws IOException {
 
-        String FXMLName ="/ContentScreens/BuyScreen.fxml";
+        String FXMLName ="contentScreens/BuyScreen.fxml";
         BuyScreenController.setSession(session);
         BuyScreenController.setOrdTicketNum(ordNum);
         BuyScreenController.setVipTicketNum(vipNum);

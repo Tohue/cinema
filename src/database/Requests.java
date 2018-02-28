@@ -20,7 +20,7 @@ public class Requests {
     public static final String GET_BOOKED_SEATS = "SELECT SeatNumber, RowNumber FROM Tickets WHERE idSessions = ?;";
     public static final String CHECK_USER = "SELECT Password FROM Admins WHERE Login = ?;";
     public static final String GET_LAST_ORDER_ID = "SELECT idOrders FROM Orders ORDER BY idOrders DESC LIMIT 1;";
-    public static final String GET_NEAR_FILMS = "SELECT * FROM Sessions INNER JOIN Films on Sessions.FilmName = Films.Name WHERE SessionDate >= CURRENT_DATE;";
+    public static final String GET_NEAR_FILMS = "SELECT * FROM Sessions INNER JOIN Films on Sessions.FilmName = Films.Name WHERE SessionDate >= CURRENT_DATE GROUP BY FilmName;";
 
     /**
      * INSERT

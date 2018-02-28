@@ -81,6 +81,7 @@ public class FullSizeWindowBuilder{
 
         String currFXML = defaultFXMLPath + FXMLName;
         Stage primaryStage = new Stage();
+
         fxmlLoader.setLocation(getClass().getResource(currFXML));
         fxmlLoader.setResources(ResourceBundle.getBundle(localePath, currentLocale));
         Parent root = fxmlLoader.load();

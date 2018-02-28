@@ -123,7 +123,7 @@ public  class FilmInfoScreenController extends AbstractController {
 
     private void setFilmTimesByDate(String filmName, LocalDate date) {
 
-        hideTimes();
+
         datePicker.setValue(date);
         Calendar calendar = Calendar.getInstance();
         calendar.set(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
@@ -131,9 +131,8 @@ public  class FilmInfoScreenController extends AbstractController {
             System.out.println(new java.sql.Date(calendar.getTimeInMillis()));
             DataLoader dataLoader = new DataLoader();
             ObservableList<Time> times = dataLoader.getFilmtimesByDate(filmName, new java.sql.Date(calendar.getTimeInMillis()));
-
+            hideTimes();
             if (times.size() > 0) {
-
 
                 for (Time time : times) {
 
@@ -143,8 +142,10 @@ public  class FilmInfoScreenController extends AbstractController {
                             STPair pair = dataLoader.getSessionByDatetimeAndName(filmName, datePicker.getValue(), time);
                             Session selectedSession = pair.getSession();
                             Theater sessionTheater = pair.getTheater();
-                            if (selectedSession != null)
+                            if (selectedSession != null) {
                                 ScreenStarter.StartSelectSeats(selectedSession, sessionTheater, stage);
+                                close();
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -172,6 +173,7 @@ public  class FilmInfoScreenController extends AbstractController {
     }
 
     private void setLinks() {
+
 
         todayLink.setOnAction(event -> setFilmTimesByDate(filmName, LocalDate.now()));
 

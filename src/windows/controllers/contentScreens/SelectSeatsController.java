@@ -186,6 +186,7 @@ public class SelectSeatsController extends AbstractController {
 
         try {
             ScreenStarter.StartGoodBuyingScreen(session, ordNum, vipNum, ticketSum, seatsList, stage);
+            close();
         } catch (IOException e) {
             e.printStackTrace();
         }

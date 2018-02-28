@@ -7,9 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import windows.builders.LocaleManager;
 import windows.controllers.AbstractController;
@@ -23,6 +26,7 @@ import java.util.Locale;
 
 public class MainScreenController extends AbstractController {
 
+
     private final ArrayList<Button> postersView = new ArrayList<>();
     private HashMap<Button, Film> filmKeys = new HashMap<>();
 
@@ -31,6 +35,11 @@ public class MainScreenController extends AbstractController {
 
     @FXML
     Separator bottomSeparator;
+
+    @FXML
+    Label mainTitle;
+    @FXML
+    AnchorPane bottomPane;
 
     @FXML
     Button poster1;
@@ -56,12 +65,17 @@ public class MainScreenController extends AbstractController {
     Button poster11;
     @FXML
     Button poster12;
+    @FXML
+    Button adminBtn;
 
     // Преключатель языков
     @FXML
     ToggleButton en_toggle;
     @FXML
     ToggleButton ru_toggle;
+
+    @FXML
+    ImageView logoView;
 
     /**
      * кнопка открытия админки
@@ -70,6 +84,7 @@ public class MainScreenController extends AbstractController {
     public void openAdminScreen(ActionEvent actionEvent) {
         try {
             ScreenStarter.Start("system/AdminPanelLogIn.fxml", stage);
+            close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,6 +99,7 @@ public class MainScreenController extends AbstractController {
     public void openSchedule(ActionEvent actionEvent) {
         try {
             ScreenStarter.Start("ContentScreens/ScheduleScreen.fxml", stage);
+            close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,6 +114,7 @@ public class MainScreenController extends AbstractController {
 
         try {
             ScreenStarter.Start("ContentScreens/FilmListWindow.fxml", stage);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,6 +124,8 @@ public class MainScreenController extends AbstractController {
     public void initialize() {
 
         setLanguageToggle();
+        setLanguageIcons();
+        setLogo();
 
         postersView.add(poster1);
         postersView.add(poster2);
@@ -186,11 +205,49 @@ public class MainScreenController extends AbstractController {
 
         try {
             ScreenStarter.Start("/contentScreens/NearFilmList.fxml", stage);
+            close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        close();
+
 
     }
+
+    private void setLanguageIcons() {
+
+        try {
+            ImageView en_flag = new ImageView(new Image(getClass().getResourceAsStream("/images/flag_en.png")));
+            ImageView ru_flag = new ImageView(new Image(getClass().getResourceAsStream("/images/flag_ru.png")));
+
+            en_flag.fitHeightProperty().bind(adminBtn.heightProperty().multiply(1.5));
+            en_toggle.setStyle("-fx-background-color: transparent");
+            en_flag.setPreserveRatio(true);
+
+            ru_flag.fitHeightProperty().bind(adminBtn.heightProperty().multiply(1.5));
+            ru_toggle.setStyle("-fx-background-color: transparent");
+            ru_flag.setPreserveRatio(true);
+
+
+            en_toggle.setGraphic(en_flag);
+            ru_toggle.setGraphic(ru_flag);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setLogo() {
+
+        try {
+            Image logo = new Image(getClass().getResourceAsStream("/images/logo.png"));
+            logoView.setImage(logo);
+            logoView.setFitWidth(200);
+            logoView.setPreserveRatio(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
