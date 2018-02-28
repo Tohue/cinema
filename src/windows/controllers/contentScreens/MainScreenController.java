@@ -106,6 +106,7 @@ public class MainScreenController extends AbstractController {
 
     public void initialize() {
 
+        setLanguageToggle();
 
         postersView.add(poster1);
         postersView.add(poster2);
@@ -179,6 +180,17 @@ public class MainScreenController extends AbstractController {
     public void setRULocale() {
         LocaleManager.setCurrentLocale(new Locale("ru"));
         reload();
+    }
+
+    public void openPremieres() {
+
+        try {
+            ScreenStarter.Start("/contentScreens/NearFilmList.fxml", stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        close();
+
     }
 
 }

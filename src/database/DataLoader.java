@@ -324,6 +324,29 @@ public class DataLoader {
         return id;
     }
 
+    public ObservableList<Film> getPremieres() {
+
+        ObservableList<Film> premieres = FXCollections.observableArrayList();
+        InputStream blobStream = null;
+
+        try {
+            ResultSet resultSet = DBConnector.sendRequest(Requests.GET_NEAR_FILMS);
+            while (resultSet.next()) {
+
+                blobStream = resultSet.getBlob("Poster").getBinaryStream();
+                premieres.add(new Film(0, resultSet.getString("FilmName"), resultSet.getString("Description"), resultSet.getString("Genre"), resultSet.getString("Country"), resultSet.getInt("Length"), new Image(blobStream)));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        return premieres;
+
+    }
+
 
 
 }

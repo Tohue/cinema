@@ -74,7 +74,7 @@
     <AnchorPane layoutY="567.0" prefHeight="154.0" prefWidth="1080.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%premieres" />
+            <Button mnemonicParsing="false" onAction="#openPremieres" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%premieres" />
                <Button mnemonicParsing="false" onAction="#openFilmList" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%FilmList" />
                <Button mnemonicParsing="false" onAction="#openSchedule" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%Schedule" />
          </children>
