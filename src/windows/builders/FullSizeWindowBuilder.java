@@ -29,7 +29,7 @@ public class FullSizeWindowBuilder{
 
         fxmlLoader = new FXMLLoader();
         localePath = "bundles.locale/locale";
-        currentLocale = Locale.getDefault();
+        currentLocale = LocaleManager.getCurrentLocale();
         defaultFXMLPath = "/fxml/";
     }
 
@@ -70,6 +70,7 @@ public class FullSizeWindowBuilder{
         primaryStage.setScene(new Scene(root));
         primaryStage.getScene().setRoot(root);
         ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
+        ((AbstractController)fxmlLoader.getController()).setFXMLName(FXMLName);
         return primaryStage;
 
 
@@ -88,6 +89,7 @@ public class FullSizeWindowBuilder{
         primaryStage.setTitle("Кинотеатр \"Родина\"");
         ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
         ((AbstractController)fxmlLoader.getController()).setLastWindow(lastWindow);
+        ((AbstractController)fxmlLoader.getController()).setFXMLName(FXMLName);
         primaryStage.getScene().setRoot(root);
         return primaryStage;
 

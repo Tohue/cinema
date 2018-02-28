@@ -1,16 +1,24 @@
 package windows.controllers;
 
 import javafx.stage.Stage;
+import windows.windowStarters.ScreenStarter;
 
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 public abstract class AbstractController {
 
     private Stage lastWindow;
 
+    private String FXMLName;
+
     private ResourceBundle bundle;
 
     protected Stage stage;
+
+    public void setFXMLName(String FXMLName) {
+        this.FXMLName = FXMLName;
+    }
 
     public Stage getStage() {
         return stage;
@@ -42,4 +50,16 @@ public abstract class AbstractController {
         openLastWindow();
         closeThisFuckinWindow();
     }
+
+    public void reload() {
+
+        close();
+        try {
+            ScreenStarter.Start(FXMLName, lastWindow);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

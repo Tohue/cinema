@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -72,8 +74,9 @@
     <AnchorPane layoutY="567.0" prefHeight="154.0" prefWidth="1080.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-               <Button mnemonicParsing="false" onAction="#openFilmList" prefHeight="56.0" prefWidth="304.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%FilmList" />
-               <Button mnemonicParsing="false" onAction="#openSchedule" prefHeight="56.0" prefWidth="324.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%Schedule" />
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%premieres" />
+               <Button mnemonicParsing="false" onAction="#openFilmList" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%FilmList" />
+               <Button mnemonicParsing="false" onAction="#openSchedule" prefHeight="56.0" prefWidth="300.0" styleClass="dark-blue" stylesheets="@../../styles/bc_colors.css" text="%Schedule" />
          </children>
          <padding>
             <Insets left="150.0" right="150.0" />
@@ -82,4 +85,10 @@
       <Button layoutX="995.0" layoutY="115.0" mnemonicParsing="false" onAction="#openAdminScreen" prefHeight="25.0" prefWidth="71.0" text="%AdminBtnText" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
     </AnchorPane>
    <Separator fx:id="bottomSeparator" prefWidth="200.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   <ToggleButton fx:id="en_toggle" layoutX="864.0" layoutY="14.0" mnemonicParsing="false" onAction="#setENLocale" prefHeight="33.0" prefWidth="97.0" text="English" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="14.0">
+      <toggleGroup>
+         <ToggleGroup fx:id="tg_group" />
+      </toggleGroup>
+   </ToggleButton>
+   <ToggleButton fx:id="ru_toggle" layoutX="864.0" layoutY="14.0" mnemonicParsing="false" onAction="#setRULocale" prefHeight="33.0" prefWidth="97.0" text="Русский" toggleGroup="$tg_group" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="14.0" />
 </AnchorPane>

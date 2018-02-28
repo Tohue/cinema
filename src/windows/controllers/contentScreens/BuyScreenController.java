@@ -7,12 +7,11 @@ import database.Requests;
 import entities.Session;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+
 import javafx.scene.SubScene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+
 import windows.components.SeatView;
 import windows.controllers.AbstractController;
 
@@ -24,8 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
-import java.util.ResourceBundle;
+
 
 public class BuyScreenController extends AbstractController {
 

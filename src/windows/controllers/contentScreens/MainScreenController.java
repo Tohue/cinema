@@ -8,14 +8,17 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import windows.builders.LocaleManager;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 
 public class MainScreenController extends AbstractController {
@@ -54,6 +57,11 @@ public class MainScreenController extends AbstractController {
     @FXML
     Button poster12;
 
+    // Преключатель языков
+    @FXML
+    ToggleButton en_toggle;
+    @FXML
+    ToggleButton ru_toggle;
 
     /**
      * кнопка открытия админки
@@ -155,5 +163,22 @@ public class MainScreenController extends AbstractController {
 
     }
 
+    private void setLanguageToggle() {
+
+        if (LocaleManager.getCurrentLocale().equals(new Locale("ru")))
+            ru_toggle.setSelected(true);
+        else en_toggle.setSelected(true);
+
+    }
+
+    public void setENLocale() {
+        LocaleManager.setCurrentLocale(new Locale("en"));
+      reload();
+    }
+
+    public void setRULocale() {
+        LocaleManager.setCurrentLocale(new Locale("ru"));
+        reload();
+    }
 
 }
