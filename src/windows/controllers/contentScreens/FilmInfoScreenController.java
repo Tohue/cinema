@@ -9,11 +9,14 @@ import entities.Theater;
 import javafx.collections.ObservableList;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import windows.components.FontLoader;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
 
@@ -50,6 +53,10 @@ public  class FilmInfoScreenController extends AbstractController {
     Hyperlink todayLink;
     @FXML
     Hyperlink tomorrowLink;
+    @FXML
+    AnchorPane infoPane;
+    @FXML
+    Button backBtn;
 
     @FXML
     Label noFilmsLabel;
@@ -98,21 +105,33 @@ public  class FilmInfoScreenController extends AbstractController {
 
     public void initialize() {
 
-        filmNameLabel.setText(filmName);
-        countryLabel.setText(countryLabel.getText() + ": " + country);
-        lengthLabel.setText(lengthLabel.getText() + ": " + String.valueOf(length));
-        descField.setText(desctription);
-        genreLabel.setText(genreLabel.getText() + ": " + genre);
-        ImageView posterView = new ImageView(poster);
-        posterView.setPreserveRatio(true);
-        posterView.fitHeightProperty().bind(mainPanel.heightProperty().multiply(0.9));
-        posterBut.setGraphic(posterView);
+        setFonts();
+        setMainPoster();
         setDatePicker();
+        setInfo();
         setFilmTimesByDate(filmName, datePicker.getValue());
         setLinks();
 
     }
 
+    private void setInfo() {
+
+        filmNameLabel.setText(filmName);
+        countryLabel.setText(countryLabel.getText() + ": " + country);
+        lengthLabel.setText(lengthLabel.getText() + ": " + String.valueOf(length));
+        descField.setText(desctription);
+        genreLabel.setText(genreLabel.getText() + ": " + genre);
+
+    }
+
+    private void setMainPoster() {
+
+        ImageView posterView = new ImageView(poster);
+        posterView.setPreserveRatio(true);
+        posterView.fitHeightProperty().bind(mainPanel.heightProperty().multiply(0.9));
+        posterBut.setGraphic(posterView);
+
+    }
 
     private void setDatePicker() {
 
@@ -180,4 +199,12 @@ public  class FilmInfoScreenController extends AbstractController {
         tomorrowLink.setOnAction(event -> setFilmTimesByDate(filmName, LocalDate.now().plusDays(1)));
 
     }
+
+    private void setFonts() {
+
+        FontLoader fontLoader = new FontLoader();
+        backBtn.setFont(fontLoader.getBebasReg(40));
+        filmNameLabel.setFont(fontLoader.getLemon(50));
+    }
+
 }
