@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.CacheHint;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -119,6 +120,7 @@ public class SelectSeatsController extends AbstractController {
 
                 if (currRowIndex > ordRows)
                     seat.setVIP(true);
+
 
                 seat.setOnAction(new EventHandler<ActionEvent>() {
                     @Override

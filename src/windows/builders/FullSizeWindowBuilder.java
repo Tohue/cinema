@@ -69,6 +69,7 @@ public class FullSizeWindowBuilder{
         primaryStage.setFullScreen(true);
         primaryStage.setScene(new Scene(root));
         primaryStage.getScene().setRoot(root);
+        primaryStage.setAlwaysOnTop(true);
         ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
         ((AbstractController)fxmlLoader.getController()).setFXMLName(FXMLName);
         return primaryStage;
@@ -91,6 +92,7 @@ public class FullSizeWindowBuilder{
         ((AbstractController)fxmlLoader.getController()).setStage(primaryStage);
         ((AbstractController)fxmlLoader.getController()).setLastWindow(lastWindow);
         ((AbstractController)fxmlLoader.getController()).setFXMLName(FXMLName);
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.getScene().setRoot(root);
         return primaryStage;
 

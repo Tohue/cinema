@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.indoEditors.TheaterChangeController">
+    <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Tab text="Редактирование">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <Label alignment="CENTER" layoutY="65.0" prefHeight="82.0" prefWidth="1920.0" text="Редактирование данных о залах" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+                    <font>
+                        <Font name="System Bold" size="42.0" />
+                    </font>
+                </Label>
+                <Label layoutX="191.0" layoutY="249.0" prefHeight="41.0" prefWidth="214.0" text="Номер зала:" AnchorPane.leftAnchor="191.0" AnchorPane.topAnchor="249.0">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="editNumberField" layoutX="411.0" layoutY="251.0" prefHeight="38.0" prefWidth="186.0" AnchorPane.leftAnchor="411.0" AnchorPane.topAnchor="251.0" />
+                <Label layoutX="191.0" layoutY="337.0" prefHeight="39.0" prefWidth="184.0" text="Всего мест:" AnchorPane.leftAnchor="191.0" AnchorPane.topAnchor="337.0">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Label>
+                <Button layoutX="191.0" layoutY="587.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="200.0" text="Назад" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="191.0" />
+                <Button layoutX="820.0" layoutY="587.0" mnemonicParsing="false" onAction="#saveEditing" prefHeight="50.0" prefWidth="200.0" text="Сохранить" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="60.0" />
+                <Label fx:id="errorEditLabel" alignment="TOP_LEFT" layoutX="445.0" layoutY="528.0" prefHeight="34.0" prefWidth="437.0" text="Ошибка сохранения данных" textFill="RED" visible="false" AnchorPane.bottomAnchor="129.0" AnchorPane.rightAnchor="60.0">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+            <Spinner fx:id="editCountField" layoutX="411.0" layoutY="340.0" prefHeight="33.0" prefWidth="186.0" AnchorPane.leftAnchor="411.0" AnchorPane.topAnchor="340.0" />
+            <Label layoutX="191.0" layoutY="405.0" prefHeight="39.0" prefWidth="184.0" text="Мест в ряду:" AnchorPane.leftAnchor="191.0" AnchorPane.topAnchor="405.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="editSeatsInRowField" layoutX="411.0" layoutY="408.0" prefHeight="33.0" prefWidth="186.0" AnchorPane.leftAnchor="411.0" AnchorPane.topAnchor="408.0" />
+            <Spinner fx:id="editVIPRowField" layoutX="411.0" layoutY="479.0" prefHeight="33.0" prefWidth="186.0" AnchorPane.leftAnchor="411.0" AnchorPane.topAnchor="479.0" />
+            <Label layoutX="191.0" layoutY="476.0" prefHeight="39.0" prefWidth="184.0" text="VIP-рядов:" AnchorPane.leftAnchor="191.0" AnchorPane.topAnchor="476.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Button fx:id="delete" layoutX="609.0" layoutY="587.0" mnemonicParsing="false" onAction="#delete" prefHeight="50.0" prefWidth="200.0" text="Удалить" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="271.0" />
+            </AnchorPane>
+        </Tab>
+        <Tab text="Добавление">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <Label alignment="CENTER" layoutX="-32.0" layoutY="146.0" prefHeight="82.0" prefWidth="1920.0" text="Добавление залов" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+                    <font>
+                        <Font name="System Bold" size="42.0" />
+                    </font>
+                </Label>
+                <Label layoutX="203.0" layoutY="301.0" prefHeight="78.0" prefWidth="214.0" text="Номер зала:" AnchorPane.leftAnchor="203.0" AnchorPane.topAnchor="301.0">
+                    <font>
+                        <Font size="30.0" />
+                    </font>
+                </Label>
+                <Label layoutX="203.0" layoutY="382.0" prefHeight="54.0" prefWidth="192.0" text="Всего мест:" AnchorPane.leftAnchor="203.0" AnchorPane.topAnchor="382.0">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="addCountField" layoutX="430.0" layoutY="391.0" prefHeight="39.0" prefWidth="234.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="391.0" />
+                <TextField fx:id="addNumberField" layoutX="428.0" layoutY="322.0" prefHeight="37.0" prefWidth="233.0" AnchorPane.leftAnchor="428.0" AnchorPane.topAnchor="322.0" />
+                <Button fx:id="saveCreating" layoutX="809.0" layoutY="597.0" mnemonicParsing="false" onAction="#saveCreating" prefHeight="50.0" prefWidth="200.0" text="Сохранить" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="71.0" />
+                <Button fx:id="cancel" layoutX="1288.0" layoutY="931.0" mnemonicParsing="false" onAction="#back" prefHeight="50.0" prefWidth="200.0" text="Назад" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="191.0" />
+                <Label fx:id="errorSaveLabel" layoutX="1288.0" layoutY="886.0" text="Ошибка сохранения данных" textFill="RED" visible="false" AnchorPane.bottomAnchor="131.0" AnchorPane.rightAnchor="332.0">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+            <TextField fx:id="addSeatsInRowField" layoutX="432.0" layoutY="459.0" prefHeight="39.0" prefWidth="234.0" AnchorPane.leftAnchor="432.0" AnchorPane.topAnchor="459.0" />
+            <TextField fx:id="addVIPRowField" layoutX="432.0" layoutY="526.0" prefHeight="39.0" prefWidth="234.0" AnchorPane.leftAnchor="432.0" AnchorPane.topAnchor="526.0" />
+            <Label layoutX="203.0" layoutY="519.0" prefHeight="54.0" prefWidth="192.0" text="VIP-рядов:" AnchorPane.leftAnchor="203.0" AnchorPane.topAnchor="519.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="203.0" layoutY="447.0" prefHeight="54.0" prefWidth="192.0" text="Мест в ряду:" AnchorPane.leftAnchor="203.0" AnchorPane.topAnchor="447.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+</AnchorPane>

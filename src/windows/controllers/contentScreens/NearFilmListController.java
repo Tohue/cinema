@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.text.Font;
+import windows.components.FontLoader;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
 
@@ -23,9 +23,16 @@ public class NearFilmListController extends AbstractController {
 
     @FXML
     FlowPane postersPane;
+    @FXML
+    Button backBtn;
+    @FXML
+    Button schBtn;
+    @FXML
+    Button filmBtn;
 
     public void initialize() {
         setFilms();
+        setFonts();
     }
 
     private void setFilms() {
@@ -41,7 +48,7 @@ public class NearFilmListController extends AbstractController {
             button = new Button(films.get(i).getName(), image);
             button.setContentDisplay(ContentDisplay.TOP);
             button.setStyle("-fx-background-color: transparent;");
-            button.setFont(new Font(30));
+            button.setFont(new FontLoader().getBebasReg(35));
             postersPane.setHgap(50);
             postersPane.getChildren().add(button);
             postersPane.setPadding(new Insets(50, 50, 50, 50));
@@ -67,6 +74,35 @@ public class NearFilmListController extends AbstractController {
                 }
             }
         });
+
+    }
+
+    private void setFonts() {
+
+        backBtn.setFont(new FontLoader().getBebasReg(30));
+        schBtn.setFont(new FontLoader().getBebasReg(30));
+        filmBtn.setFont(new FontLoader().getBebasReg(30));
+
+    }
+
+    public void openFilmList() {
+        try {
+            ScreenStarter.Start("ContentScreens/FilmListWindow.fxml", stage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        closeThisFuckinWindow();
+    }
+
+    public void openSchedule() {
+        try {
+            ScreenStarter.Start("ContentScreens/ScheduleScreen.fxml", stage);
+            close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        closeThisFuckinWindow();
 
     }
 

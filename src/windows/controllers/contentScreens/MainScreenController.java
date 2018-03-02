@@ -10,11 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import windows.builders.LocaleManager;
+import windows.components.FontLoader;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
 import java.io.IOException;
@@ -32,6 +34,13 @@ public class MainScreenController extends AbstractController {
 
     @FXML
     GridPane postersPane;
+
+    @FXML
+    Button premieresBtn;
+    @FXML
+    Button filmListBtn;
+    @FXML
+    Button scheduleBtn;
 
     @FXML
     Separator bottomSeparator;
@@ -126,6 +135,13 @@ public class MainScreenController extends AbstractController {
         setLanguageToggle();
         setLanguageIcons();
         setLogo();
+        setReflection();
+        loadPosters();
+        setFonts();
+
+    }
+
+    private void loadPosters() {
 
         postersView.add(poster1);
         postersView.add(poster2);
@@ -161,17 +177,17 @@ public class MainScreenController extends AbstractController {
             e.printStackTrace();
         }
 
-
     }
 
     private void setPoster(Button button, Film film) {
 
         ImageView image = new ImageView(film.getPoster());
-        image.setPreserveRatio(true);
+     //   image.setPreserveRatio(true);
         image.fitHeightProperty().bind(postersPane.heightProperty().divide(2));
+        image.fitWidthProperty().bind(postersPane.widthProperty().divide(6));
         button.setGraphic(image);
         filmKeys.put(button, film);
-
+        image.setStyle("-fx-background-radius: 20px;");
 
         button.setOnAction(event -> {
             try {
@@ -249,5 +265,26 @@ public class MainScreenController extends AbstractController {
 
     }
 
+    private void setReflection() {
+
+        premieresBtn.setEffect(new Reflection());
+
+    }
+
+    private void setFonts() {
+
+        FontLoader fontLoader = new FontLoader();
+        mainTitle.setFont(fontLoader.getLemon(85));
+
+        en_toggle.setFont(fontLoader.getBebasThin(20));
+        ru_toggle.setFont(fontLoader.getBebasThin(20));
+
+        premieresBtn.setFont(fontLoader.getBebasReg(35));
+        scheduleBtn.setFont(fontLoader.getBebasReg(35));
+        filmListBtn.setFont(fontLoader.getBebasReg(35));
+
+        adminBtn.setFont(fontLoader.getBebasThin(15));
+
+    }
 
 }
