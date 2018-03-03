@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import windows.components.FontLoader;
 import windows.controllers.AbstractController;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -35,20 +36,18 @@ public class ScheduleScreenController extends AbstractController {
     @FXML
     Hyperlink tomorrowLink;
 
+    @FXML
+    Label title;
 
 
     public void initialize() {
 
 
         setFilmsByDate(LocalDate.now());
-
         todayLink.setOnAction(event -> setFilmsByDate(LocalDate.now()));
-
         tomorrowLink.setOnAction(event -> setFilmsByDate(LocalDate.now().plusDays(1)));
-
         datePicker.setOnAction(event -> setFilmsByDate(datePicker.getValue()));
-
-
+        setFonts();
     }
 
 
@@ -77,6 +76,13 @@ public class ScheduleScreenController extends AbstractController {
             e.printStackTrace();
         }
 
+
+    }
+
+    private void setFonts() {
+
+        FontLoader fontLoader = new FontLoader();
+        title.setFont(fontLoader.getLemon(50));
 
     }
 

@@ -347,7 +347,37 @@ public class DataLoader {
 
     }
 
+    public ObservableList<String> getGenres() {
 
+        ObservableList<String> genres = FXCollections.observableArrayList();
+
+        try {
+            ResultSet resultSet = DBConnector.sendRequest(Requests.GET_GENRES);
+            while (resultSet.next())
+               genres.add(resultSet.getString("Genre"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return genres;
+
+    }
+
+    public ObservableList<String> getCountries() {
+
+        ObservableList<String> countries = FXCollections.observableArrayList();
+
+        try {
+            ResultSet resultSet = DBConnector.sendRequest(Requests.GET_COUNTRIES);
+            while (resultSet.next())
+                countries.add(resultSet.getString("Country"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return countries;
+
+    }
 
 }
 

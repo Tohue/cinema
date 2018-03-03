@@ -239,7 +239,6 @@ public class SessionChangeController extends AbstractController implements infoE
 
     }
 
-
     private void setFields() {
 
         DataLoader dataLoader = new DataLoader();
@@ -336,6 +335,8 @@ public class SessionChangeController extends AbstractController implements infoE
             list.add(k.getTheaterNumber());
 
         ObservableList<Integer> theatersList = FXCollections.observableArrayList(list);
+        for (Theater theater : dataLoader.getTheatersList())
+            theatersList.add(theater.getTheaterNumber());
         theaterCol.setCellFactory(ComboBoxTableCell.forTableColumn(theatersList));
 
         dateCol.setCellFactory(TextFieldTableCell.forTableColumn(new DateStringConverter()));

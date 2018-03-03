@@ -21,6 +21,8 @@ public class Requests {
     public static final String CHECK_USER = "SELECT Password FROM Admins WHERE Login = ?;";
     public static final String GET_LAST_ORDER_ID = "SELECT idOrders FROM Orders ORDER BY idOrders DESC LIMIT 1;";
     public static final String GET_NEAR_FILMS = "SELECT * FROM Sessions INNER JOIN Films on Sessions.FilmName = Films.Name WHERE SessionDate >= CURRENT_DATE GROUP BY FilmName;";
+    public static final String GET_GENRES = "SELECT DISTINCT Genre FROM Films;";
+    public static final String GET_COUNTRIES = "SELECT DISTINCT Country FROM Films;";
 
     /**
      * INSERT
