@@ -7,9 +7,9 @@
 
 <AnchorPane fx:id="mainPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.BuyScreenController">
    <children>
-      <Button fx:id="buyButton" layoutX="582.0" layoutY="610.0" mnemonicParsing="false" onAction="#buy" prefHeight="65.0" prefWidth="200.0" text="%film.buy" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="298.0" />
-      <Button fx:id="cancelButton" layoutX="361.0" layoutY="610.0" mnemonicParsing="false" onAction="#back" prefHeight="65.0" prefWidth="200.0" text="%back" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="519.0" />
-      <AnchorPane layoutX="55.0" layoutY="52.0" prefHeight="341.0" prefWidth="727.0" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="327.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="298.0" AnchorPane.topAnchor="52.0">
+      <Button fx:id="buyButton" layoutX="582.0" layoutY="610.0" mnemonicParsing="false" onAction="#buy" prefHeight="65.0" prefWidth="200.0" styleClass="round_button" stylesheets="@../../styles/buttons.css" text="%film.buy" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="298.0" />
+      <Button fx:id="cancelButton" layoutX="361.0" layoutY="610.0" mnemonicParsing="false" onAction="#back" prefHeight="65.0" prefWidth="200.0" styleClass="round_button" stylesheets="@../../styles/buttons.css" text="%back" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="519.0" />
+      <AnchorPane layoutX="55.0" layoutY="52.0" prefHeight="341.0" prefWidth="727.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;" AnchorPane.bottomAnchor="327.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="298.0" AnchorPane.topAnchor="52.0">
          <children>
             <Label fx:id="titleLabel" layoutX="14.0" layoutY="14.0" text="%orderDetails" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                <font>

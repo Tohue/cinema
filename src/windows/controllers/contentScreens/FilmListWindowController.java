@@ -2,21 +2,23 @@ package windows.controllers.contentScreens;
 
 import database.DataLoader;
 import entities.Film;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.util.Callback;
 import windows.components.FontLoader;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.stream.Collectors;
 
 /**
  * Контроллер экрана со списком фильмов
@@ -55,6 +57,8 @@ public class FilmListWindowController extends AbstractController {
         setSortFields();
         setFonts();
 
+     //   setTextWrap();
+
     }
 
     private void loadFilms() {
@@ -68,7 +72,7 @@ public class FilmListWindowController extends AbstractController {
         try {
             dataLoader.loadFilmInfo();
             observableList = dataLoader.getFilmInfoList();
-
+            setSorts(observableList);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,6 +88,7 @@ public class FilmListWindowController extends AbstractController {
     }
 
     private void setColumnsClickable() {
+
 
         filmTable.setOnMouseClicked(event -> {
 
@@ -121,5 +126,41 @@ public class FilmListWindowController extends AbstractController {
         countryField.setItems(dataLoader.getCountries());
 
     }
+
+    private void setTextWrap() {
+
+        descCol.setCellFactory(new Callback<TableColumn<Film, String>, TableCell<Film, String>>() {
+            @Override
+            public TableCell<Film, String> call(TableColumn<Film, String> param) {
+                TableCell<Film, String> cell = new TableCell<>();
+                Text text = new Text();
+                cell.setGraphic(text);
+                cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+                text.wrappingWidthProperty().bind(cell.widthProperty());
+                text.textProperty().bind(cell.itemProperty());
+                return cell ;
+            }
+        });
+
+    }
+
+    private void setSorts(ObservableList<Film> primaryList) {
+
+        genreField.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getGenre().equals(genreField.getSelectionModel().getSelectedItem())).collect(Collectors.toList())));
+            }
+        });
+
+        countryField.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getCountry().equals(countryField.getSelectionModel().getSelectedItem())).collect(Collectors.toList())));
+            }
+        });
+
+    }
+
 
 }
