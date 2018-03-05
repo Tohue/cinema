@@ -23,6 +23,7 @@ public class Requests {
     public static final String GET_NEAR_FILMS = "SELECT * FROM Sessions INNER JOIN Films on Sessions.FilmName = Films.Name WHERE SessionDate >= CURRENT_DATE GROUP BY FilmName;";
     public static final String GET_GENRES = "SELECT DISTINCT Genre FROM Films;";
     public static final String GET_COUNTRIES = "SELECT DISTINCT Country FROM Films;";
+    public static final String GET_THEATER_BY_SESSION = "SELECT Theaters.TheaterNumber, SeatsNumber, SeatsInRow, VIPRow FROM Theaters INNER JOIN Sessions on Theaters.TheaterNumber = Sessions.TheaterNumber WHERE idSessions = ?";
 
     /**
      * INSERT

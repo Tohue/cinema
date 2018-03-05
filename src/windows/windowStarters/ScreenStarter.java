@@ -2,7 +2,6 @@ package windows.windowStarters;
 
 
 import entities.*;
-import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import windows.builders.FullSizeWindowBuilder;
@@ -10,8 +9,6 @@ import windows.components.SeatView;
 import windows.controllers.contentScreens.BuyScreenController;
 import windows.controllers.contentScreens.FilmInfoScreenController;
 import windows.controllers.contentScreens.SelectSeatsController;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -104,7 +101,14 @@ public class ScreenStarter {
 
     }
 
+    public static Stage StartBG(String FXMLName) throws IOException {
 
 
+        Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName);
+        primaryStage.setMinHeight(minWindowHeight);
+        primaryStage.setMinWidth(minWindowWidth);
+        primaryStage.show();
+        return primaryStage;
 
+    }
 }

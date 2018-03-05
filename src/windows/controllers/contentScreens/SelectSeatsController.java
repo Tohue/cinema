@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.CacheHint;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -109,9 +109,10 @@ public class SelectSeatsController extends AbstractController {
         for (int currRowIndex = 1; currRowIndex <= allRows; currRowIndex++) {
             XAnchor = 0;
             YAnchor += 50;
-            for (int currSeatNum = 1; currSeatNum < seatsInRow; currSeatNum++) {
+            for (int currSeatNum = 1; currSeatNum <= seatsInRow; currSeatNum++) {
 
                 SeatView seat = new SeatView(currRowIndex, currSeatNum);
+           //     seat.prefWidthProperty().bind(seatsAnchorPane.widthProperty().divide(15));
 
                 for (Pair<Integer> pair : booked)
                     if (pair.getElement1() == currRowIndex && pair.getElement2() == currSeatNum)
@@ -122,39 +123,36 @@ public class SelectSeatsController extends AbstractController {
                     seat.setVIP(true);
 
 
-                seat.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        if (seat.isSelected()) {
-                            if (seat.isVIP()) {
-                                ticketSum += session.getVipCost();
-                                vipNum++;
-                                seatsList.add(seat);
-                            }
-                            else {
-                                ticketSum += session.getStandartCost();
-                                ordNum++;
-                                seatsList.add(seat);
-                            }
-
-                            countSelectedSeats++;
-                        } else {
-                            if (seat.isVIP()) {
-                                ticketSum -= session.getVipCost();
-                                vipNum--;
-                               seatsList.remove(seat);
-                            }
-                            else {
-                                ticketSum -= session.getStandartCost();
-                                ordNum--;
-                                seatsList.remove(seat);
-                            }
-                            countSelectedSeats--;
-
+                seat.setOnAction(event -> {
+                    if (seat.isSelected()) {
+                        if (seat.isVIP()) {
+                            ticketSum += session.getVipCost();
+                            vipNum++;
+                            seatsList.add(seat);
                         }
-                        checkSelection();
-                        updateFields();
+                        else {
+                            ticketSum += session.getStandartCost();
+                            ordNum++;
+                            seatsList.add(seat);
+                        }
+
+                        countSelectedSeats++;
+                    } else {
+                        if (seat.isVIP()) {
+                            ticketSum -= session.getVipCost();
+                            vipNum--;
+                           seatsList.remove(seat);
+                        }
+                        else {
+                            ticketSum -= session.getStandartCost();
+                            ordNum--;
+                            seatsList.remove(seat);
+                        }
+                        countSelectedSeats--;
+
                     }
+                    checkSelection();
+                    updateFields();
                 });
 
                 AnchorPane.setTopAnchor(seat, YAnchor * 1.0);

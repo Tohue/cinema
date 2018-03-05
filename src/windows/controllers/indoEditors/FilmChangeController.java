@@ -6,15 +6,12 @@ import database.Requests;
 import entities.Film;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import windows.controllers.AbstractController;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FilmChangeController extends AbstractController implements infoEditor {
@@ -50,24 +47,21 @@ public class FilmChangeController extends AbstractController implements infoEdit
     public void initialize() {
 
         ObservableList<Film> films = getFilms();
-        filmNameEdit.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                Film film = null;
-                for (Film film1 : films)
-                    if (film1.getName().equals(filmNameEdit.getValue())) {
-                        film = film1;
-                        break;
-                    }
-
-                if (film != null) {
-                    countryEdit.setText(film.getCountry());
-                    filmDescEdit.setText(film.getDescription());
-                    genreEdit.setText(film.getGenre());
-                    lengthEdit.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, film.getLength()));
+        filmNameEdit.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
+            Film film = null;
+            for (Film film1 : films)
+                if (film1.getName().equals(filmNameEdit.getValue())) {
+                    film = film1;
+                    break;
                 }
 
+            if (film != null) {
+                countryEdit.setText(film.getCountry());
+                filmDescEdit.setText(film.getDescription());
+                genreEdit.setText(film.getGenre());
+                lengthEdit.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, film.getLength()));
             }
+
         });
         updateInfo();
 

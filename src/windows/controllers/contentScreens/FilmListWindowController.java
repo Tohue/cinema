@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import windows.components.FontLoader;
@@ -129,36 +129,22 @@ public class FilmListWindowController extends AbstractController {
 
     private void setTextWrap() {
 
-        descCol.setCellFactory(new Callback<TableColumn<Film, String>, TableCell<Film, String>>() {
-            @Override
-            public TableCell<Film, String> call(TableColumn<Film, String> param) {
-                TableCell<Film, String> cell = new TableCell<>();
-                Text text = new Text();
-                cell.setGraphic(text);
-                cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-                text.wrappingWidthProperty().bind(cell.widthProperty());
-                text.textProperty().bind(cell.itemProperty());
-                return cell ;
-            }
+        descCol.setCellFactory(param -> {
+            TableCell<Film, String> cell = new TableCell<>();
+            Text text = new Text();
+            cell.setGraphic(text);
+            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+            text.wrappingWidthProperty().bind(cell.widthProperty());
+            text.textProperty().bind(cell.itemProperty());
+            return cell;
         });
 
     }
 
     private void setSorts(ObservableList<Film> primaryList) {
 
-        genreField.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getGenre().equals(genreField.getSelectionModel().getSelectedItem())).collect(Collectors.toList())));
-            }
-        });
-
-        countryField.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getCountry().equals(countryField.getSelectionModel().getSelectedItem())).collect(Collectors.toList())));
-            }
-        });
+        genreField.setOnAction(event -> filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getGenre().equals(genreField.getSelectionModel().getSelectedItem())).collect(Collectors.toList()))));
+        countryField.setOnAction(event -> filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getCountry().equals(countryField.getSelectionModel().getSelectedItem())).collect(Collectors.toList()))));
 
     }
 

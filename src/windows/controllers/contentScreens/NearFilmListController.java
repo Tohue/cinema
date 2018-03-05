@@ -63,15 +63,12 @@ public class NearFilmListController extends AbstractController {
 
     private void setPosterAction(Button button, Film film) {
 
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    ScreenStarter.StartFilmInfoList(film, stage);
-                    close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        button.setOnAction(event -> {
+            try {
+                ScreenStarter.StartFilmInfoList(film, stage);
+                close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 

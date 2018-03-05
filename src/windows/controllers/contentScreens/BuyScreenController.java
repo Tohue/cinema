@@ -3,12 +3,8 @@ package windows.controllers.contentScreens;
 import database.DBConnector;
 import database.DataLoader;
 import database.Requests;
-
 import entities.Session;
-
 import javafx.fxml.FXML;
-
-import javafx.scene.SubScene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
@@ -103,15 +99,14 @@ public class BuyScreenController extends AbstractController {
                     PreparedStatement ticketStatement = connection.prepareStatement(Requests.ADD_TICKET);
                     ticketStatement.setInt(1, session.getIdSession());
                     ticketStatement.setString(2, (seat.isVIP() ? "VIP" : "ORD"));
-                    ticketStatement.setInt(3, lastOrder.intValue());
+                    ticketStatement.setInt(3, lastOrder);
                     ticketStatement.setInt(4, seat.getNum());
                     ticketStatement.setInt(5, seat.getRow());
                     ticketStatement.executeUpdate();
                     connection.commit();
                 }
 
-                if (orderStatement != null)
-                    orderStatement.close();
+                orderStatement.close();
 
 
                 } catch (Exception e) {

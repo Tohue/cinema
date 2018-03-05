@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

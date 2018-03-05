@@ -13,8 +13,7 @@ import windows.controllers.AbstractController;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+
 
 public class TheaterChangeController extends AbstractController implements infoEditor {
 
@@ -58,28 +57,29 @@ public class TheaterChangeController extends AbstractController implements infoE
 
     public void initialize() {
 
+        setUpdateOnChangeTheater();
+        updateInfo();
+    }
 
-        editNumberField.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
-            @Override
-            public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-                if (theaters != null && editNumberField.getValue() != null) {
-                    int i = 0;
-                    int currTheaterIndex = 0;
-                    for (Theater theater : theaters) {
-                        if (theater.getTheaterNumber() == editNumberField.getValue()) {
-                            currTheaterIndex = i;
-                            break;
-                        }
-                        i++;
+    private void setUpdateOnChangeTheater() {
+
+        editNumberField.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (theaters != null && editNumberField.getValue() != null) {
+                int i = 0;
+                int currTheaterIndex = 0;
+                for (Theater theater : theaters) {
+                    if (theater.getTheaterNumber() == editNumberField.getValue()) {
+                        currTheaterIndex = i;
+                        break;
                     }
-                    editCountField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, theaters.get(currTheaterIndex).getSeatsNumber(), 1));
-                    editSeatsInRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getSeatsInRow(), 1));
-                    editVIPRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getVIPRowNumber(), 1));
+                    i++;
                 }
+                editCountField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, theaters.get(currTheaterIndex).getSeatsNumber(), 1));
+                editSeatsInRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getSeatsInRow(), 1));
+                editVIPRowField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theaters.get(currTheaterIndex).getVIPRowNumber(), 1));
             }
         });
 
-        updateInfo();
     }
 
     /**
@@ -168,9 +168,9 @@ public class TheaterChangeController extends AbstractController implements infoE
             statement = DBConnector.getConnection().prepareStatement(Requests.UPDATE_THEATER);
 
             statement.setInt(1, editCountField.getValue());
-            statement.setInt(2, editNumberField.getValue());
-            statement.setInt(3, editSeatsInRowField.getValue());
-            statement.setInt(4, editVIPRowField.getValue());
+            statement.setInt(2, editSeatsInRowField.getValue());
+            statement.setInt(3, editVIPRowField.getValue());
+            statement.setInt(4, editNumberField.getValue());
             statement.executeUpdate();
             updateInfo();
             hideErrors();
