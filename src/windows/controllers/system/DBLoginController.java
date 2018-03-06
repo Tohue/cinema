@@ -37,10 +37,8 @@ public class DBLoginController  extends AbstractController {
         try {
             Connection connection = DBConnector.doConnection();
             if (connection != null) {
-                Stage bg = ScreenStarter.StartBG("system/BackLoadingScreen.fxml");
                 closeThisFuckinWindow();
                 ScreenStarter.Start("contentScreens/mainScreen.fxml", stage);
-                bg.close();
             } else {
                 logField.clear();
                 passField.clear();

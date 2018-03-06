@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -113,7 +114,6 @@ public class DataLoader {
                 blob = posters.getBlob(1);
                 blobStream = blob.getBinaryStream();
                 postersList.add(new Image(blobStream));
-
             }
            if (blobStream != null) {
                try {

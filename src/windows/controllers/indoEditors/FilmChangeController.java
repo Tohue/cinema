@@ -47,14 +47,18 @@ public class FilmChangeController extends AbstractController implements infoEdit
     Label errorSaveLabel;
     @FXML
     Label errorEditLabel;
+    @FXML
+    Label fileNameLabel;
+    @FXML
+    Label posterError;
 
     private boolean isSelectedPoster = false;
     private byte[] poster;
+    private boolean isChangePoster = false;
+    private byte[] newPoster;
 
     public void initialize() {
 
-
-        setSpinners();
         updateInfo();
 
     }
@@ -74,6 +78,10 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
     public void saveEditing() {
 
+        if (isChangePoster) {
+
+        }
+
     }
 
     public void saveCreating() {
@@ -91,12 +99,13 @@ public class FilmChangeController extends AbstractController implements infoEdit
                 statement.setBlob(5, new SerialBlob(poster));
                 statement.setString(6, genreField.getText());
                 statement.executeUpdate();
+                hidePosterError();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
 
-        }
+        } else showPosterError();
 
         updateInfo();
     }
@@ -104,6 +113,11 @@ public class FilmChangeController extends AbstractController implements infoEdit
     private void setSpinners() {
 
         ObservableList<Film> films = getFilms();
+
+        filmNameEdit.getItems().clear();
+        for (Film film : films)
+            filmNameEdit.getItems().add(film.getName());
+
         filmNameEdit.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
             Film film = null;
             for (Film film1 : films)
@@ -120,7 +134,9 @@ public class FilmChangeController extends AbstractController implements infoEdit
             }
 
         });
+
         lengthField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000));
+
 
     }
 
@@ -128,13 +144,16 @@ public class FilmChangeController extends AbstractController implements infoEdit
     @Override
     public void updateInfo() {
 
-        ObservableList<Film> films = getFilms();
+        setSpinners();
 
-        filmNameEdit.getItems().clear();
-        for (Film film : films)
-            filmNameEdit.getItems().add(film.getName());
+    }
 
+    private void hidePosterError() {
+        posterError.setVisible(false);
+    }
 
+    private void showPosterError() {
+        posterError.setVisible(true);
     }
 
     @Override
@@ -186,7 +205,7 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
         Blob blob = null;
         try {
-            FileInputStream fstream = new FileInputStream(choosePoster());
+            FileInputStream fstream = new FileInputStream(choosePoster(fileNameLabel));
             byte[] bytes = fstream.readAllBytes();
             poster = bytes;
             isSelectedPoster = true;
@@ -199,13 +218,30 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
     }
 
+    public void changePoster() {
 
-    private File choosePoster() {
+        Blob blob = null;
+        try {
+            FileInputStream fstream = new FileInputStream(choosePoster(fileNameLabel));
+            byte[] bytes = fstream.readAllBytes();
+            poster = bytes;
+            isSelectedPoster = true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    private File choosePoster(Label label) {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Выбор постера");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.img", "*.png", "*.jpg", ".bmp", "*.gif"));
         File f = fileChooser.showOpenDialog(stage);
+        label.setText(f.getName());
         return f;
 
     }

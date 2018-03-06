@@ -41,6 +41,8 @@ public class Requests {
     public static final String UPDATE_THEATER = "UPDATE Theaters SET SeatsNumber = ?, SeatsInRow = ?, VIPRow = ? WHERE TheaterNumber = ?;";
     public static final String UPDATE_TICKET = "UPDATE Tickets SET idSessions = ?, TicketType = ?, BookID = ?, SeatNumber = ?, RowNumber = ? WHERE idTickets = ?;";
     public static final String UPDATE_SCHEDULE = "UPDATE Sessions SET FilmName = ?, TheaterNumber = ?, SessionDate = ?, OrdCost = ?, VipCost = ?, SessionTime = ? WHERE idSessions = ?;";
+    public static final String UPDATE_FILM = "";
+    public static final String UPDATE_FILM_WITHOUT_POSTER = "";
 
     /**
      * DELETE
