@@ -28,7 +28,7 @@ public class Requests {
     /**
      * INSERT
      */
-    public static final String ADD_FILM = "INSERT INTO  Poster VALUES (?, ?, ?, ?, ?, ?);";
+    public static final String ADD_FILM = "INSERT INTO Films VALUES (?, ?, ?, ?, ?, ?);";
     public static final String ADD_FILM_WITHOUT_POSTERS = "INSERT INTO  Poster (Name, Length, Country, Description, Genre) VALUES (?, ?, ?, ?, ?);";
     public static final String ADD_THEATER = "INSERT INTO Theaters VALUES (?, ?, ?, ?);";
     public static final String ADD_TICKET = "INSERT INTO Tickets (idSessions, TicketType, BookID, SeatNumber, RowNumber) VALUES ( ?, ?, ?, ?, ?);";

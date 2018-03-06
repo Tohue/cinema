@@ -9,8 +9,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import windows.controllers.AbstractController;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.*;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -23,7 +28,7 @@ public class FilmChangeController extends AbstractController implements infoEdit
     @FXML
     TextField genreField;
     @FXML
-    TextField lengthField;
+    Spinner<Integer> lengthField;
     @FXML
     TextArea descField;
 
@@ -43,26 +48,13 @@ public class FilmChangeController extends AbstractController implements infoEdit
     @FXML
     Label errorEditLabel;
 
+    private boolean isSelectedPoster = false;
+    private byte[] poster;
 
     public void initialize() {
 
-        ObservableList<Film> films = getFilms();
-        filmNameEdit.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
-            Film film = null;
-            for (Film film1 : films)
-                if (film1.getName().equals(filmNameEdit.getValue())) {
-                    film = film1;
-                    break;
-                }
 
-            if (film != null) {
-                countryEdit.setText(film.getCountry());
-                filmDescEdit.setText(film.getDescription());
-                genreEdit.setText(film.getGenre());
-                lengthEdit.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, film.getLength()));
-            }
-
-        });
+        setSpinners();
         updateInfo();
 
     }
@@ -86,42 +78,51 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
     public void saveCreating() {
 
-        System.out.println("Ща будем сохранять фильм");
-        if (DBConnector.isConnected()) {
+        if (isSelectedPoster) {
             System.out.println("Сохраняем фильм");
-//            InputStream inputStream = new BufferedInputStream(new FileInputStream("C:\\Users\\Erik\\IdeaProjects\\Кириллов\\Cinema\\cinema\\resources\\images\\1.png"));
-//            PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.ADD_FILM);
-//            statement.setString(1, nameField.getText());
-//            statement.setInt(2, Integer.parseInt(lengthField.getText()));
-//            statement.setString(3, countryField.getText());
-//            statement.setString(4, descField.getText());
-//
-//
-//            statement.setBlob(5, inputStream);
-//            statement.setString(6, genreField.getText());
-//            statement.executeUpdate();
 
             PreparedStatement statement = null;
             try {
-
-                statement = DBConnector.getConnection().prepareStatement(Requests.ADD_FILM_WITHOUT_POSTERS);
+                statement = DBConnector.getConnection().prepareStatement(Requests.ADD_FILM);
                 statement.setString(1, nameField.getText());
-                statement.setInt(2, Integer.parseInt(lengthField.getText()));
+                statement.setInt(2, lengthField.getValue());
                 statement.setString(3, countryField.getText());
                 statement.setString(4, descField.getText());
-                statement.setString(5, genreField.getText());
+                statement.setBlob(5, new SerialBlob(poster));
+                statement.setString(6, genreField.getText());
                 statement.executeUpdate();
-                hideErrors();
-
             } catch (SQLException e) {
-                creatingError();
                 e.printStackTrace();
             }
+
+
         }
 
         updateInfo();
     }
 
+    private void setSpinners() {
+
+        ObservableList<Film> films = getFilms();
+        filmNameEdit.getSelectionModel().selectedItemProperty().addListener((ChangeListener) (observable, oldValue, newValue) -> {
+            Film film = null;
+            for (Film film1 : films)
+                if (film1.getName().equals(filmNameEdit.getValue())) {
+                    film = film1;
+                    break;
+                }
+
+            if (film != null) {
+                countryEdit.setText(film.getCountry());
+                filmDescEdit.setText(film.getDescription());
+                genreEdit.setText(film.getGenre());
+                lengthEdit.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, film.getLength()));
+            }
+
+        });
+        lengthField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000));
+
+    }
 
 
     @Override
@@ -180,4 +181,33 @@ public class FilmChangeController extends AbstractController implements infoEdit
         lengthEdit.getValueFactory().setValue(1);
 
     }
+
+    public void addPoster() {
+
+        Blob blob = null;
+        try {
+            FileInputStream fstream = new FileInputStream(choosePoster());
+            byte[] bytes = fstream.readAllBytes();
+            poster = bytes;
+            isSelectedPoster = true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    private File choosePoster() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Выбор постера");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.img", "*.png", "*.jpg", ".bmp", "*.gif"));
+        File f = fileChooser.showOpenDialog(stage);
+        return f;
+
+    }
+
 }
