@@ -218,14 +218,14 @@ public class SessionChangeController extends AbstractController implements infoE
         hourSlider.setShowTickLabels(true);
         hourSlider.setShowTickMarks(true);
         hourSlider.setMin(0);
-        hourSlider.setMax(24);
+        hourSlider.setMax(23);
         hourSlider.setMajorTickUnit(12);
         hourSlider.setMinorTickCount(6);
 
         minuteSlider.setShowTickLabels(true);
         minuteSlider.setShowTickMarks(true);
         minuteSlider.setMin(0);
-        minuteSlider.setMax(60);
+        minuteSlider.setMax(59);
         minuteSlider.setMajorTickUnit(30);
         minuteSlider.setMinorTickCount(2);
 
