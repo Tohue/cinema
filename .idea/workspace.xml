@@ -13,10 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/database/DataLoader.class" afterPath="$PROJECT_DIR$/out/production/cinema/database/DataLoader.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/controllers/system/DBLoginController.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/controllers/system/DBLoginController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/windowStarters/ScreenStarter.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/windowStarters/ScreenStarter.class" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/indoEditors/SessionChangeController.java" afterPath="$PROJECT_DIR$/src/windows/controllers/indoEditors/SessionChangeController.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/controllers/indoEditors/SessionChangeController.class" afterPath="$PROJECT_DIR$/out/production/cinema/windows/controllers/indoEditors/SessionChangeController.class" />
+      <change beforePath="$PROJECT_DIR$/resources/fxml/contentScreens/FilmInfoScreen.fxml" afterPath="$PROJECT_DIR$/resources/fxml/contentScreens/FilmInfoScreen.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,11 +75,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FilmChangeController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FilmChangeController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/windows/controllers/indoEditors/FilmChangeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+            <state relative-caret-position="528">
+              <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding>
                 <element signature="e#2971#3575#0" expanded="false" />
                 <element signature="e#3799#3800#0" expanded="true" />
@@ -92,116 +90,6 @@
                 <element signature="method#clearEditFields#0;class#FilmChangeController#0" expanded="false" />
                 <element signature="method#addPoster#0;class#FilmChangeController#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataLoader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/DataLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="115" column="55" lean-forward="false" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
-              <folding>
-                <element signature="method#loadTheaters#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#loadTickets#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#loadOrders#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getSessionsByDate#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#loadFilmNames#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getFilmtimesByDate#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getSessionByDatetimeAndName#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getBookedSeats#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getLastOrderId#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getPremieres#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getGenres#0;class#DataLoader#0" expanded="false" />
-                <element signature="method#getCountries#0;class#DataLoader#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScreenStarter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/windows/windowStarters/ScreenStarter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-              <folding>
-                <element signature="e#853#854#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FilmListWindowController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmListWindowController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="147" column="1" lean-forward="true" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#initialize#0;class#FilmListWindowController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionChangeController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/windows/controllers/indoEditors/SessionChangeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="227" column="30" lean-forward="false" selection-start-line="227" selection-start-column="30" selection-end-line="227" selection-end-column="30" />
-              <folding>
-                <element signature="method#saveEditing#0;class#SessionChangeController#0" expanded="false" />
-                <element signature="method#saveCreating#0;class#SessionChangeController#0" expanded="false" />
-                <element signature="method#updateInfo#0;class#SessionChangeController#0" expanded="false" />
-                <element signature="method#delete#0;class#SessionChangeController#0" expanded="false" />
-                <element signature="method#hideErrors#0;class#SessionChangeController#0" expanded="false" />
-                <element signature="method#setFields#0;class#SessionChangeController#0" expanded="false" />
-                <element signature="method#decrement#0;class#8577:9056" expanded="false" />
-                <element signature="method#increment#0;class#8577:9056" expanded="false" />
-                <element signature="method#getSessionTime#0;class#SessionChangeController#0" expanded="false" />
-                <element signature="method#getTimeFromString#0;class#SessionChangeController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Requests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/Requests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="185" lean-forward="false" selection-start-line="42" selection-start-column="185" selection-end-line="42" selection-end-column="185" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/windows/controllers/AbstractController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="53" column="22" lean-forward="false" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loginScreen.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/windows/windowStarters/loginScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBLoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/windows/controllers/system/DBLoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -323,6 +211,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cinema" type="58d84e3e:PackageViewProjectNode" />
+              <item name="cinema" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,6 +248,20 @@
               <item name="cinema" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="windows" type="462c0819:PsiDirectoryNode" />
+              <item name="builders" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="windows" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="windows" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -355,14 +271,6 @@
               <item name="windows" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
               <item name="indoEditors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinema" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="windows" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
@@ -379,20 +287,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="cinema" type="58d84e3e:PackageViewProjectNode" />
-              <item name="cinema" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -926,7 +820,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520327528341</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="23:59">
+      <created>1520374991027</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1520374991027</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -946,7 +847,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37751856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37751856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -980,7 +881,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Норм редактирование билетов" />
     <MESSAGE value="+ заказы" />
     <MESSAGE value="Расписание с днями" />
     <MESSAGE value="Окно редактирования сеансов" />
@@ -1005,7 +905,8 @@
     <MESSAGE value="Всякая хуйня" />
     <MESSAGE value="Добавление фильма" />
     <MESSAGE value=" Слетают кнопки" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Слетают кнопки" />
+    <MESSAGE value="23:59" />
+    <option name="LAST_COMMIT_MESSAGE" value="23:59" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1215,6 +1116,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1351,23 +1253,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/windows/controllers/indoEditors/FilmChangeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding>
-            <element signature="e#2971#3575#0" expanded="false" />
-            <element signature="e#3799#3800#0" expanded="true" />
-            <element signature="e#3844#3845#0" expanded="true" />
-            <element signature="e#3882#3883#0" expanded="true" />
-            <element signature="e#3926#3927#0" expanded="true" />
-            <element signature="method#delete#0;class#FilmChangeController#0" expanded="false" />
-            <element signature="method#clearEditFields#0;class#FilmChangeController#0" expanded="false" />
-            <element signature="method#addPoster#0;class#FilmChangeController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/Requests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -1411,20 +1296,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmListWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="147" column="1" lean-forward="true" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initialize#0;class#FilmListWindowController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/controllers/indoEditors/SessionChangeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
+        <state relative-caret-position="1768">
           <caret line="227" column="30" lean-forward="false" selection-start-line="227" selection-start-column="30" selection-end-line="227" selection-end-column="30" />
           <folding>
             <element signature="method#saveEditing#0;class#SessionChangeController#0" expanded="false" />
@@ -1437,6 +1311,34 @@
             <element signature="method#increment#0;class#8577:9056" expanded="false" />
             <element signature="method#getSessionTime#0;class#SessionChangeController#0" expanded="false" />
             <element signature="method#getTimeFromString#0;class#SessionChangeController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmListWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="133" column="58" lean-forward="true" selection-start-line="133" selection-start-column="58" selection-end-line="133" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initialize#0;class#FilmListWindowController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/windows/controllers/indoEditors/FilmChangeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#2971#3575#0" expanded="false" />
+            <element signature="e#3799#3800#0" expanded="true" />
+            <element signature="e#3844#3845#0" expanded="true" />
+            <element signature="e#3882#3883#0" expanded="true" />
+            <element signature="e#3926#3927#0" expanded="true" />
+            <element signature="method#delete#0;class#FilmChangeController#0" expanded="false" />
+            <element signature="method#clearEditFields#0;class#FilmChangeController#0" expanded="false" />
+            <element signature="method#addPoster#0;class#FilmChangeController#0" expanded="false" />
           </folding>
         </state>
       </provider>
