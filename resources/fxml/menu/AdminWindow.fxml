@@ -9,5 +9,5 @@
    <Button layoutX="322.0" layoutY="208.0" mnemonicParsing="false" onAction="#openFilmChange" prefHeight="64.0" prefWidth="423.0" text="Фильмы" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="208.0" />
    <Button layoutX="322.0" layoutY="296.0" mnemonicParsing="false" onAction="#openTheaterChange" prefHeight="64.0" prefWidth="423.0" text="Залы" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="296.0" />
    <Button layoutX="322.0" layoutY="376.0" mnemonicParsing="false" onAction="#openSessionChange" prefHeight="64.0" prefWidth="423.0" text="Сеансы" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="376.0" />
-   <Button layoutX="322.0" layoutY="457.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="375.0" text="Заказы" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="457.0" />
+   <Button layoutX="322.0" layoutY="457.0" mnemonicParsing="false" onAction="#openOrdersChange" prefHeight="64.0" prefWidth="375.0" text="Заказы" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="457.0" />
 </AnchorPane>

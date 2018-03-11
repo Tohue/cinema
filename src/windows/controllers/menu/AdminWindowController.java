@@ -28,6 +28,14 @@ public class AdminWindowController extends AbstractController {
         }
     }
 
+    public void openOrdersChange() {
+        try {
+            ScreenStarter.Start("infoEditors/OrderChangeScreen.fxml", stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void openTheaterChange() {
         try {
             ScreenStarter.Start("infoEditors/TheaterChangeWindow.fxml", stage);

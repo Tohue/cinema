@@ -14,7 +14,7 @@ public class Requests {
     public static final String GET_POSTERS = "SELECT  Poster FROM Films;";
     public static final String GET_THEATERS = "SELECT * FROM Theaters;";
     public static final String GET_TICKETS = "SELECT * FROM Tickets;";
-    public static final String GET_ORDERS = "SELECT * FROM Orders;";
+    public static final String GET_ORDERS = "SELECT * FROM Orders WHERE TotalCost > 0;";
     public static final String GET_FILMTIMES_BY_DATE = "SELECT SessionTime FROM Sessions WHERE SessionDate like ? AND FilmName like ?;";
     public static final String GET_SESSION_BY_DATETIME_AND_NAME = "SELECT * FROM (Sessions INNER JOIN Theaters on Theaters.TheaterNumber = Sessions.TheaterNumber) WHERE FilmName like ? AND SessionDate like ? AND SessionTime like ?;";
     public static final String GET_BOOKED_SEATS = "SELECT SeatNumber, RowNumber FROM Tickets WHERE idSessions = ?;";
