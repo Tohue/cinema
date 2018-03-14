@@ -21,7 +21,7 @@
       </TableView>
       <Button fx:id="back" layoutX="56.0" layoutY="653.0" mnemonicParsing="false" onAction="#back" prefHeight="45.0" prefWidth="173.0" text="Назад" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="56.0" />
       <Button fx:id="saveEditing" layoutX="842.0" layoutY="653.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="173.0" text="Сохранить" visible="false" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="65.0" />
-      <Button fx:id="delete" layoutX="658.0" layoutY="653.0" mnemonicParsing="false" onAction="#delete" prefHeight="45.0" prefWidth="173.0" text="Удалить" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="249.0" />
+      <Button fx:id="delete" layoutX="842.0" layoutY="653.0" mnemonicParsing="false" onAction="#delete" prefHeight="45.0" prefWidth="173.0" text="Удалить" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="65.0" />
       <Label alignment="CENTER" layoutY="35.0" prefHeight="38.0" prefWidth="1080.0" text="Просмотр заказов" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
          <font>
             <Font name="System Bold" size="27.0" />
