@@ -9,7 +9,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DateStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import windows.controllers.AbstractController;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -21,7 +26,7 @@ public class OrderChangeScreen extends AbstractController implements infoEditor 
     @FXML
     TableColumn<Order, Integer> idCol;
     @FXML
-    TableColumn<Date, Integer> dateCol;
+    TableColumn<Order, Date> dateCol;
     @FXML
     TableColumn<Order, Integer> costCol;
 
@@ -29,26 +34,22 @@ public class OrderChangeScreen extends AbstractController implements infoEditor 
 
     public void initialize() {
 
+        updateInfo();
         setTable();
 
     }
 
     private void setTable() {
 
-        try {
-            ResultSet resultSet = DBConnector.sendRequest(Requests.GET_ORDERS);
-
-            while (resultSet.next())
-                orders.add(new Order(resultSet.getInt("idOrders"), resultSet.getDate("OrderDateTime"), resultSet.getInt("TotalCost")));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         idCol.setCellValueFactory(new PropertyValueFactory<Order, Integer>("number"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Date, Integer>("dateOrder"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<Order, Date>("dateOrder"));
         costCol.setCellValueFactory(new PropertyValueFactory<Order, Integer>("orderCost"));
         orderTable.setItems(orders);
+
+        dateCol.setCellFactory(TextFieldTableCell.forTableColumn(new DateStringConverter()));
+        costCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
 
     }
 
@@ -65,6 +66,16 @@ public class OrderChangeScreen extends AbstractController implements infoEditor 
     @Override
     public void updateInfo() {
 
+        orders.clear();
+        try {
+            ResultSet resultSet = DBConnector.sendRequest(Requests.GET_ORDERS);
+
+            while (resultSet.next())
+                orders.add(new Order(resultSet.getInt("idOrders"), resultSet.getDate("OrderDateTime"), resultSet.getInt("TotalCost")));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -79,6 +90,41 @@ public class OrderChangeScreen extends AbstractController implements infoEditor 
 
     @Override
     public void delete() {
+
+        if (orderTable.getSelectionModel().getSelectedItems() != null) {
+
+            try {
+
+                int orderID =  orderTable.getSelectionModel().getSelectedItem().getNumber();
+
+                DBConnector.getConnection().setAutoCommit(false);
+                PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.DELETE_ORDER);
+                statement.setInt(1,orderID);
+                statement.executeUpdate();
+
+                PreparedStatement ticket_statement = DBConnector.getConnection().prepareStatement(Requests.DELETE_TICKETS_BY_ORDER);
+                ticket_statement.setInt(1, orderID);
+                ticket_statement.executeUpdate();
+
+                updateInfo();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    DBConnector.getConnection().commit();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    DBConnector.getConnection().setAutoCommit(true);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        }
 
     }
 }

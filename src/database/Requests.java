@@ -51,5 +51,7 @@ public class Requests {
     public static final String DELETE_THEATER = "DELETE FROM Theaters Where TheaterNumber = ?;";
     public static final String DELETE_FILM = "DELETE FROM Films WHERE Name = ?;";
     public static final String DELETE_TICKET = "DELETE FROM Tickets WHERE idTickets = ?;";
+    public static final String DELETE_ORDER = "DELETE FROM Orders WHERE idOrders = ?";
+    public static final String DELETE_TICKETS_BY_ORDER = "DELETE FROM Tickets WHERE BookID = ?";
 
 }
