@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 import windows.components.FontLoader;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.stream.Collectors;
@@ -45,6 +47,8 @@ public class FilmListWindowController extends AbstractController {
     @FXML
     Label title;
 
+    private static ObservableList<Film> primaryList = FXCollections.observableArrayList();
+
     public void initialize() {
 
         filmTable.autosize();
@@ -59,7 +63,7 @@ public class FilmListWindowController extends AbstractController {
 
     private void loadFilms() {
 
-        ObservableList<Film>  observableList = null;
+        ObservableList<Film> observableList = null;
 
         /**
          * Загрузка списка фильмов, если он пустой
@@ -68,7 +72,8 @@ public class FilmListWindowController extends AbstractController {
         try {
             dataLoader.loadFilmInfo();
             observableList = dataLoader.getFilmInfoList();
-            setSorts(observableList);
+            primaryList = dataLoader.getFilmInfoList();
+            setSorts();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -118,8 +123,10 @@ public class FilmListWindowController extends AbstractController {
     private void setSortFields() {
 
         DataLoader dataLoader = new DataLoader();
-        genreField.setItems(dataLoader.getGenres());
-        countryField.setItems(dataLoader.getCountries());
+        genreField.getItems().add("");
+        countryField.getItems().add("");
+        genreField.getItems().addAll(dataLoader.getGenres());
+        countryField.getItems().addAll(dataLoader.getCountries());
 
     }
 
@@ -137,12 +144,30 @@ public class FilmListWindowController extends AbstractController {
 
     }
 
-    private void setSorts(ObservableList<Film> primaryList) {
+    private void setSorts() {
 
-        genreField.setOnAction(event -> filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getGenre().equals(genreField.getSelectionModel().getSelectedItem())).collect(Collectors.toList()))));
-        countryField.setOnAction(event -> filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getCountry().equals(countryField.getSelectionModel().getSelectedItem())).collect(Collectors.toList()))));
+        genreField.setOnAction(event -> filterFilms());
+        countryField.setOnAction(event -> filterFilms());
 
     }
 
+    private void filterFilms() {
+
+        if (emptyField(countryField) && emptyField(genreField))
+            filmTable.setItems(primaryList);
+        else if (emptyField(countryField))
+            filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getGenre().equals(genreField.getValue())).collect(Collectors.toList())));
+        else if (emptyField(genreField))
+            filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getCountry().equals(countryField.getValue())).collect(Collectors.toList())));
+        else  filmTable.setItems(FXCollections.observableArrayList(primaryList.stream().filter((p) -> p.getGenre().equals(genreField.getValue()) && p.getCountry().equals(countryField.getValue())).collect(Collectors.toList())));
+
+
+    }
+
+    private boolean emptyField(ComboBox field) {
+        if (field.getValue() == null || field.getValue().equals(""))
+            return true;
+        else return false;
+    }
 
 }

@@ -4,7 +4,8 @@
 }  
   
 /*HEADER */  
-.table-view .column-header{         
+.table-view .column-header{    
+
     -fx-background-color: #27A5F9;      
     -fx-size: 45.0px;  
     -fx-min-height: 45.0px;      

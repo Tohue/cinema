@@ -266,7 +266,46 @@ public class MainScreenController extends AbstractController {
 
     private void setReflection() {
 
+//        premieresBtn.getStyl().add("-fx-background-radius: 70;");
+//        filmListBtn.getStylesheets().add("-fx-background-radius: 70;");
+//        scheduleBtn.getStylesheets().add("-fx-background-radius: 70;");
+
+        premieresBtn.setStyle("-fx-background-radius: 70;" +
+                "-fx-background-color: \n" +
+                "        #090a0c,\n" +
+                "        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),\n" +
+                "        linear-gradient(#20262b, #191d22),\n" +
+                "        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));\n" +
+                "    -fx-background-\t: 10;\n" +
+                "    -fx-background-insets: 0,1,2,0;\n" +
+                "\n" +
+                "    -fx-padding: 10 20 10 20;");
+
+        filmListBtn.setStyle("-fx-background-radius: 70;" +
+                "-fx-background-color: \n" +
+                "        #090a0c,\n" +
+                "        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),\n" +
+                "        linear-gradient(#20262b, #191d22),\n" +
+                "        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));\n" +
+                "    -fx-background-\t: 10;\n" +
+                "    -fx-background-insets: 0,1,2,0;\n" +
+                "\n" +
+                "    -fx-padding: 10 20 10 20;");
+
+        scheduleBtn.setStyle("-fx-background-radius: 70;" +
+                "-fx-background-color: \n" +
+                "        #090a0c,\n" +
+                "        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),\n" +
+                "        linear-gradient(#20262b, #191d22),\n" +
+                "        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));\n" +
+                "    -fx-background-\t: 10;\n" +
+                "    -fx-background-insets: 0,1,2,0;\n" +
+                "\n" +
+                "    -fx-padding: 10 20 10 20;");
+
         premieresBtn.setEffect(new Reflection());
+        filmListBtn.setEffect(new Reflection());
+        scheduleBtn.setEffect(new Reflection());
 
     }
 

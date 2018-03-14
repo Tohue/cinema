@@ -3,6 +3,7 @@ package windows.controllers.system;
 import database.DBConnector;
 import database.Requests;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import windows.controllers.AbstractController;
 import windows.windowStarters.ScreenStarter;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 
 public class AdminPanelLogIn extends AbstractController {
 
+    @FXML
+    Label errorLabel;
     @FXML
     TextField loginField;
     @FXML
@@ -41,7 +44,7 @@ public class AdminPanelLogIn extends AbstractController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
+            showError();
         }
 
     }
@@ -56,6 +59,14 @@ public class AdminPanelLogIn extends AbstractController {
             e.printStackTrace();
         }
 
+    }
+
+    private void showError() {
+        errorLabel.setVisible(true);
+    }
+
+    private void hideError() {
+        errorLabel.setVisible(false);
     }
 
 }
