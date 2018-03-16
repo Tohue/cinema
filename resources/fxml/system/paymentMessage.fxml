@@ -2,22 +2,24 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 
 <AnchorPane onMouseClicked="#closeThis" prefHeight="800.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.system.PaymentMessage">
    <children>
-      <Label layoutX="178.0" layoutY="108.0" prefHeight="54.0" prefWidth="790.0" text="%thanks" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="108.0">
+      <Pane layoutY="8.0" onMouseClicked="#closeThis" prefHeight="337.0" prefWidth="1080.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="title1" alignment="CENTER" layoutX="162.0" layoutY="108.0" onMouseClicked="#closeThis" prefHeight="59.0" prefWidth="806.0" text="%thanks" textAlignment="CENTER" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="108.0">
          <font>
             <Font size="41.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" layoutX="162.0" layoutY="167.0" prefHeight="174.0" prefWidth="806.0" text="%instruction" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="title2" alignment="TOP_CENTER" layoutX="162.0" layoutY="112.0" onMouseClicked="#closeThis" prefHeight="174.0" prefWidth="806.0" text="%instruction" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="160.0">
          <font>
             <Font name="System Bold" size="41.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" layoutX="149.0" layoutY="329.0" prefHeight="174.0" prefWidth="806.0" text="%clickOnScreen" wrapText="true">
+      <Label fx:id="title3" alignment="TOP_CENTER" layoutX="162.0" layoutY="334.0" onMouseClicked="#closeThis" prefHeight="174.0" prefWidth="806.0" text="%clickOnScreen" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="340.0">
          <font>
             <Font size="41.0" />
          </font>
