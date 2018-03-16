@@ -130,7 +130,7 @@ public class BuyScreenController extends AbstractController {
 
     private void backToMainScreen() throws IOException {
 
-        ScreenStarter.Start("/contentScreens/MainScreen.fxml");
+        ScreenStarter.Start("system/paymentMessage.fxml");
         stage.close();
 
 

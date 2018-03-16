@@ -122,7 +122,6 @@ public class MainScreenController extends AbstractController {
 
         try {
             ScreenStarter.Start("ContentScreens/FilmListWindow.fxml", stage);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -191,6 +190,7 @@ public class MainScreenController extends AbstractController {
         button.setOnAction(event -> {
             try {
                 ScreenStarter.StartFilmInfoList(film, stage);
+                close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

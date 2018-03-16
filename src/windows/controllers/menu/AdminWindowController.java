@@ -31,6 +31,7 @@ public class AdminWindowController extends AbstractController {
     public void openOrdersChange() {
         try {
             ScreenStarter.Start("infoEditors/OrderChangeScreen.fxml", stage);
+            close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,9 +59,6 @@ public class AdminWindowController extends AbstractController {
 
     }
 
-    public void openOrderChange() {
-
-    }
 
 //    public void back() {
 //        try {

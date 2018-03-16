@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="infoPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.SelectSeatsController">
    <children>
-      <AnchorPane fx:id="mainPane" layoutX="120.0" layoutY="59.0" prefHeight="517.0" prefWidth="721.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="143.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="60.0">
+      <AnchorPane fx:id="mainPane" layoutX="120.0" layoutY="59.0" prefHeight="517.0" prefWidth="721.0" style="-fx-background-color: white; -fx-background-radius: 30;" AnchorPane.bottomAnchor="143.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="60.0">
          <children>
             <Label layoutX="29.0" layoutY="24.0" text="%toSelectSeatsText" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="24.0">
                <font>
@@ -18,18 +18,42 @@
             <AnchorPane fx:id="seatsAnchorPane" layoutX="127.0" layoutY="60.0" prefHeight="457.0" prefWidth="448.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="acceptButton" layoutX="695.0" layoutY="587.0" mnemonicParsing="false" onAction="#openGoodScreen" prefHeight="55.0" prefWidth="150.0" text="%accept" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="235.0" />
-      <Button layoutX="481.0" layoutY="587.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" text="%back" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="449.0" />
-      <AnchorPane layoutX="852.0" layoutY="60.0" prefHeight="365.0" prefWidth="214.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0">
+      <Button fx:id="acceptButton" layoutX="637.0" layoutY="587.0" mnemonicParsing="false" onAction="#openGoodScreen" prefHeight="55.0" prefWidth="204.0" style="-fx-background-radius: 30;" text="%accept" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="239.0" />
+      <Button layoutX="481.0" layoutY="587.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" style="-fx-background-radius: 30;" text="%back" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="449.0" />
+      <AnchorPane layoutX="852.0" layoutY="60.0" prefHeight="365.0" prefWidth="214.0" style="-fx-background-color: white; -fx-background-radius: 30;" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0">
          <children>
-            <Label fx:id="filmNameLabel" layoutX="14.0" layoutY="14.0" text="Название фильма" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-            <Label fx:id="timeLabel" layoutX="14.0" layoutY="39.0" text="Время" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="39.0" />
-            <Label fx:id="freeSeatsCountLabel" layoutX="13.0" layoutY="83.0" text="Свободных мест:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="83.0" />
-            <Label layoutX="13.0" layoutY="104.0" text="Выбрано билетов:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="104.0" />
-            <Label layoutX="89.0" layoutY="334.0" text="Сумма:" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="89.0" />
-            <Label fx:id="orderedLabel" layoutX="13.0" layoutY="61.0" text="Занято мест:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="61.0" />
-            <Label fx:id="ticketCountLabel" layoutX="121.0" layoutY="104.0" AnchorPane.leftAnchor="121.0" AnchorPane.topAnchor="104.0" />
-            <Label fx:id="sumLabel" layoutX="137.0" layoutY="334.0" />
+            <Label fx:id="filmNameLabel" layoutX="15.0" layoutY="25.0" text="Название фильма" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="timeLabel" layoutX="15.0" layoutY="50.0" text="Время" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="freeSeatsCountLabel" layoutX="14.0" layoutY="94.0" text="Свободных мест:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="94.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label layoutX="14.0" layoutY="115.0" text="Выбрано билетов:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="115.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label layoutX="66.0" layoutY="332.0" text="Сумма:" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="66.0">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label fx:id="orderedLabel" layoutX="14.0" layoutY="72.0" text="Занято мест:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="72.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="ticketCountLabel" layoutX="122.0" layoutY="115.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="115.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="sumLabel" layoutX="137.0" layoutY="334.0" AnchorPane.leftAnchor="145.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
          </children></AnchorPane>
    </children>
 </AnchorPane>
