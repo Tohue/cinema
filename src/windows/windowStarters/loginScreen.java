@@ -7,6 +7,9 @@ import windows.builders.ModalityBuilder;
 import windows.controllers.system.DBLoginController;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class loginScreen extends Application {
 
@@ -22,9 +25,9 @@ public class loginScreen extends Application {
         try {
 
 
-            File DBConfig = new File("./resources/configFiles/DBConfig.xml");
+            Path DBConfig = Paths.get("./resources/configFiles/DBConfig.xml");
             DBPropertiesParser dbPropertiesParser = new DBPropertiesParser();
-            if (!DBConfig.exists()) {
+            if (!Files.exists(DBConfig)) {
                 System.out.println("не парсим");
                 dbPropertiesParser.newDBProperties();
             } else {

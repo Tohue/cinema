@@ -77,7 +77,9 @@ public class DBPropertiesParser {
         document.appendChild(root);
 
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        File DBConfig =  new File(".resources/configFiles/DBConfig.xml");
+        File DBConfig =  new File("./resources\\configFiles\\DBConfig.xml");
+        File path = new File("./resources/configFiles");
+        path.mkdirs();
         DBConfig.createNewFile();
         transformer.transform(new DOMSource(document), new StreamResult(new FileOutputStream("./resources/configFiles/DBConfig.xml")));
     }
