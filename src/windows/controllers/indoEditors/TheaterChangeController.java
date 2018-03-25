@@ -38,6 +38,8 @@ public class TheaterChangeController extends AbstractController implements infoE
     Label errorSaveLabel;
     @FXML
     Label errorEditLabel;
+    @FXML
+    Label successLabel;
 
     private ArrayList<Theater> theaters = null;
 
@@ -98,9 +100,11 @@ public class TheaterChangeController extends AbstractController implements infoE
             statement.executeUpdate();
             hideErrors();
             updateInfo();
+            successLabel.setVisible(true);
 
         } catch (SQLException e) {
             creatingError();
+            successLabel.setVisible(false);
             e.printStackTrace();
         }
 
@@ -174,8 +178,10 @@ public class TheaterChangeController extends AbstractController implements infoE
             statement.executeUpdate();
             updateInfo();
             hideErrors();
+            successLabel.setVisible(true);
         } catch (SQLException e) {
             editingError();
+            successLabel.setVisible(false);
             e.printStackTrace();
         }
 

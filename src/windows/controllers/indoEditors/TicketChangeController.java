@@ -58,6 +58,8 @@ public class TicketChangeController extends AbstractController implements infoEd
     Label errorAddLabel1;
     @FXML
     Label errorAddLabel2;
+    @FXML
+    Label successLabel;
 
 
     private HashSet<Integer> changedRows = new HashSet<>();
@@ -91,9 +93,13 @@ public class TicketChangeController extends AbstractController implements infoEd
 
         }
 
-        if (!errorHappened)
+        if (!errorHappened) {
             hideEditError();
-        else editingError();
+            successLabel.setVisible(true);
+        } else {
+            successLabel.setVisible(false);
+            editingError();
+        }
 
         updateInfo();
         changedRows.clear();
@@ -113,8 +119,10 @@ public class TicketChangeController extends AbstractController implements infoEd
             statement.setInt(5, Integer.parseInt(addNumRowField.getText()));
             statement.executeUpdate();
             hideSaveError();
+            successLabel.setVisible(true);
             } catch (SQLException e) {
                 viewSaveError();
+                successLabel.setVisible(false);
                 e.printStackTrace();
             }
         }

@@ -73,6 +73,8 @@ public class SessionChangeController extends AbstractController implements infoE
     Label createSaveErrorLabel;
     @FXML
     Label editSaveErrorLabel;
+    @FXML
+    Label successLabel;
 
     ObservableList<Session> sessionsInfoList = null;
     ArrayList<Integer> changedRows = new ArrayList<>();
@@ -122,9 +124,13 @@ public class SessionChangeController extends AbstractController implements infoE
             }
         }
 
-        if (!error)
+        if (!error) {
+            successLabel.setVisible(true);
             hideErrors();
-        else editingError();
+        }  else {
+            editingError();
+            successLabel.setVisible(false);
+        }
 
         updateInfo();
         changedRows.clear();
@@ -149,8 +155,10 @@ public class SessionChangeController extends AbstractController implements infoE
                 hideErrors();
                 numSpin.increment();
                 updateInfo();
+                successLabel.setVisible(true);
             } catch (SQLException e) {
                 creatingError();
+                successLabel.setVisible(false);
                 e.printStackTrace();
             }
         }

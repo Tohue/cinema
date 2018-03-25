@@ -16,6 +16,11 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.indoEditors.SessionChangeController">
    <children>
+      <Label fx:id="successLabel" text="Сохранено" textFill="#018611" visible="false" AnchorPane.bottomAnchor="33.0" AnchorPane.rightAnchor="371.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
       <TabPane layoutY="6.0" prefHeight="716.0" prefWidth="1080.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
         <tabs>
           <Tab text="Изменение">
@@ -112,7 +117,7 @@
                               <Font size="46.0" />
                            </font>
                         </Label>
-                        <Button layoutX="891.0" layoutY="592.0" mnemonicParsing="false" onAction="#saveCreating" prefHeight="55.0" prefWidth="150.0" text="Сохранить" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="39.0" />
+                        <Button layoutX="821.0" layoutY="609.0" mnemonicParsing="false" onAction="#saveCreating" prefHeight="55.0" prefWidth="150.0" text="Сохранить" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="109.0" />
                         <Button layoutX="709.0" layoutY="592.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="150.0" text="Назад" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="49.0" />
                         <Label fx:id="createSaveErrorLabel" layoutX="386.0" layoutY="604.0" text="Ошибка сохранения данных" textFill="RED" visible="false" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="385.0">
                            <font>

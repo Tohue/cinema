@@ -27,5 +27,10 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
+      <Label fx:id="successLabel" layoutX="747.0" layoutY="662.0" text="Удалено" textFill="#05a80b" visible="false" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="258.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

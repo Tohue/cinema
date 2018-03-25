@@ -6,6 +6,7 @@ import entities.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,6 +30,8 @@ public class OrderChangeScreen extends AbstractController implements infoEditor 
     TableColumn<Order, Date> dateCol;
     @FXML
     TableColumn<Order, Integer> costCol;
+    @FXML
+    Label successLabel;
 
     ObservableList<Order> orders = FXCollections.observableArrayList();
 
@@ -105,10 +108,11 @@ public class OrderChangeScreen extends AbstractController implements infoEditor 
                 PreparedStatement ticket_statement = DBConnector.getConnection().prepareStatement(Requests.DELETE_TICKETS_BY_ORDER);
                 ticket_statement.setInt(1, orderID);
                 ticket_statement.executeUpdate();
-
                 updateInfo();
+                successLabel.setVisible(true);
 
             } catch (SQLException e) {
+                successLabel.setVisible(false);
                 e.printStackTrace();
             } finally {
                 try {
