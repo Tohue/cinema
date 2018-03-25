@@ -9,11 +9,11 @@ public class FontLoader {
     }
 
     public Font getBebasThin(int size) {
-        return Font.loadFont(getClass().getResource("/fonts/bebas/BebasNeueThin.otf").toExternalForm(), size);
+        return Font.loadFont(getClass().getResource("/fonts/Bebas/BebasNeueThin.otf").toExternalForm(), size);
     }
 
     public Font getBebasReg(int size) {
-        return Font.loadFont(getClass().getResource("/fonts/bebas/BebasNeueRegular.otf").toExternalForm(), size);
+        return Font.loadFont(getClass().getResource("/fonts/Bebas/BebasNeueRegular.otf").toExternalForm(), size);
     }
 
 }

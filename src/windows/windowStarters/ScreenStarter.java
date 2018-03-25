@@ -29,16 +29,19 @@ public class ScreenStarter {
 
     public static void openBG() {
         background.show();
+        background.setFullScreenExitHint("");
+        background.setFullScreen(true);
     }
 
     public static void hideBG() {
-   //     background.close();
+        background.close();
     }
 
     public static void Start(String FXMLName, Stage lastWindow) throws IOException {
 
         openBG();
         Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName, lastWindow);
+        primaryStage.setFullScreenExitHint("");
         primaryStage.setMinHeight(minWindowHeight);
         primaryStage.setMinWidth(minWindowWidth);
         primaryStage.show();
@@ -50,6 +53,7 @@ public class ScreenStarter {
 
         openBG();
         Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName);
+        primaryStage.setFullScreenExitHint("");
         primaryStage.setMinHeight(minWindowHeight);
         primaryStage.setMinWidth(minWindowWidth);
         primaryStage.show();
@@ -78,7 +82,7 @@ public class ScreenStarter {
     public static void StartFilmInfoList(Film film, Stage lastWindow) throws IOException {
 
         openBG();
-        String FXMLName ="/ContentScreens/FilmInfoScreen.fxml";
+        String FXMLName ="contentScreens/FilmInfoScreen.fxml";
         FilmInfoScreenController.setCountry(film.getCountry());
         FilmInfoScreenController.setLength(film.getLength());
         FilmInfoScreenController.setDesctription(film.getDescription());
@@ -97,7 +101,7 @@ public class ScreenStarter {
     public static void StartSelectSeats(Session session, Theater theater, Stage lastWindow) throws IOException {
 
         openBG();
-        String FXMLName ="/ContentScreens/SelectSeatsScreen.fxml";
+        String FXMLName ="contentScreens/SelectSeatsScreen.fxml";
         SelectSeatsController.setSession(session);
         SelectSeatsController.setTheater(theater);
         Stage primaryStage = new FullSizeWindowBuilder().getFullSizeScreen(FXMLName, lastWindow);
@@ -133,4 +137,7 @@ public class ScreenStarter {
         return primaryStage;
 
     }
+
+
+
 }

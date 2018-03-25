@@ -42,7 +42,7 @@ public class Requests {
     public static final String UPDATE_TICKET = "UPDATE Tickets SET idSessions = ?, TicketType = ?, BookID = ?, SeatNumber = ?, RowNumber = ? WHERE idTickets = ?;";
     public static final String UPDATE_SCHEDULE = "UPDATE Sessions SET FilmName = ?, TheaterNumber = ?, SessionDate = ?, OrdCost = ?, VipCost = ?, SessionTime = ? WHERE idSessions = ?;";
     public static final String UPDATE_FILM = "";
-    public static final String UPDATE_FILM_WITHOUT_POSTER = "";
+    public static final String UPDATE_FILM_WITHOUT_POSTER = "UPDATE Films SET Length = ?, Country = ?, Description = ?, Genre = ? WHERE Name = ?;";
 
     /**
      * DELETE

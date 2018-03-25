@@ -36,7 +36,7 @@ public class PaymentMessage extends AbstractController {
     public void closeThis() {
 
         try {
-            ScreenStarter.Start("/contentScreens/MainScreen.fxml");
+            ScreenStarter.Start("contentScreens/mainScreen.fxml");
 
         } catch (IOException e) {
             e.printStackTrace();

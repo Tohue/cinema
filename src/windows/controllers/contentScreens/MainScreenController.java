@@ -106,7 +106,7 @@ public class MainScreenController extends AbstractController {
      */
     public void openSchedule(ActionEvent actionEvent) {
         try {
-            ScreenStarter.Start("ContentScreens/ScheduleScreen.fxml", stage);
+            ScreenStarter.Start("contentScreens/ScheduleScreen.fxml", stage);
             close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -121,7 +121,8 @@ public class MainScreenController extends AbstractController {
     public void openFilmList(ActionEvent actionEvent) {
 
         try {
-            ScreenStarter.Start("ContentScreens/FilmListWindow.fxml", stage);
+            ScreenStarter.Start("contentScreens/FilmListWindow.fxml", stage);
+            close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -219,7 +220,7 @@ public class MainScreenController extends AbstractController {
     public void openPremieres() {
 
         try {
-            ScreenStarter.Start("/contentScreens/NearFilmList.fxml", stage);
+            ScreenStarter.Start("contentScreens/NearFilmList.fxml", stage);
             close();
         } catch (IOException e) {
             e.printStackTrace();

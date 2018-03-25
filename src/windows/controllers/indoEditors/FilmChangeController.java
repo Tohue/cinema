@@ -48,6 +48,8 @@ public class FilmChangeController extends AbstractController implements infoEdit
     @FXML
     Label errorEditLabel;
     @FXML
+    Label successLabel;
+    @FXML
     Label fileNameLabel;
     @FXML
     Label posterError;
@@ -55,7 +57,6 @@ public class FilmChangeController extends AbstractController implements infoEdit
     private boolean isSelectedPoster = false;
     private byte[] poster;
     private boolean isChangePoster = false;
-    private byte[] newPoster;
 
     public void initialize() {
 
@@ -78,8 +79,20 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
     public void saveEditing() {
 
-        if (isChangePoster) {
-
+        try {
+            PreparedStatement statement = DBConnector.getConnection().prepareStatement(Requests.UPDATE_FILM_WITHOUT_POSTER);
+            statement.setInt(1, lengthField.getValue());
+            statement.setString(2, countryField.getText());
+            statement.setString(3, descField.getText());
+            statement.setString(4, genreField.getText());
+            statement.setString(5, nameField.getText());
+            statement.executeUpdate();
+            updateInfo();
+            hideErrors();
+            showSuccessLabel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            errorSaveLabel.setVisible(true);
         }
 
     }
@@ -99,6 +112,7 @@ public class FilmChangeController extends AbstractController implements infoEdit
                 statement.setBlob(5, new SerialBlob(poster));
                 statement.setString(6, genreField.getText());
                 statement.executeUpdate();
+                showSuccessLabel();
                 hidePosterError();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -153,6 +167,7 @@ public class FilmChangeController extends AbstractController implements infoEdit
     }
 
     private void showPosterError() {
+        successLabel.setVisible(false);
         posterError.setVisible(true);
     }
 
@@ -163,6 +178,7 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
     @Override
     public void editingError() {
+        successLabel.setVisible(false);
         errorEditLabel.setVisible(true);
     }
 
@@ -177,6 +193,7 @@ public class FilmChangeController extends AbstractController implements infoEdit
                 statement.setString(1, filmNameEdit.getValue());
                 statement.executeUpdate();
                 clearEditFields();
+                showSuccessLabel();
                 updateInfo();
 
             } catch (SQLException e) {
@@ -187,9 +204,10 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
     }
 
-    private void hideErrors() {
+    public void hideErrors() {
         errorEditLabel.setVisible(false);
         errorSaveLabel.setVisible(false);
+        successLabel.setVisible(false);
     }
 
     private void clearEditFields() {
@@ -234,6 +252,9 @@ public class FilmChangeController extends AbstractController implements infoEdit
 
     }
 
+    private void showSuccessLabel() {
+        successLabel.setVisible(true);
+    }
 
     private File choosePoster(Label label) {
 
