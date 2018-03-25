@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="infoPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: darkblue;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.SelectSeatsController">
+<AnchorPane fx:id="infoPane" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #336699;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.SelectSeatsController">
    <children>
       <AnchorPane fx:id="mainPane" layoutX="120.0" layoutY="59.0" prefHeight="517.0" prefWidth="721.0" style="-fx-background-color: white; -fx-background-radius: 30;" AnchorPane.bottomAnchor="143.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="60.0">
          <children>

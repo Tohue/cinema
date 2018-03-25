@@ -11,6 +11,11 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.indoEditors.TheaterChangeController">
+   <Label fx:id="successLabel" text="Сохранено" textFill="#199730" visible="false" AnchorPane.bottomAnchor="99.0" AnchorPane.rightAnchor="153.0">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
+   </Label>
     <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab text="Редактирование">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

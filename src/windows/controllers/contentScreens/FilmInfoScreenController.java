@@ -204,7 +204,7 @@ public  class FilmInfoScreenController extends AbstractController {
 
         FontLoader fontLoader = new FontLoader();
         backBtn.setFont(fontLoader.getBebasReg(40));
-        filmNameLabel.setFont(fontLoader.getLemon(50));
+        filmNameLabel.setFont(fontLoader.getLemon(40));
     }
 
 }
