@@ -1,5 +1,6 @@
 package windows.controllers.system;
 
+import hardware.CDopener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import windows.components.FontLoader;
@@ -21,6 +22,7 @@ public class PaymentMessage extends AbstractController {
     public  void initialize() {
 
         setFonts();
+        printTicket();
 
     }
 
@@ -42,6 +44,12 @@ public class PaymentMessage extends AbstractController {
             e.printStackTrace();
         }
         close();
+
+    }
+
+    private void printTicket() {
+
+        CDopener.openDrive();
 
     }
 

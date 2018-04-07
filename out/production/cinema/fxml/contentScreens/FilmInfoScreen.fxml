@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.FilmInfoScreenController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #666666;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windows.controllers.contentScreens.FilmInfoScreenController">
    <children>
-      <AnchorPane fx:id="mainPanel" layoutX="380.0" layoutY="82.0" prefHeight="578.0" prefWidth="613.0" style="-fx-background-color: lightgrey;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="85.0">
+      <AnchorPane fx:id="mainPanel" layoutX="380.0" layoutY="82.0" prefHeight="578.0" prefWidth="613.0" style="-fx-background-color: #CCCCCC;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="85.0">
          <effect>
             <DropShadow height="0.0" radius="15.807500000000001" width="65.23" />
          </effect>
