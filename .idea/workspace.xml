@@ -12,13 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hardware/CDopener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/cinema_jar/cinema.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/cinema_jar/cinema.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/cinema_jar/Терминал.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cinema/fxml/contentScreens/FilmInfoScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cinema/fxml/contentScreens/FilmInfoScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/fxml/contentScreens/selectSeatsScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cinema/fxml/contentScreens/selectSeatsScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/fxml/infoEditors/FilmChangeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cinema/fxml/infoEditors/FilmChangeScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cinema/windows/controllers/contentScreens/FilmInfoScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cinema/windows/controllers/contentScreens/FilmInfoScreenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/windows/controllers/system/PaymentMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/windows/controllers/system/PaymentMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/cinema/hardware/CDopener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cinema/hardware/CDopener.class" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,7 +80,7 @@
       <file leaf-file-name="FilmInfoScreenController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmInfoScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
+            <state relative-caret-position="434">
               <caret line="189" column="38" selection-start-line="189" selection-start-column="38" selection-end-line="189" selection-end-column="38" />
             </state>
           </provider>
@@ -91,8 +89,8 @@
       <file leaf-file-name="PaymentMessage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/windows/controllers/system/PaymentMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+            <state relative-caret-position="349">
+              <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -100,8 +98,8 @@
       <file leaf-file-name="CDopener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hardware/CDopener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -209,6 +207,17 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cinema" type="58d84e3e:PackageViewProjectNode" />
+              <item name="cinema" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,17 +245,6 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="cinema" type="58d84e3e:PackageViewProjectNode" />
-              <item name="cinema" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -406,13 +404,6 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-    </task>
-    <task id="LOCAL-00010" summary="чет хуйня">
-      <created>1515277391126</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1515277391126</updated>
     </task>
     <task id="LOCAL-00011" summary="чет бльшая хуйня">
       <created>1515279322417</created>
@@ -750,7 +741,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521943301441</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Release candidate 2 (cd-rom D:)">
+      <created>1523387620841</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1523387620842</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -758,19 +756,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="PlantUML" order="3" />
       <window_info anchor="right" id="Palette" order="7" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info id="simpleUML" order="7" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.32873806" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.37751856" />
       <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37751856" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
@@ -779,23 +777,22 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="10" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997879" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997879" />
       <window_info anchor="right" id="JetGradle" order="6" />
-      <window_info anchor="bottom" id="Messages" order="15" weight="0.32873806" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32979852" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32979852" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32979852" />
-      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.3296875" />
-      <window_info anchor="bottom" id="Profiler" order="9" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Problems" order="12" />
-      <window_info anchor="bottom" id="Application Servers" order="8" />
       <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="bottom" id="Profiler" order="9" />
+      <window_info anchor="bottom" id="Problems" order="12" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Application Servers" order="8" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.3296875" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -804,7 +801,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Вся хуйня с залами" />
     <MESSAGE value="Почти готовый выбор мест" />
     <MESSAGE value="ебучка" />
     <MESSAGE value="Удаление почти всего" />
@@ -829,7 +825,8 @@
     <MESSAGE value="JAR" />
     <MESSAGE value="Release candidate 1" />
     <MESSAGE value="Цвета и шрифты" />
-    <option name="LAST_COMMIT_MESSAGE" value="Цвета и шрифты" />
+    <MESSAGE value="Release candidate 2 (cd-rom D:)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release candidate 2 (cd-rom D:)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -844,6 +841,27 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmInfoScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3213">
+          <caret line="189" column="38" selection-start-line="189" selection-start-column="38" selection-end-line="189" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/windows/controllers/system/PaymentMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hardware/CDopener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmInfoScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2567">
@@ -983,13 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#519#520#0" />
-            <element signature="e#553#554#0" />
-            <element signature="e#669#670#0" />
-            <element signature="e#698#699#0" />
-            <element signature="e#754#755#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,13 +1123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-60">
           <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
-          <folding>
-            <element signature="initializer##0;class#ScreenStarter#0" />
-            <element signature="e#1007#1008#0" />
-            <element signature="e#1041#1042#0" />
-            <element signature="method#StartGoodBuyingScreen#0;class#ScreenStarter#0" />
-            <element signature="method#StartBG#0;class#ScreenStarter#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1159,22 +1163,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/controllers/contentScreens/FilmInfoScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
+        <state relative-caret-position="434">
           <caret line="189" column="38" selection-start-line="189" selection-start-column="38" selection-end-line="189" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/windows/controllers/system/PaymentMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+        <state relative-caret-position="349">
+          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hardware/CDopener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
