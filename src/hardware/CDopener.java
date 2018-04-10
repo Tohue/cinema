@@ -7,7 +7,7 @@ public class CDopener {
     public static void openDrive() {
 
         try {
-            Runtime.getRuntime().exec("resources\\nircmd.exe cdrom open F:");
+            Runtime.getRuntime().exec("resources\\nircmd.exe cdrom open D:");
         } catch (IOException e) {
             e.printStackTrace();
         }
